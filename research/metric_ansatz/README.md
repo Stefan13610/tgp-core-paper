@@ -1,96 +1,93 @@
-# R4: Ansatz metryczny h(Φ)=Φ z pierwszych zasad
+# Metric ansatz $h(\Phi)=\Phi$ from five independent arguments
 
-## Problem
+Supports **Remark 2** in the core paper (scope of the selection statement
+for $h(\Phi) = \Phi$, equivalently the exponent $p = 1$ in
+$g_{ij} = (\Phi/\Phi_0)^p \delta_{ij}$).
 
-Metryka TGP:
+## The five arguments
+
+The core paper states that $p = 1$ is selected — not merely postulated —
+by *five independent arguments* of different character (analytic,
+observational, numerical). This folder provides the numerical material
+for each. All tests pass.
+
+| # | Argument | Type | Passing tests | Script(s) |
+|---|----------|------|---------------|-----------|
+| 1 | Substrate density: $\Phi$ is the substrate density $\Rightarrow g_{ij} \propto \psi$ | Analytic (T1–T2) | — | `lk2_metric_from_substrate_propagation.py`, `ex201_antipodal_metric_derivation.py` (T1–T2 portion) |
+| 2 | PPN Cassini + LLR: $\gamma = p = 1$, $\beta = 1$ | Observational | 8/8 | `ex206_metric_hypothesis_necessity.py` |
+| 3 | Information budget: antipodal condition $f\!\cdot\!h = 1$ | Analytic | 8/8 | `ex201_antipodal_metric_derivation.py` |
+| 4 | Volume element: $\sqrt{-g} = \psi^p$ must $= \psi$ | Analytic + numeric | 11/11 | `r4_einstein_self_consistency.py`, `consistency_volume_element.py` |
+| 5 | Soliton mass ratio: only $p = 1$ reproduces $r_{21} = 206.77$ | Numerical | 6/6 + 6/6 | `a2_metric_consistency.py`, `a3d_soliton_brannen_r.py` |
+
+Together: *exponential metric* $g_{\mu\nu} = \eta_{\mu\nu}\exp(2\Phi/\Phi_0)$
+is the unique ansatz simultaneously satisfying ghost-freedom, positive
+kinetic energy, correct Newtonian limit, $\gamma = \beta = 1$ to all PPN
+orders, and $\sqrt{-g} = \psi$.
+
+## Scripts
+
+### Argument 1 — substrate density
+
+- **`lk2_metric_from_substrate_propagation.py`** — derives the
+  $g_{ij} \propto \psi$ form from substrate-wave propagation.
+- **`ex201_antipodal_metric_derivation.py`** (T1–T2 block) — derives
+  it from the antipodal $\mathbb{Z}_2$ symmetry.
+
+### Argument 2 — PPN observational
+
+- **`ex206_metric_hypothesis_necessity.py`** — 8/8 PASS. Tests that
+  *only* $h(\Phi) = \Phi$ is consistent with the Cassini
+  $|\gamma - 1| \le 2.3 \times 10^{-5}$ and LLR
+  $|\beta - 1| \le 6 \times 10^{-5}$ bounds; every $p \ne 1$ is ruled
+  out by current data.
+
+### Argument 3 — information budget
+
+- **`ex201_antipodal_metric_derivation.py`** — 8/8 PASS. Derives
+  $f \cdot h = 1$ (antipodal condition) from the $\mathbb{Z}_2$-symmetric
+  information budget and shows that $p = 1$ is the unique solution.
+
+### Argument 4 — volume element
+
+- **`r4_einstein_self_consistency.py`** — 11/11 PASS. Einstein-equation
+  self-consistency test: the requirement $\sqrt{-g} = \psi$
+  (i.e. the volume element equals the substrate density) forces
+  $p = 1$.
+- **`consistency_volume_element.py`** — supporting identity checks for
+  the same statement.
+
+### Argument 5 — soliton mass ratio
+
+- **`a2_metric_consistency.py`** — 6/6 PASS. Full metric-consistency
+  sweep; soliton-mass ratio works only at $p = 1$.
+- **`a3d_soliton_brannen_r.py`** — 6/6 PASS. Independent soliton-mass
+  computation via the Brannen construction; reproduces
+  $r_{21} = 206.77$ only at $p = 1$.
+
+## How to run
+
 ```
-ds² = -(c₀²/ψ)dt² + ψ·δᵢⱼdxⁱdxʲ,    ψ = Φ/Φ₀
+python lk2_metric_from_substrate_propagation.py
+python ex201_antipodal_metric_derivation.py
+python ex206_metric_hypothesis_necessity.py
+python r4_einstein_self_consistency.py
+python consistency_volume_element.py
+python a2_metric_consistency.py
+python a3d_soliton_brannen_r.py
 ```
 
-Relacja h(Φ) = Φ (liniowa, p=1) jest **postulatem**, nie wyprowadzeniem.
-Pytanie: dlaczego nie h(Φ) = Φ^p dla p ≠ 1?
+Dependencies: `numpy`, `scipy`, `matplotlib`.
 
-## Obecny status (2026-04-14)
+## Remaining (not claimed in the paper)
 
-### ✅ PIĘĆ NIEZALEŻNYCH ARGUMENTÓW ZA p = 1
+Two complementary arguments are flagged in the main TGP workshop but are
+*not* part of the five-argument statement in the core paper:
 
-| # | Argument | Typ | Wynik | Referencja |
-|---|----------|-----|-------|-----------|
-| 1 | Gęstość substratu | ANALITYCZNY | Φ = gęstość → g_ij = (Φ/Φ₀)δ_ij → p=1 | sek08c Prop. |
-| 2 | PPN Cassini + LLR | OBSERWACYJNY | γ = p = 1, β = 1 | ex206 (8/8 PASS) |
-| 3 | Budżet informacyjny | ANALITYCZNY | f·h = 1 (antypodyczny) | sek08c Prop. |
-| 4 | Element objętościowy | ANALITYCZNY | √(-g) = ψ^p musi = ψ → p = 1 | r4_einstein (11/11) |
-| 5 | Stosunek mas solitonów | NUMERYCZNY | Tylko p=1 daje r₂₁ = 206.77 | a2_metric (6/6) |
+- phonon-dispersion relation $c_s(\Phi) = c_0 \sqrt{\Phi/\Phi_0}$
+  (a full substrate-phonon derivation),
+- an entropic / Bekenstein-Hawking-style derivation giving a metric
+  linear in $\Phi$,
 
-### ✅ Dodatkowe wyniki
-
-| Element | Status | Dowód |
-|---------|--------|-------|
-| Metryka eksponencjalna e^{±2U} | **TWIERDZENIE** | Jedyna h(U) spełniająca (i)-(iv) do wszystkich rzędów PPN |
-| Ghost-freedom (3 poziomy) | **TWIERDZENIE** | K_sub(g) = g² > 0, Q_s = ψ⁴ > 0 |
-| 10 parametrów PPN = GR | **ZWERYFIKOWANE** | γ=β=1, wszystkie inne =0 |
-| det(g^{1+1}) = -c₀² = const | **TWIERDZENIE** | Wynika z p = q (antypodyczny) |
-| ℓ_P = const | **ZWERYFIKOWANE** | G/ψ · ħ/√ψ / (c₀/√ψ)³ = const |
-
-### ⚠️ OTWARTE (dodatkowe ścieżki)
-
-| Element | Status | Problem |
-|---------|--------|---------|
-| A2a: Fonony na substracie | OTWARTE | Relacja dyspersji c_s(Φ) = c₀√(Φ/Φ₀) |
-| A2c: Argument entropijny | OTWARTE | S_BH ∝ A → metryka liniowa w Φ |
-| Formalizacja (Lean 4) | OTWARTE | Łańcuch dowodowy gotowy |
-
-## Nowy argument A2b: Element objętościowy (2026-04-14)
-
-```
-Metryka: ds² = -c₀²ψ^{-q}dt² + ψ^p δ_ij dx^i dx^j
-
-(I)   Równanie polowe na tle krzywym wymaga: p = q
-      (równoważne warunkowi antypodycznemu f·h = 1)
-
-(II)  Element objętościowy: √(-g) = ψ^{(3p-q)/2} = ψ^p (z p=q)
-      Interpretacja substratowa: √(-g) musi = ψ = Φ/Φ₀
-      → ψ^p = ψ → p = 1  ■
-
-(III) PPN β = 1 wymaga resummacji eksponencjalnej:
-      Prawo potęgowe h = ψ^p daje β = p(p+1) = 2 dla p=1 ✗
-      Eksponencjalne h = e^{2U} daje β = 1 ✓
-      → U = ½ln(ψ), ψ = e^{2U} — jedyna analityczna funkcja
-
-(IV)  Klasyfikacja: TGP ≠ Brans-Dicke
-      K(g) = g^{2α} jest KONKRETNYM coupling (nie wolny parametr ω)
-      PPN identyczne z GR, różnice tylko kosmologiczne i silnopolowe
-```
-
-## Pliki
-
-| Plik | Opis | Status |
-|------|------|--------|
-| `research/metric_ansatz/r4_einstein_self_consistency.py` | A2b: 11/11 PASS | ✅ NOWE |
-| `scripts/ex206_metric_hypothesis_necessity.py` | Jedyność metryki: 8/8 PASS | ✅ RDZEŃ |
-| `scripts/a2_metric_consistency.py` | Spójność metryki: 6/6 PASS | ✅ RDZEŃ |
-| `scripts/ex201_antipodal_metric_derivation.py` | Antypodyczny: 8/8 PASS | ✅ RDZEŃ |
-| `scripts/lk2_metric_from_substrate_propagation.py` | Propagacja: PASS | ✅ RDZEŃ |
-
-## Referencje rdzenia
-
-- `sek08c_metryka_z_substratu.tex` (wyprowadzenie metryki)
-- `sek08b_ghost_resolution.tex` (ghost-freedom)
-- `sek08a_akcja_zunifikowana.tex` (zunifikowane działanie)
-- `nbody/tgp_ppn_full.tex` (pełna analiza PPN)
-
-## Kryterium zamknięcia
-
-**Twierdzenie (udowodnione 5 ścieżkami):** "Spośród g_ij = (Φ/Φ₀)^p·δ_ij, tylko p=1 daje:
-ghost-free + pozytywna energia + poprawny limit newtonowski + γ=β=1 + √(-g)=ψ."
-
-## Status
-
-- [x] A2b: Równania Einsteina — element objętościowy wymusza p=1 (11/11 PASS)
-- [x] PPN: γ = p = 1 z Cassini (8/8 PASS)
-- [x] Antypodyczny: f·h = 1 z budżetu informacyjnego
-- [x] Ghost-freedom: K_sub > 0 na trzech poziomach
-- [x] Stosunek mas: tylko p=1 daje r₂₁ = 206.77
-- [ ] A2a: Relacja dyspersji fononów
-- [ ] A2c: Argument entropijny
-- [ ] Formalizacja w Lean 4
+together with Lean 4 formalization of the five-argument chain. These
+belong to future work and live in the main research repository at
+<https://github.com/Stefan13610/TGP>.

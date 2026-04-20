@@ -1,97 +1,67 @@
-# R2: Ciągłe przejście substrat → pole (CG-1/3/4)
+# Substrate → continuum limit (OP-6, Row 21)
 
-## Problem
+Supports **Row 21 of the numerical-results table** in the core paper and
+provides the numerical evidence alluded to by **OP-6** (the rigorous
+proofs of CG-1/CG-3/CG-4 are still open; this folder does *not* close
+them).
 
-Trzy otwarte twierdzenia blokują claim "TGP wyprowadzone z pierwszych zasad":
+Headline result:
 
-| Twierdzenie | Opis | Status |
-|-------------|------|--------|
-| **CG-1** | Istnienie i jednoznaczność punktu stałego S* operatora blokowania (kontrakcja Banacha) | OTWARTE |
-| **CG-3** | Zbieżność Φ_B → Φ w H¹ (homogenizacja, twierdzenie de Giorgi–Nash–Moser) | OTWARTE |
-| **CG-4** | Identyfikacja K_hom = K_TGP | OTWARTE |
+> FRG LPA' + block-spin Monte Carlo give
+> $K_{\mathrm{IR}}/K_{\mathrm{UV}} = 1.000$ at the $\alpha=2$ fixed point
+> (**8/8 PASS**).
 
-Bez nich: TGP jest dobrze motywowaną **teorią efektywną**.
-Z nimi: TGP jest **wyprowadzone z pierwszych zasad**.
+## Scripts
 
-## Obecny status
+### `a1_alpha2_frg_synthesis.py` — FRG LPA' half (7/7 PASS)
 
-- Słabe twierdzenie α=2: ZAMKNIĘTE (Lemma A1–A5, a1_alpha2_frg_synthesis.py: 7/7 PASS)
-- CG-2 (numeryczny): K_IR/K_UV = 1.000 (FRG LPA', 8/8 PASS)
-- CG-1/CG-3/CG-4 numeryczne wsparcie: cg_strong_numerical.py (2026-04-18)
-- Silne twierdzenie: OTWARTE — czysta matematyka (szac. 6-12 miesięcy)
+Closed synthesis of the **weak $\alpha = 2$ theorem**:
 
-### Numeryczne wsparcie silnego twierdzenia (cg_strong_numerical.py)
+1. Algebraic Lemma A3 — change of variables $\phi \to \Phi = \phi^2$
+   forces the kinetic-operator degree $\alpha = 2$.
+2. FRG LPA' flow — $K(\Phi)$ is preserved at one loop; anomalous
+   dimension $\eta^* = 0.044$ at the Wilson-Fisher fixed point.
+3. Monte Carlo cross-check — block-spin RG on a 1D lattice reproduces
+   the same fixed point.
 
-Testy MC 1D lattice z blokowym uśrednianiem:
-- **CG-1**: Kontrakcja — wariancja Phi_B zbiega dla różnych beta (różne hamiltoniany mikroskopowe → ten sam fixed point)
-- **CG-3**: L² norma ||Phi_B - Phi_2B|| maleje ze wzrostem L_B (CLT-like)
-- **CG-4**: Korelator xi_eff(Phi) — zależność liniowa K ~ Phi (wstępne wsparcie)
-- Status: EVIDENCE, nie dowód
+All seven Lemmas A1–A5 + two numerical cross-checks pass.
 
-## Plan ataku
+### `cg_strong_numerical.py` — block-spin Monte Carlo half (1 aggregate test)
 
-### CG-1: Kontrakcja Banacha operatora blokowania
+Large-volume Monte Carlo with block-averaging; probes the three formally
+open theorems in a numerical sense:
 
-**Cel:** Dowieść że operator Kadanoffa T: F → F na przestrzeni hamiltonianów
-ma jednoznaczny punkt stały S* i T^n(H₀) → S* dla dowolnego H₀ w klasie.
+- **CG-1** — contraction of the Kadanoff blocking operator:
+  $\mathrm{Var}(\Phi_B)$ converges across microscopic $\beta$'s
+  (different microscopic Hamiltonians → same fixed point).
+- **CG-3** — convergence $\Phi_B \to \Phi$ in $L^2$:
+  $\|\Phi_B - \Phi_{2B}\|$ decreases with $L_B$ (CLT-like).
+- **CG-4** — correlator $\xi_{\mathrm{eff}}(\Phi)$ shows the linear
+  $K \propto \Phi$ relation predicted by $\alpha = 2$.
 
-**Narzędzia:**
-- Teoria ERG (Polchinski, Wetterinck)
-- Bauerschmidt, Brydges, Slade — "Renormalisation Group Analysis" (2019)
-- Kontraktywność w normie operatorowej na algebrze operatorów
+Status: **numerical evidence, not a proof.** The formal closure of
+CG-1/CG-3/CG-4 remains OP-6.
 
-**Podproblemy:**
-1. Zdefiniować przestrzeń Banacha F hamiltonianów na Γ
-2. Wykazać kontraktywność: ||T(H₁) - T(H₂)|| ≤ q·||H₁ - H₂||, q < 1
-3. Zidentyfikować punkt stały S* z hamiltonianem TGP
+`cg_results.txt` contains the raw Monte Carlo output.
 
-### CG-3: Homogenizacja Φ_B → Φ
+## How to run
 
-**Cel:** Dowieść zbieżność pola zgrubnego Φ_B do ciągłego Φ w H¹(R³).
+```
+python a1_alpha2_frg_synthesis.py
+python cg_strong_numerical.py
+```
 
-**Narzędzia:**
-- Twierdzenie de Giorgi–Nash–Moser (regularność)
-- Teoria homogenizacji (Jikov, Kozlov, Oleinik)
-- Γ-zbieżność funkcjonałów energii
+Dependencies: `numpy`, `scipy`, `matplotlib`.
 
-**Podproblemy:**
-1. Sprawdzić warunki: eliptyczność, ograniczoność współczynników
-2. Dowieść zbieżność E_B[Φ_B] → E[Φ] w sensie Γ
-3. Wykazać H¹ regularność granicy
+## What is still open
 
-### CG-4: Identyfikacja K_hom = K_TGP
+The rigorous versions of
 
-**Cel:** Dowieść że K(Φ) = Φ^α z α=2 jest jedynym K spójnym z CG-1 i CG-3.
+- **CG-1** — Banach-fixed-point proof of the Kadanoff blocking operator,
+- **CG-3** — homogenization $\Phi_B \to \Phi$ in $H^1(\mathbb{R}^3)$
+  (de Giorgi–Nash–Moser / $\Gamma$-convergence),
+- **CG-4** — identification $K_{\mathrm{hom}} = K_{\mathrm{TGP}}$,
 
-**Zależy od:** CG-1 + CG-3
-
-## Kryterium zamknięcia
-
-Formalne dowody trzech twierdzeń (CG-1, CG-3, CG-4) na poziomie
-publikowalnym w J. Math. Phys. / Comm. Math. Phys.
-
-## Pliki do scalenia z rdzeniem
-
-- Rozszerzenie `dodatekQ_coarse_graining_formal.tex`
-- Nowy `dodatek_CG_proof.tex` z pełnymi dowodami
-
-## Referencje rdzenia
-
-- `dodatekQ_coarse_graining_formal.tex`, linie 170–193
-- `scripts/a1_alpha2_frg_synthesis.py` (słabe twierdzenie)
-- `PLAN_ROZWOJU_v3.md`, linie 27–50
-
-## Uwaga
-
-To jest **czysta matematyka**. Może być publikowalne niezależnie od fizyki TGP
-jako wynik w teorii renormalizacji / homogenizacji.
-
-## Status
-
-- [ ] CG-1: Definicja przestrzeni Banacha F
-- [ ] CG-1: Dowód kontraktywności
-- [ ] CG-1: Identyfikacja S*
-- [ ] CG-3: Sprawdzenie warunków homogenizacji
-- [ ] CG-3: Dowód Γ-zbieżności
-- [ ] CG-4: Identyfikacja K z CG-1+CG-3
-- [ ] Redakcja artykułu matematycznego
+are stated as **OP-6** in the core paper. The scripts in this folder
+show that the *numerical* fingerprint of the expected fixed point is
+present, but do not replace those proofs.

@@ -19,17 +19,35 @@ https://github.com/Stefan13610/TGP
 ## How to run
 
 Each folder contains standalone Python scripts that run from the folder
-root, e.g.:
+root. The two aggregate-claim folders have more than one script because
+each of the five metric-ansatz arguments and each half of the OP-6
+evidence lives in its own file:
 
 ```
 cd continuum_limit
-python cg_strong_numerical.py
+python a1_alpha2_frg_synthesis.py           # FRG LPA' half (7/7 PASS)
+python cg_strong_numerical.py               # block-spin MC half
 
 cd ../metric_ansatz
-python r4_einstein_self_consistency.py
+python lk2_metric_from_substrate_propagation.py   # arg 1: substrate density
+python ex201_antipodal_metric_derivation.py       # arg 1 (T1-T2) + arg 3 (8/8)
+python ex206_metric_hypothesis_necessity.py       # arg 2: PPN (8/8)
+python r4_einstein_self_consistency.py            # arg 4: vol element (11/11)
+python consistency_volume_element.py              # arg 4 (supporting)
+python a2_metric_consistency.py                   # arg 5: soliton (6/6)
+python a3d_soliton_brannen_r.py                   # arg 5: Brannen (6/6)
 
 cd ../muon_g_minus_2
-python ps01_substrate_vertex_muon_g_minus_2.py
+python ps01_schwinger_TGP_1loop.py
+# ... ps02..ps06 similarly
+
+cd ../thermal_transport_molecular
+python ps01_thermal_substrate_diffusion.py
+# ... ps02..ps04 similarly
+
+cd ../casimir_mof
+python ps01_casimir_parallel_plates.py
+# ... ps02..ps05 similarly
 ```
 
 Dependencies: `numpy`, `scipy`, `matplotlib`.
