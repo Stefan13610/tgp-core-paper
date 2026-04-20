@@ -1,0 +1,32 @@
+{
+  "title": "Theory of Generated Space: A minimal core of axioms, substrate, and effective field",
+  "description": "<p>Preprint and supporting numerical material for the Theory of Generated Space (TGP) core paper. TGP is a scalar-field theory in which space is not a background arena but is constituted by mass-energy sources through a shared field &Phi;. The theory is built on four axioms (absolute reference state &#x2135;&#x2080;, &#x2124;&#x2082;-symmetric relational substrate, matter as source, instability of &#x2135;&#x2080;) and a single dynamical degree of freedom. The paper derives (i) a unique second-order kinetic operator with coefficient &alpha;=2 as an algebraic theorem; (ii) an effective spatial metric of exponential form that reproduces all post-Newtonian parameters of general relativity exactly; (iii) three interaction regimes from a single non-linear potential; (iv) identically luminal gravitational-wave propagation. Fifteen core results are formally proven, six more are numerically verified, and ten explicit open problems are stated. The repository also includes the numerical material cited in the paper: FRG LPA' and block-spin Monte Carlo evidence for the substrate-to-continuum limit, five independent arguments for the p=1 metric ansatz, and three closed-branch negative checks (muon g-2, Wiedemann-Franz in bad metals, Casimir force in MOFs).</p>",
+  "creators": [
+    {
+      "name": "Serafin, Mateusz",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "keywords": [
+    "generated space",
+    "emergent gravity",
+    "scalar field",
+    "Z2 substrate",
+    "post-Newtonian parameters",
+    "effective metric",
+    "renormalization group",
+    "theoretical physics"
+  ],
+  "license": "CC-BY-4.0",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "access_right": "open",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Stefan13610/TGP",
+      "relation": "isSupplementedBy",
+      "resource_type": "software"
+    }
+  ]
+}
