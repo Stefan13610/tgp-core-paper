@@ -1,12 +1,19 @@
 # Theory of Generated Space (TGP) — Core paper
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19670324.svg)](https://doi.org/10.5281/zenodo.19670324)
+
 This repository accompanies the preprint:
 
 > **Theory of Generated Space: A minimal core of axioms, substrate, and effective field**
 > M. Serafin, 2026.
+> Zenodo DOI [10.5281/zenodo.19670324](https://doi.org/10.5281/zenodo.19670324).
 
 It contains the paper source, the compiled PDF, and the subset of numerical
 supporting material that is directly cited in the manuscript.
+
+Companion paper (superconductivity closure):
+[Stefan13610/tgp-sc-paper](https://github.com/Stefan13610/tgp-sc-paper)
+— Zenodo DOI [10.5281/zenodo.19670557](https://doi.org/10.5281/zenodo.19670557).
 
 The paper defines the minimal axiomatic and field-theoretic content of TGP:
 four axioms, a single scalar field $\Phi$ with a geometrically fixed kinetic
