@@ -10,7 +10,7 @@ https://github.com/Stefan13610/TGP
 
 | Folder | Supports which claim in the paper | Status |
 |--------|------------------------------------|--------|
-| [`continuum_limit/`](continuum_limit/) | OP-6 and row 21 of the numerical-results table: FRG LPA' + block-spin Monte Carlo show $K_{\mathrm{IR}}/K_{\mathrm{UV}} = 1.000$ at the $\alpha=2$ fixed point (8/8 PASS). | Numerical evidence; rigorous proof open (OP-6). |
+| [`continuum_limit/`](continuum_limit/) | OP-6 and row 21 of the numerical-results table: block-spin Monte Carlo exploration of the 1D substrate chain. The earlier "α = 2 synthesis" argument has been withdrawn; see [`../KNOWN_ISSUES.md`](../KNOWN_ISSUES.md). | Numerical evidence only; rigorous proof open (OP-6). |
 | [`metric_ansatz/`](metric_ansatz/) | Remark 2 (scope of the selection statement for $h(\Phi)=\Phi$): five independent arguments for $p=1$ (substrate density, PPN Cassini+LLR, information budget, volume element, soliton mass ratio). | 11/11 numerical checks PASS; analytic proofs in the paper. |
 | [`muon_g_minus_2/`](muon_g_minus_2/) | Closed-branch negative check: the TGP substrate correction to the muon anomalous magnetic moment is $\|\Delta a_\mu\| \lesssim 10^{-12}$, three orders of magnitude below current experimental uncertainty. | Null result — channel closed as near-term falsification avenue. |
 | [`thermal_transport_molecular/`](thermal_transport_molecular/) | Closed-branch negative check: TGP-specific correction to the Wiedemann-Franz ratio is $\mathcal{O}(10^{-4})$ at 300 K, 3–4 orders of magnitude smaller than observed bad-metal deviations (cleanly falsifying the hypothesis that TGP explains them). Also shows that TGP recovers the Cahill kinetic floor as a lower bound on thermal conductivity for soft perovskites. | Mixed: positive Cahill-floor recovery + clean bad-metal WF falsification. |
@@ -19,14 +19,13 @@ https://github.com/Stefan13610/TGP
 ## How to run
 
 Each folder contains standalone Python scripts that run from the folder
-root. The two aggregate-claim folders have more than one script because
-each of the five metric-ansatz arguments and each half of the OP-6
-evidence lives in its own file:
+root. The metric-ansatz folder has more than one script because each of
+the five arguments lives in its own file:
 
 ```
 cd continuum_limit
-python a1_alpha2_frg_synthesis.py           # FRG LPA' half (7/7 PASS)
-python cg_strong_numerical.py               # block-spin MC half
+python cg_strong_numerical.py               # block-spin MC exploration
+# a1_alpha2_frg_synthesis.py is WITHDRAWN; see KNOWN_ISSUES.md
 
 cd ../metric_ansatz
 python lk2_metric_from_substrate_propagation.py   # arg 1: substrate density

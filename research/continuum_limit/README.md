@@ -1,67 +1,64 @@
 # Substrate → continuum limit (OP-6, Row 21)
 
-Supports **Row 21 of the numerical-results table** in the core paper and
-provides the numerical evidence alluded to by **OP-6** (the rigorous
-proofs of CG-1/CG-3/CG-4 are still open; this folder does *not* close
-them).
+Numerical exploration for **OP-6** (rigorous continuum limit of $H_\Gamma$).
+This folder provides numerical evidence only; the rigorous closure
+of CG-1, CG-3, CG-4 is stated as **OP-6** in the core paper.
 
-Headline result:
-
-> FRG LPA' + block-spin Monte Carlo give
-> $K_{\mathrm{IR}}/K_{\mathrm{UV}} = 1.000$ at the $\alpha=2$ fixed point
-> (**8/8 PASS**).
+> **Status (2026-04):** the "α = 2 synthesis" line of argument
+> (`a1_alpha2_frg_synthesis.py`, the A1–A5 lemmata of
+> `dodatekQ2_most_gamma_phi_lematy.tex`) is **withdrawn** pending
+> an actual derivation; see `../../KNOWN_ISSUES.md`. Theorem
+> `thm:alpha2` in the core paper (axiomatic classification under
+> (C1)–(C3)) is unaffected.
 
 ## Scripts
 
-### `a1_alpha2_frg_synthesis.py` — FRG LPA' half (7/7 PASS)
+### `a1_alpha2_frg_synthesis.py` — [WITHDRAWN]
 
-Closed synthesis of the **weak $\alpha = 2$ theorem**:
+Claimed a "weak α = 2 theorem" via the chain
+$\phi \mapsto \Phi = \phi^2$ + FRG LPA' + MC cross-check.
+On review, the derivation of the kinetic form has an unresolved gap
+(see banner at the top of the script). The file is kept for
+transparency; its conclusions should not be cited.
 
-1. Algebraic Lemma A3 — change of variables $\phi \to \Phi = \phi^2$
-   forces the kinetic-operator degree $\alpha = 2$.
-2. FRG LPA' flow — $K(\Phi)$ is preserved at one loop; anomalous
-   dimension $\eta^* = 0.044$ at the Wilson-Fisher fixed point.
-3. Monte Carlo cross-check — block-spin RG on a 1D lattice reproduces
-   the same fixed point.
+### `cg_strong_numerical.py` — Monte Carlo exploration (CG-1/3/4)
 
-All seven Lemmas A1–A5 + two numerical cross-checks pass.
+Large-volume Metropolis Monte Carlo with block-averaging on the
+1D lattice
+$H = -J\sum_{\langle ij\rangle}(\phi_i\phi_j)^2$
+equivalently the Ising model in the variables $\Phi_i = \phi_i^2$.
+Measures:
 
-### `cg_strong_numerical.py` — block-spin Monte Carlo half (1 aggregate test)
+- **CG-1** candidate — variance of the block-averaged field
+  $\mathrm{Var}(\Phi_B)$ across several microscopic $\beta$.
+- **CG-3** candidate — $\|\Phi_B - \Phi_{2B}\|$ vs. block size $L_B$.
+- **CG-4** candidate — correlator $\xi_{\mathrm{eff}}(\Phi)$
+  scaling.
 
-Large-volume Monte Carlo with block-averaging; probes the three formally
-open theorems in a numerical sense:
-
-- **CG-1** — contraction of the Kadanoff blocking operator:
-  $\mathrm{Var}(\Phi_B)$ converges across microscopic $\beta$'s
-  (different microscopic Hamiltonians → same fixed point).
-- **CG-3** — convergence $\Phi_B \to \Phi$ in $L^2$:
-  $\|\Phi_B - \Phi_{2B}\|$ decreases with $L_B$ (CLT-like).
-- **CG-4** — correlator $\xi_{\mathrm{eff}}(\Phi)$ shows the linear
-  $K \propto \Phi$ relation predicted by $\alpha = 2$.
-
-Status: **numerical evidence, not a proof.** The formal closure of
-CG-1/CG-3/CG-4 remains OP-6.
+Status: numerical evidence only, not a proof. The formal closure
+of CG-1/CG-3/CG-4 remains **OP-6**. In particular, the scripts do
+not attempt to measure the kinetic exponent α.
 
 `cg_results.txt` contains the raw Monte Carlo output.
 
 ## How to run
 
 ```
-python a1_alpha2_frg_synthesis.py
 python cg_strong_numerical.py
 ```
 
-Dependencies: `numpy`, `scipy`, `matplotlib`.
+Dependencies: `numpy`, `scipy`.
 
 ## What is still open
 
 The rigorous versions of
 
-- **CG-1** — Banach-fixed-point proof of the Kadanoff blocking operator,
-- **CG-3** — homogenization $\Phi_B \to \Phi$ in $H^1(\mathbb{R}^3)$
-  (de Giorgi–Nash–Moser / $\Gamma$-convergence),
+- **CG-1** — Banach-fixed-point proof of the Kadanoff blocking
+  operator $T_b$,
+- **CG-3** — homogenization $\Phi_B \to \Phi$ in
+  $H^1(\mathbb{R}^3)$ (de Giorgi–Nash–Moser / Γ-convergence),
 - **CG-4** — identification $K_{\mathrm{hom}} = K_{\mathrm{TGP}}$,
 
-are stated as **OP-6** in the core paper. The scripts in this folder
-show that the *numerical* fingerprint of the expected fixed point is
-present, but do not replace those proofs.
+are all stated as **OP-6**. Progress on the reformulation (M1–M5)
+is tracked in the development repository
+[Stefan13610/TGP](https://github.com/Stefan13610/TGP).

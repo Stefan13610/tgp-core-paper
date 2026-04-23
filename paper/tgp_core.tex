@@ -61,8 +61,10 @@ The theory is built on four axioms
 (absolute reference state $\Nzero$, $\Zp$-symmetric relational substrate,
 matter as source, instability of $\Nzero$) and a single dynamical degree of freedom.
 From these inputs we derive:
-(i) a unique second-order kinetic operator with coefficient $\alpha=2$ as an
-algebraic theorem;
+(i) a unique second-order kinetic operator with coefficient $\alpha=2$,
+as a classification theorem within axioms (C1)--(C3) of
+Sec.~\ref{sec:field} (its derivation from the discrete substrate
+$H_{\Gamma}$ is stated as an open problem, OP-6);
 (ii) an effective spatial metric of exponential form $g_{ij}=e^{+2U/c_{0}^{2}}\delta_{ij}$
 that reproduces all post-Newtonian parameters of general relativity exactly
 ($\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$);
@@ -339,10 +341,11 @@ statement is therefore a uniqueness result \emph{within} the stated
 class of local, $\Phi$-covariant second-order scalar operators; relaxing
 any of (C1)--(C3) (non-locality, higher derivatives, or departures from
 the conformal rescaling of the substrate metric) would open additional
-channels that are not considered by TGP. Independent numerical
-verification via one-loop exact renormalization group (ERG) gives a
-fixed-point value indistinguishable from $2$ to the precision of the
-calculation (row~16 of Sec.~\ref{sec:status}).
+channels that are not considered by TGP. The derivation of (C1)--(C3)
+as emergent properties of the block-averaged substrate $\varphi\mapsto
+\Phi=\varphi^{2}$ is itself still open (OP-6); one-loop LPA' flow shows
+that the kinetic structure $K(\rho)\!\propto\!\rho$ is stable in the
+continuum limit (row~16 of Sec.~\ref{sec:status}).
 \end{remark}
 
 \subsection{Action, potential, and field equation}
@@ -674,8 +677,13 @@ The list below summarises the current (April 2026) status of TGP core.
 \# & \textbf{Result} & \textbf{Content} & \textbf{Status}\\
 \midrule
 \endhead
-16 & FRG fixed point $\alpha=2$
-  & 1-loop exact RG, \texttt{a1\_alpha2\_frg\_synthesis.py}: $|\alpha_{*}-2|<10^{-3}$
+16 & FRG structural stability of $K(\rho)\!\propto\!\rho$
+  & One-loop LPA' flow near the Wilson--Fisher fixed point in $d=3$,
+    $Z_{2}$ class: the kinetic form $K(\rho)\!\propto\!\rho$ is
+    preserved, $K_{\mathrm{IR}}/K_{\mathrm{UV}}=1.000$, $\eta^{*}=0.044$.
+    This verifies kinetic stability at the continuum level; it does
+    \emph{not} substitute for the derivation of $\alpha$ from $H_{\Gamma}$
+    (still OP-6).
   & \textsf{NU}\\
 17 & Cosmology: $\Delta\chi^{2}=+1.8$, $\Delta\mathrm{AIC}=+3.8$
   & vs.\ $\Lambda$CDM on Planck\,+\,DESI data, Friedmann~\eqref{eq:field-eq}
@@ -690,11 +698,15 @@ The list below summarises the current (April 2026) status of TGP core.
   & Numerical profile $\phi(r)$ with attraction, repulsion, confinement
   & \textsf{NU}\\
 21 & Coarse-graining $H_{\Gamma}\!\to\!S_{\mathrm{TGP}}$ (numerical)
-  & Block-spin Monte Carlo and FRG LPA' on a 1D substrate chain show
-    $K_{\mathrm{IR}}/K_{\mathrm{UV}}=1.000$ at the $\alpha=2$ fixed point
-    (8/8 PASS, \texttt{research/continuum\_limit/}): numerical support for
-    OP-6; rigorous proof open.
-  & \textsf{NU}\\
+  & Block-spin Monte Carlo on a 1D substrate chain
+    (\texttt{research/continuum\_limit/cg\_strong\_numerical.py}) exhibits
+    block-averaging behaviour consistent with a non-trivial fixed point,
+    but does not determine the kinetic exponent. Earlier synthesis code
+    in the same folder contained a derivation gap for $\alpha$ and has
+    been withdrawn; see \texttt{KNOWN\_ISSUES.md}. The rigorous
+    continuum limit remains OP-6; Theorem~\ref{thm:alpha2} is unaffected,
+    being an axiomatic classification under (C1)--(C3).
+  & \textsf{OP}\\
 \bottomrule
 \end{longtable}
 \end{center}

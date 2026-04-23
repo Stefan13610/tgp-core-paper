@@ -16,13 +16,19 @@ Companion paper (superconductivity closure):
 — Zenodo DOI [10.5281/zenodo.19670557](https://doi.org/10.5281/zenodo.19670557).
 
 The paper defines the minimal axiomatic and field-theoretic content of TGP:
-four axioms, a single scalar field $\Phi$ with a geometrically fixed kinetic
-operator ($\alpha=2$), a single non-linear potential with two coefficients
-related by a vacuum condition, and an algebraically determined effective
-metric that reproduces general relativity exactly at the post-Newtonian
-level. Fifteen core results are formally proven, six more are numerically
+four axioms, a single scalar field $\Phi$ with a kinetic operator
+$K(\varphi)=\varphi^{4}$ (coefficient $\alpha=2$) uniquely selected inside
+a class of local $\Phi$-covariant second-order operators (C1)–(C3), a
+single non-linear potential with two coefficients related by a vacuum
+condition, and an algebraically determined effective metric that
+reproduces general relativity exactly at the post-Newtonian level.
+Fifteen core results are formally proven, six more are numerically
 verified, and ten explicit open problems are stated so that the theory is
-both well-defined and falsifiable on a clear basis.
+both well-defined and falsifiable on a clear basis. The derivation of
+(C1)–(C3) — equivalently of $\alpha=2$ — from the discrete substrate
+Hamiltonian $H_{\Gamma}$ is stated as **OP-6**; see
+[`KNOWN_ISSUES.md`](KNOWN_ISSUES.md) for the status of earlier numerical
+claims that were withdrawn on internal review in April 2026.
 
 ## Repository contents
 

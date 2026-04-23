@@ -1,6 +1,40 @@
 #!/usr/bin/env python3
 """
-a1_alpha2_frg_synthesis.py
+=============================================================================
+  [WITHDRAWN — 2026-04]  This script does NOT establish alpha = 2 from H_Gamma.
+=============================================================================
+
+  On review, the script contains a visible derivation gap:
+  lines 540-640 derive K_1(Phi) = Z_0 / (4 * Phi) from the change of
+  variables Phi = phi^2, which gives alpha_K = 0 in the g = sqrt(Phi/Phi_0)
+  variable, NOT alpha = 2.  The script comments "CONTRADICTION!", then
+  defers to "sek08 + dodatekQ2" (which in turn defer back here), and
+  proceeds with tests T3-T7 that do not bridge this gap:
+
+    T3 is a tautology (ODE with alpha=2 differs from ODE with alpha=0).
+    T4 restates CG-2 FRG results computed by a different script.
+    T5 is the algebraic identity 1/Phi_0 * Phi_0 = 1.
+    T6 reports MC alpha_eff = 6.48 +/- 3.82 (error bar covers [-1, 14]).
+    T7 is a list of claims, not a test.
+
+  The aggregate "7/7 PASS" or "8/8 PASS" therefore DOES NOT establish
+  alpha = 2 from the discrete substrate Hamiltonian H_Gamma.
+
+  The axiomatic classification theorem in the core paper
+  (Theorem "Uniqueness of D_kin within class (C1)-(C3), alpha = 2")
+  is unaffected; it is an independent algebraic result under its
+  stated axioms.
+
+  The derivation of (C1)-(C3), equivalently of alpha from H_Gamma,
+  is open (OP-6) and is being pursued in milestones M1-M5 in the
+  development repository https://github.com/Stefan13610/TGP .
+
+  This script is kept in the repository for transparency.
+  See  ../../KNOWN_ISSUES.md  for the full record.
+
+=============================================================================
+
+a1_alpha2_frg_synthesis.py  [HISTORICAL]
 ============================
 A1: Synteza dowodu alpha = 2 w granicy continuum.
 
