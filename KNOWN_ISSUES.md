@@ -5,6 +5,40 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-25 — external review: six critiques (C1–C6), disposition
+
+External reviewer audit delivered 2026-04-25. Full response plan in
+`TGP/TGP_v1/research/external_review_2026-04-25/review_response_plan.md`.
+Priority-1 patches land in this commit; P2/P3 tracked as open work.
+
+| # | Critique | Severity | Disposition |
+|---|----------|----------|-------------|
+| C1 | "Substrate stable at s=0 → no SSB" | — | **Reviewer misread**: axiom explicitly has `m₀² < 0` in ordered phase. But a **deeper v2-specific point is real**: GL gradient bond vanishes on uniform configurations, so SSB depends entirely on `m₀² < 0` axiomatically (no J-driven alternative as in v1). **Patched** via new remarks `rem:B-ssb-v2` (dodatek B) and `rem:GL-breaking-axiomatic` (sek01). Also corrected `v² = (Jz − m₀²)/λ₀` → `v² = |m₀²|/λ₀` in the v2 map (P1.1). |
+| C2 | `U(φ) = β/3 φ³ − γ/4 φ⁴ → −∞` at large φ | Real presentation issue | **To be patched (P1.2)**: U(φ) is Taylor truncation of V_eff(Φ) around Φ₀, valid for `|φ−1| ≪ 1`. Full V_eff bounded below by bare `λ₀/4 Φ²`. Apparent unboundedness is truncation artefact. |
+| C3 | "All 10 PPN = GR" overreach | Real | **To be patched (P1.3)**: restrict to `γ_PPN = β_PPN = 1` from static/isotropic/weak-field ansatz. Full 10-PPN requires OP-7 (moving matter + tensor sector). |
+| C4 | `c_GW = c₀` overreach | Real, physically serious | **To be patched (P1.4)**: scalar-φ fluctuations on `g_eff` are luminal, but 2 tensor GR polarisations require OP-7. GW150914-class detections are NOT yet a closed TGP prediction. Potential falsification via LIGO/Virgo scalar-mode bounds (< few %). |
+| C5 | α=2 pivot = "moving the goalposts" | Partly real | **To be patched (P1.5)**: α=2 is a *selection* within GL-substrate ansatz (conditions C1–C3), not a derivation from minimal bilinear substrate (latter falsified, see 2026-04-24 entry below). Paper text must reflect this at every α=2 assertion. |
+| C6 | `p=1` defence mixes external and internal arguments | Minor | Folded into P1.5 commentary and M2c reality-check text. No separate patch. |
+
+### Cross-connection: OP-2b and C5
+
+Reviewer's C5 ("pivot moved physics from result to assumption") is
+logically coupled to the user's conjecture that MK-RG in ŝ-variables
+loses the composite-field Jacobian — both are cases where a
+variable/axiom choice silently absorbs physical content that used to
+be dynamical. Test A (MK-RG in Φ-variables,
+`research/op1-op2-op4/mk_rg_phi.py`) is the minimal experiment.
+
+### Open items after P1 batch
+
+- **P2 Test A (OP-2b):** MK-RG in Φ-variables with explicit `ln Φ`
+  tracking. If μ-term is marginal/relevant at WF, `thm:beta-eq-gamma`
+  is salvageable. If μ → irrelevant, OP-2b is fundamentally open.
+- **P3.1 Z_Φ in MK-RG:** wave-function renormalisation of composite.
+- **P3.2 GL-bond operator in MK-RG:** bond flow, not just on-site.
+- **P3.3 OP-7 (tensor sector):** 2 polarisations for GR-matching GW.
+- **P3.4 NPRG:** last-resort cross-check.
+
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
 ### Status
