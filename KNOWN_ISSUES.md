@@ -75,12 +75,55 @@ that "M3 missed the H-S Jacobian" is therefore experimentally
 - **Candidate ordering for OP-2b post-M4:**
   1. P3.1 — `Z_Φ` wave-function renormalisation of the composite
      field. Inserts anomalous dimension into β/γ flow.
+     → **Tested 2026-04-25, see M5 below.**
   2. P3.2 — GL-bond operator promoted to a tracked coupling in
      MK-RG (highest expected impact, hardest to implement; the
      v2 GL bond is intrinsically two-site/momentum-dependent and
      not captured by single-site MK moments).
   3. P3.4 — NPRG (Wetterich) cross-check with `Z_Φ` + GL kinetic
      ansatz. Independent estimate from a different RG scheme.
+
+## 2026-04-25 — Test B (M5): Z_Φ does NOT close OP-2b
+
+### Status
+
+OP-2b stays **open**. The wave-function renormalisation of the
+composite field, modelled as an η-deformation of the MK bond
+rescaling `K_eff(η) = b^{d-1+η} K`, does not close M3's gap
+`B*/Γ* − 1/v*² ≈ -1.80`. Minimum `|diff| ≈ 1.694` at `η ≈ -0.55`,
+no sign change anywhere in `η ∈ [-1, 2]` (full convergent regime).
+
+The 3D Ising bootstrap value `η_Φ ≈ 2 η_φ ≈ 0.072` actually makes
+the gap **slightly worse** (|diff| = 1.825 vs M3's 1.796).
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Analytical setup | `TGP/TGP_v1/research/op1-op2-op4/M5_zphi_derivation.md` | η enters through bond rescaling factor; analytic estimate of min |diff| ≈ 1.18 (achieved numerically at 1.694). |
+| Implementation | `TGP/TGP_v1/research/op1-op2-op4/mk_rg_zphi.py` | One-line modification of `mk_rg_bgamma.py`'s K_eff. η=0 reproduces M3 to 5 decimals. |
+| η-scan @ N_ops=8 | `mk_rg_zphi_results.txt` | `B*/Γ* ∈ [-1.05, -0.14]`, `1/v*² ∈ [+0.70, +4.63]`, both move smoothly but signs never align. |
+| Bootstrap-η reading | same | At η=0.07: B*/Γ* = -0.5435, 1/v*² = +1.281, diff = -1.825 (worse than M3 by 1.6%). |
+| Verdict | `M5_results.md` | OP-2b **confirmed open** also under η-deformation; GL-bond (P3.2) is the SOLE remaining single-channel candidate. |
+
+### Implications
+
+- **No paper edits.** P1.1's disposition stands unchanged.
+- **Candidate ordering for OP-2b post-M4+M5:**
+  1. ~~P3.1 — `Z_Φ`~~ ruled out by M5 within natural η range.
+  2. **P3.2 — GL-bond operator** in MK-RG. Now the **sole**
+     remaining single-channel candidate. The v2 axiom-level GL
+     bond is intrinsically non-local (2-site, momentum-dependent)
+     and is qualitatively different from the on-site / field-
+     strength sectors that M4+M5 exhausted.
+  3. P3.4 — NPRG (Wetterich) cross-check with full GL kinetic
+     ansatz; can also test combined `Z_Φ + GL bond`.
+
+The deeper analytical reason `Z_Φ` alone fails: the η-deformation
+shifts `B*/Γ*` and `1/v*²` by similar magnitudes in **opposite**
+directions, so the gap |diff| is bounded below by ~1.6 even at
+the optimum |η| ≈ 0.5. See `M5_results.md` §5 for the analytic
+estimate and §6 for the comparison table with M4.
 
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
