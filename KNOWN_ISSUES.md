@@ -125,6 +125,66 @@ directions, so the gap |diff| is bounded below by ~1.6 even at
 the optimum |η| ≈ 0.5. See `M5_results.md` §5 for the analytic
 estimate and §6 for the comparison table with M4.
 
+## 2026-04-25 — Test C (M6): GL bond closes OP-2b *in principle*, outside the perturbative regime
+
+### Status
+
+OP-2b status moves from **open** to **closure-in-principle**. The v2
+axiom-level GL bond
+`H_GL = J_GL · Σ A_ij Φ_i Φ_j (Φ_j − Φ_i)²`,
+treated as a first-order perturbation of M3's bilinear bond on the
+on-site `V'(s)` update (Track A), drives M3's gap
+`diff = B*/Γ* − 1/v*²` monotonically through zero at
+**`J_GL_* ≈ +5.89`**. This is the **first** of the three
+single-channel candidates (after H-S Jacobian and Z_Φ both failed)
+that produces a sign change in `diff` at all.
+
+However, the crossing is **outside the perturbative regime**. At
+`|J_GL| ≲ 1` Track A's first-order truncation is justified, and the
+GL bond closes only ~9 % of the M3 gap. Reaching closure requires
+`|J_GL| ~ 6`, where the per-step GL correction is comparable to the
+M3 polynomial sector itself — Track A's `O(J_GL)` truncation
+quantitatively breaks down.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Analytical setup | `TGP/TGP_v1/research/op1-op2-op4/M6_glbond_derivation.md` | Track A: GL bond → on-site `ΔV(s)` via `−J_GL ⟨bond_12⟩(K_eff·s)` at `s_3=0` projection. Decision criteria. |
+| Implementation | `TGP/TGP_v1/research/op1-op2-op4/mk_rg_glbond.py` | Extension of `mk_rg_bgamma.py`. Computes `M_n(K_eff·s)` at outer s grid via inner s_2 quadrature, projects `ΔF` onto even-power basis up to `s^{2 N_ops}`. `J_GL=0` reproduces M3 to 5 decimals. |
+| J_GL coarse scan | `mk_rg_glbond_results.txt` | `J_GL ∈ [-2, 10]` step 0.25; `B*/Γ*` climbs from -0.85 (J=-2) through -0.57 (J=0) and 0 (J≈2.7) to +4.5 (J=10); `1/v*²` mildly increases from +1.18 to +1.44 over the same range. |
+| Crossing | same | Sign change of `diff` in `J_GL ∈ [+5.85, +5.90]`, linear interp **`J_GL_* = +5.8933`**, min |diff| = 0.0039 at `J_GL = 5.90`. |
+| Perturbative-regime closure | same | At `J_GL = 1`, |diff| = 1.640 (closes 9 % of the M3 gap); at `J_GL = 0.5`, |diff| = 1.722 (4 % closed). Linear extrapolation in J_GL within Track A's domain of validity does NOT reach zero. |
+| Verdict | `M6_results.md` | **CLOSURE-IN-PRINCIPLE only** (M6 §6 criterion 2). GL bond is the unique mechanism among {H-S, Z_Φ, GL} that drives `diff` through zero, but the value at which it does so is outside Track A's perturbative regime. |
+
+### Implications
+
+- **No paper edits yet.** OP-2b status in v2 paper remains "open"
+  pending non-perturbative confirmation. A possible future v3 patch
+  could move OP-2b to "closure-in-principle, awaiting NPRG" if Track B
+  or NPRG corroborate.
+- **Candidate ordering after M4+M5+M6:**
+  1. ~~P3.1 — `Z_Φ`~~ ruled out by M5.
+  2. P3.2 — GL bond, **closure-in-principle** at `J_GL ≈ 5.89`,
+     outside perturbative regime. Strongest single-channel candidate.
+  3. P3.2-Track-B — `J_GL` flowing alongside `(r,u,B,Γ,…)` under MK,
+     including operator-mixing `O(J_GL²)` contributions. Promoted to
+     next step.
+  4. P3.4 — NPRG (Wetterich) with full Z_Φ + GL kinetic ansatz.
+     Resolves the perturbative-regime ambiguity at all orders.
+
+### Why this is qualitatively different from M4 / M5
+
+M4 and M5 each ruled their channel OUT: the relevant deformation
+parameter (`μ` for H-S, `η` for Z_Φ) failed to close the gap
+*at any value*. M6 is the opposite: the gap *does* close, just
+not safely within Track A's domain.
+
+The physical direction is correct: positive `J_GL` (gradient bond
+favouring smooth `Φ`-configurations) pushes `B/Γ` toward the
+`v² = β/γ` Lorentz-locking value, exactly as expected for the
+mechanism that produces local Lorentz invariance from coarse-graining.
+
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
 ### Status
