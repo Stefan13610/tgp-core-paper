@@ -32,12 +32,55 @@ be dynamical. Test A (MK-RG in Φ-variables,
 ### Open items after P1 batch
 
 - **P2 Test A (OP-2b):** MK-RG in Φ-variables with explicit `ln Φ`
-  tracking. If μ-term is marginal/relevant at WF, `thm:beta-eq-gamma`
-  is salvageable. If μ → irrelevant, OP-2b is fundamentally open.
+  tracking. ~~If μ-term is marginal/relevant at WF, `thm:beta-eq-gamma`
+  is salvageable. If μ → irrelevant, OP-2b is fundamentally open.~~
+  → **Completed 2026-04-25; see entry below.**
 - **P3.1 Z_Φ in MK-RG:** wave-function renormalisation of composite.
+  Now leading candidate for OP-2b after Test A negative.
 - **P3.2 GL-bond operator in MK-RG:** bond flow, not just on-site.
+  Now leading candidate for OP-2b after Test A negative.
 - **P3.3 OP-7 (tensor sector):** 2 polarisations for GR-matching GW.
-- **P3.4 NPRG:** last-resort cross-check.
+- **P3.4 NPRG:** last-resort cross-check; can verify P3.1+P3.2.
+
+## 2026-04-25 — Test A (M4): H-S Jacobian does NOT close OP-2b
+
+### Status
+
+OP-2b stays **open**. The Hubbard–Stratonovich Jacobian `Φ^{-1/2}`
+(translated to ŝ-variables as `μ ln(s²+ε²)` with `μ_HS = 1/2`) does
+not close the M3 gap `B*/Γ* − 1/v*² ≈ -1.80`. The minimum
+`|B*/Γ* − 1/v*²|` over the entire convergent regime
+`μ ∈ [0, 0.45]` is **≈1.62** at `μ ≈ 0.32`, with **no sign change**
+and trend reversing for `μ > 0.32`.
+
+Reviewer C5's conjecture (concurrent with the user's diagnostic)
+that "M3 missed the H-S Jacobian" is therefore experimentally
+**falsified at the single-site MK-RG level**.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Analytical setup | `TGP/TGP_v1/research/op1-op2-op4/M4_phi_variable_derivation.md` | μ exactly marginal under MK with bilinear bond (decimation, bond-move, bar-rescaling); μ labels FP families. Convergence boundary at μ=1/2. |
+| Implementation | `TGP/TGP_v1/research/op1-op2-op4/mk_rg_phi.py` | Extension of `mk_rg_bgamma.py`; weight `(s²+ε²)^{-μ} exp(-V_poly)`. μ=0 reproduces M3 to 5 decimals. |
+| μ-scan @ ε=0.10, N_ops=8 | `mk_rg_phi_results.txt` | `B*/Γ* ∈ [-0.84, -0.57]`, `1/v*² ∈ [+0.81, +1.23]`, both move but signs never align. |
+| Cross-checks (ε ∈ {0.10, 0.05, 0.01}, N_ops ∈ {6, 8}) | same | min `|diff| ≈ 1.62 ± 0.02` robust across regulator and truncation. |
+| Verdict & next-step list | `M4_results.md` | OP-2b **confirmed open** via §6 negative criterion; `Z_Φ`, GL-bond, NPRG promoted to leading candidates. |
+
+### Implications
+
+- **No paper edits.** P1.1 already left `thm:beta-eq-gamma-triple`
+  Route 3 in the open-problem column; M4 narrows the candidate
+  list but does not change the disposition.
+- **Candidate ordering for OP-2b post-M4:**
+  1. P3.1 — `Z_Φ` wave-function renormalisation of the composite
+     field. Inserts anomalous dimension into β/γ flow.
+  2. P3.2 — GL-bond operator promoted to a tracked coupling in
+     MK-RG (highest expected impact, hardest to implement; the
+     v2 GL bond is intrinsically two-site/momentum-dependent and
+     not captured by single-site MK moments).
+  3. P3.4 — NPRG (Wetterich) cross-check with `Z_Φ` + GL kinetic
+     ansatz. Independent estimate from a different RG scheme.
 
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
