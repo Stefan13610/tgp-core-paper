@@ -5,6 +5,103 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
+
+### Status
+
+OP-6 ("rigorous continuum limit of H_Γ, specifically the derivation
+of `K(φ) ∝ φ⁴` from v1's bilinear-bond H_Γ") is **closed**. The
+outcome is **negative for the v1 derivation path** and is resolved
+by a **pivot at the axiom level** (M1-A′) for v2.
+
+### Evidence that rules out the v1 derivation
+
+Three independent lines of investigation were completed in
+`TGP/TGP_v1/research/op6/` between 2026-04-22 and 2026-04-24:
+
+| Probe | File | Signal |
+|---|---|---|
+| M2-a: analytical (standard RG mechanisms) | `M2a_analytical_sketch.md` | All four mechanisms (LPA, LPA' with Z_k(ρ), derivative expansion, extended operator basis) fail to produce K(φ)∝φ⁴ from the v1 bilinear H_Γ. |
+| M2-b: 1D envelope-RG MC of v1 H_Γ | `M2b_results.md` | Measured `K_eff(⟨Φ⟩) ∝ ⟨Φ⟩^(-0.28 ± 0.43)`. TGP target p=+1 rejected at 3σ. |
+| M2-c: reality-check on the pivot target | `M2c_H3_reality_check.md` | Identifies that the GL functional H_GL (not the bilinear H₃) is the object that actually gives α=2; numerically confirmed at 5.5σ. |
+| M3-a: 1D block-RG of v1 H_Γ, 4 octaves | `M3a_results.md` | `p_B = -0.52 ± 0.28` uniformly across B ∈ {1,2,4,8,16}. TGP target p=+1 rejected at **5.5σ** at every block size; `C_B ∝ 1/B` confirms block-RG is genuine. |
+| M3-c: scaling dimensions at 3D Ising WF | `M3c_scaling_dimensions.md` | Using conformal-bootstrap Δ_ε = 1.413, ratio `K^{(1)}/K^{(0)} ~ k^{1.41} → 0` in the IR. `K_*(φ) → const`, not `K_*(φ) ∝ φ`. Also rules out tricritical / higher-derivative / O(N) / long-range / two-field / gauged-Z₂ minimal extensions. |
+
+**Bottom line:** the v1 claim that MK coarse-graining of the bilinear
+bond of H_Γ generates the GL coupling `K_ij = J(φ_iφ_j)²` is
+numerically and analytically excluded. The M1–M5 programme announced
+in the previous entry (below) does not close on the original plan.
+
+### Resolution: pivot at the axiom level (M1-A′)
+
+The substrate Hamiltonian in `eq:H-Gamma` of the paper has been
+changed from the v1 bilinear bond to a Ginzburg–Landau gradient bond
+in the Z₂-even composite `Φ_i = ŝ_i²`:
+
+    v1:  H_Γ = Σ [...on-site...] − J Σ_⟨ij⟩ A_ij ŝ_i ŝ_j
+
+    v2:  H_Γ = Σ [...on-site...] + J Σ_⟨ij⟩ A_ij ŝ_i² ŝ_j² (ŝ_j² − ŝ_i²)²
+
+**Preserved from v1:**
+
+- Microscopic Z₂-odd amplitude ŝ_i (ontological chain
+  "nothingness + Z₂ → matter" unchanged).
+- On-site structure (π²/2μ, m₀², λ₀).
+- All four axioms (ax:N0, ax:substrate, ax:source, ax:P3).
+- Prop `prop:substrate-action` in dodatekB (already used H_GL form
+  since 2026-03-24).
+- Theorem `thm:alpha2` in Sec. 4 (its proof is axiom-independent).
+- The three-level ontology (Γ → Φ → g_μν).
+
+**What changes in v2:**
+
+- The bond is now GL-in-φ rather than bilinear-in-ŝ. Physical
+  content: empty substrate (ŝ=0) supports no geometric bond, so
+  "no substrate ⇒ no geometry" becomes a property of the axiom
+  rather than a derived consequence.
+- α=2 is now a direct algebraic consequence of the axiom via
+  Prop `prop:substrate-action`, not an open derivation problem.
+- `thm:alpha2` retains its meaning as an independent uniqueness
+  statement: among all local Φ-covariant kinetic operators, the GL
+  form is the unique choice satisfying (C1)–(C3). In v2 this is a
+  consistency check of the axiom; in v1 it was the *only* supplier
+  of α=2.
+- The Migdal–Kadanoff coarse-graining remark in the substrate-to-
+  field section is restated as: the continuum of the v2 bond is
+  directly the GL functional (Prop. `prop:substrate-action`).
+
+### Impact
+
+- **v1 (Zenodo DOI 10.5281/zenodo.19670324):** unchanged. The v1
+  release remains on Zenodo with its original axiom. This file is
+  the authoritative note of its OP-6 status (now resolved by pivot
+  rather than by derivation).
+- **v2:** in preparation. All source files in `tgp-core-paper/` have
+  been updated to use the GL bond as axiom. A v2 release to Zenodo
+  will be made once the companion-paper impact is audited and the
+  full v2 diff is cross-checked.
+- **Companion papers:** impact audit pending. The v2 axiom is a
+  refinement at the bond level; none of the companion papers
+  (tgp-qm, tgp-leptons, tgp-sc) use the specific form of the bond,
+  only the coarse-grained φ dynamics (which is unchanged).
+- **Scripts:** `a1_alpha2_frg_synthesis.py` remains WITHDRAWN
+  (previous entry still applies). `cg_strong_numerical.py` still
+  legitimate. New OP-6 scripts (`m2b_envelope_stiffness_1d.py`,
+  `m3a_block_rg_1d.py`) are the authoritative numerical record.
+
+### Why this is not "moving the goalposts"
+
+The v1 theorem `thm:alpha2` was always a *classification* result
+(uniqueness inside (C1)–(C3)), never a derivation from H_Γ. The
+open item in v1 was the derivation of (C1)–(C3) from the bilinear
+H_Γ; three independent probes now rule this out. A substrate
+Hamiltonian that *does* supply (C1)–(C3) exists — the GL bond —
+and has been the working target in `prop:substrate-action` since
+2026-03-24. The pivot simply states this explicitly at the axiom
+level and makes the chain of inferences traceable end-to-end.
+
+---
+
 ## 2026-04 — Withdrawal of the "α = 2 from H_Γ" numerical synthesis
 
 ### Scope

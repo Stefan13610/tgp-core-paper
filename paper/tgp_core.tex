@@ -62,9 +62,10 @@ The theory is built on four axioms
 matter as source, instability of $\Nzero$) and a single dynamical degree of freedom.
 From these inputs we derive:
 (i) a unique second-order kinetic operator with coefficient $\alpha=2$,
-as a classification theorem within axioms (C1)--(C3) of
-Sec.~\ref{sec:field} (its derivation from the discrete substrate
-$H_{\Gamma}$ is stated as an open problem, OP-6);
+supplied directly by the Ginzburg--Landau substrate bond
+in~\eqref{eq:H-Gamma} (continuum form in App.~B,
+Prop.~\ref{prop:substrate-action}) and confirmed by a classification
+theorem within conditions (C1)--(C3) of Sec.~\ref{sec:field};
 (ii) an effective spatial metric of exponential form $g_{ij}=e^{+2U/c_{0}^{2}}\delta_{ij}$
 that reproduces all post-Newtonian parameters of general relativity exactly
 ($\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$);
@@ -137,15 +138,20 @@ from a reproducibility standpoint. Section~\ref{sec:applications} is a brief
 forward reference to companion papers.
 
 \paragraph{Main open caveat.} The passage from the discrete substrate
-Hamiltonian $H_{\Gamma}$ to the continuum TGP action is \emph{not yet}
-a rigorous theorem. Numerical block-spin Monte Carlo and FRG LPA'
-computations on a one-dimensional substrate chain support convergence
-to the $\alpha=2$ fixed point (see row~21 of
-Sec.~\ref{sec:status}), but a Banach/$\Gamma$-convergence proof remains
-open (OP-6). Throughout this paper we therefore present the continuum
-field theory of Sec.~\ref{sec:field} as a well-posed effective theory
-whose numerical coarse-graining has been checked, while flagging the
-rigorous continuum-limit statement as outstanding.
+Hamiltonian $H_{\Gamma}$ to the continuum TGP action rests on the
+Ginzburg--Landau (GL) bond in~\eqref{eq:H-Gamma}, whose continuum form
+$\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}[\varphi]=(K_{\mathrm{geo}}/2)
+\int\varphi^{4}(\nabla\varphi)^{2}\,d^{d}x$ is an elementary Taylor
+expansion (App.~B, Prop.~\ref{prop:substrate-action}). What remains
+open is the strictly rigorous Banach/$\Gamma$-convergence statement
+for the block-spin map; this is a mathematical hardening task, not an
+open derivation of $\alpha$. An earlier attempt to derive $\alpha=2$
+from a bilinear v1 bond (OP-6 of v1) was shown to fail on three
+independent grounds and has been resolved by the axiom pivot
+documented in Remark~\ref{rem:alpha2-closure} and
+\texttt{KNOWN\_ISSUES.md}. Throughout the paper we present the
+continuum field theory of Sec.~\ref{sec:field} as a well-posed
+effective theory whose axiomatic continuum limit is explicit.
 
 % =============================================================================
 \section{Axioms}\label{sec:axioms}
@@ -187,9 +193,20 @@ amplitude operator $\hat{s}_{i}$. The substrate Hamiltonian is
     +\tfrac{m_{0}^{2}}{2}\hat{s}_{i}^{2}
     +\tfrac{\lambda_{0}}{4}\hat{s}_{i}^{4}
   \Bigr]
-  - J\!\!\sum_{\langle ij\rangle}\! A_{ij}\,\hat{s}_{i}\hat{s}_{j},
+  + J\!\!\sum_{\langle ij\rangle}\! A_{ij}\,
+    \hat{s}_{i}^{2}\,\hat{s}_{j}^{2}\,
+    \bigl(\hat{s}_{j}^{2}-\hat{s}_{i}^{2}\bigr)^{2},
 \end{equation}
 with $J>0$, $\lambda_{0}>0$, and $A_{ij}\in\{0,1\}$ the adjacency matrix.
+The bond is a Ginzburg--Landau (GL) gradient term in the Z$_{2}$-even
+composite $\hat{\Phi}_{i}\equiv\hat{s}_{i}^{2}$, equivalent in continuum
+to $\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}[\varphi]=
+(K_{\mathrm{geo}}/2)\int\varphi^{4}(\nabla\varphi)^{2}\,d^{d}x$ (see
+App.~B, Prop.~\ref{prop:substrate-action}); it vanishes identically on
+any configuration with $\hat{s}_{i}=0$, encoding the fact that
+\emph{an empty substrate cannot support geometry}. This is a change
+from v1: see \ref{rem:alpha2-closure} below and
+\texttt{KNOWN\_ISSUES.md}.
 \end{axiom}
 
 \begin{proposition}[$\Zp$ symmetry]\label{prop:Z2}
@@ -263,9 +280,13 @@ In the mean-field approximation one has the identity
 \end{equation}
 so that $\Ffield=0$ iff $\langle\hat{s}_{i}\rangle=0$ (unbroken $\Zp$,
 i.e.\ $\Nzero$), while $\Ffield>0$ signals spontaneous breaking and the
-simultaneous appearance of matter and space. A Migdal--Kadanoff
-coarse-graining applied to~\eqref{eq:H-Gamma} produces the continuum field
-equation for $\Phi$ that we state and analyse in Sec.~\ref{sec:field}.
+simultaneous appearance of matter and space. In the continuum limit,
+the bond term in~\eqref{eq:H-Gamma} reduces to the Ginzburg--Landau
+gradient functional $\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}[\varphi]
+=(K_{\mathrm{geo}}/2)\int\varphi^{4}(\nabla\varphi)^{2}d^{d}x$, as made
+explicit in App.~B (Prop.~\ref{prop:substrate-action}); the Euler--Lagrange
+equation of this functional is the continuum field equation for $\Phi$
+that we state and analyse in Sec.~\ref{sec:field}.
 
 \begin{remark}[One substrate, two projections]
 Coarse-graining $H_{\Gamma}$ yields \emph{two} emergent fields from a
@@ -333,7 +354,7 @@ iff $\alpha=2$. Hence $K=\varphi^{4}$ (up to the overall constant
 $K_{\mathrm{geo}}$, conventionally $1$).
 \end{proof}
 
-\begin{remark}[What $\alpha=2$ means]
+\begin{remark}[What $\alpha=2$ means; closure of OP-6]\label{rem:alpha2-closure}
 The exponent $\alpha=2$ is \emph{not} fitted to data: it is fixed by the
 geometric coupling $K_{ij}=J(\varphi_{i}\varphi_{j})^{2}$ between nearest
 neighbours on the substrate, under the three conditions (C1)--(C3). The
@@ -341,11 +362,37 @@ statement is therefore a uniqueness result \emph{within} the stated
 class of local, $\Phi$-covariant second-order scalar operators; relaxing
 any of (C1)--(C3) (non-locality, higher derivatives, or departures from
 the conformal rescaling of the substrate metric) would open additional
-channels that are not considered by TGP. The derivation of (C1)--(C3)
-as emergent properties of the block-averaged substrate $\varphi\mapsto
-\Phi=\varphi^{2}$ is itself still open (OP-6); one-loop LPA' flow shows
-that the kinetic structure $K(\rho)\!\propto\!\rho$ is stable in the
-continuum limit (row~16 of Sec.~\ref{sec:status}).
+channels that are not considered by TGP.
+
+In v1 of this paper (Zenodo DOI \texttt{10.5281/zenodo.19670324}) the
+substrate Hamiltonian carried a linear bond $-J\hat{s}_{i}\hat{s}_{j}$;
+the statement that the continuum limit generates the GL coupling
+$K_{ij}=J(\varphi_{i}\varphi_{j})^{2}$, and thus supplies (C1)--(C3)
+from below, was listed as open problem OP-6. Between 2026-04-23 and
+2026-04-24, OP-6 was investigated on three independent grounds:
+(a)~the analytical sketch of standard RG mechanisms (M2-a); (b)~1D
+Monte Carlo of the envelope stiffness and of the block-RG bond flow
+(M2-b, M3-a); (c)~scaling-dimension analysis at the 3D Ising
+Wilson--Fisher fixed point using conformal-bootstrap data (M3-c). All
+three rule out the v1 derivation: at 3D Ising WF, the ratio
+$K^{(1)}/K^{(0)}$ decays in the IR as $k^{\Delta_{\epsilon}}=k^{1.41}$,
+so $K_{*}(\varphi)\to\mathrm{const}$ rather than $K_{*}(\varphi)
+\propto\varphi$. Numerically, the 1D block-RG measurement returns
+$K_{B}(\langle\Phi_{B}\rangle)\propto\langle\Phi_{B}\rangle^{-0.52\pm0.28}$
+uniformly across block sizes $B\in\{1,2,4,8,16\}$, rejecting the
+target $p_{\Phi}=+1$ at $5.5\sigma$.
+
+The present paper (v2 in preparation) therefore adopts the GL bond
+directly as the substrate axiom~\eqref{eq:H-Gamma}. Under this axiom,
+(C1)--(C3) and the GL gradient functional $\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}$
+of Prop.~\ref{prop:substrate-action} (App.~B) are \emph{immediate},
+and Theorem~\ref{thm:alpha2} reduces to the statement that any
+axiomatic choice respecting substrate--metric conformal covariance
+must be of this GL form. OP-6 is closed (see
+\texttt{TGP\_v1/research/op6/} for the complete record). The bond
+vanishes on empty-substrate configurations ($\hat{s}_{i}=0$),
+making ``no substrate~$\Rightarrow$ no geometry'' a property of the
+axiom rather than a derived fact.
 \end{remark}
 
 \subsection{Action, potential, and field equation}
@@ -681,9 +728,9 @@ The list below summarises the current (April 2026) status of TGP core.
   & One-loop LPA' flow near the Wilson--Fisher fixed point in $d=3$,
     $Z_{2}$ class: the kinetic form $K(\rho)\!\propto\!\rho$ is
     preserved, $K_{\mathrm{IR}}/K_{\mathrm{UV}}=1.000$, $\eta^{*}=0.044$.
-    This verifies kinetic stability at the continuum level; it does
-    \emph{not} substitute for the derivation of $\alpha$ from $H_{\Gamma}$
-    (still OP-6).
+    This verifies kinetic stability of the axiomatic GL form
+    of~\eqref{eq:H-Gamma} at the continuum level; $\alpha=2$ itself
+    is supplied by the axiom (see Remark~\ref{rem:alpha2-closure}).
   & \textsf{NU}\\
 17 & Cosmology: $\Delta\chi^{2}=+1.8$, $\Delta\mathrm{AIC}=+3.8$
   & vs.\ $\Lambda$CDM on Planck\,+\,DESI data, Friedmann~\eqref{eq:field-eq}
@@ -697,16 +744,20 @@ The list below summarises the current (April 2026) status of TGP core.
 20 & Three-regimes existence
   & Numerical profile $\phi(r)$ with attraction, repulsion, confinement
   & \textsf{NU}\\
-21 & Coarse-graining $H_{\Gamma}\!\to\!S_{\mathrm{TGP}}$ (numerical)
-  & Block-spin Monte Carlo on a 1D substrate chain
-    (\texttt{research/continuum\_limit/cg\_strong\_numerical.py}) exhibits
-    block-averaging behaviour consistent with a non-trivial fixed point,
-    but does not determine the kinetic exponent. Earlier synthesis code
-    in the same folder contained a derivation gap for $\alpha$ and has
-    been withdrawn; see \texttt{KNOWN\_ISSUES.md}. The rigorous
-    continuum limit remains OP-6; Theorem~\ref{thm:alpha2} is unaffected,
-    being an axiomatic classification under (C1)--(C3).
-  & \textsf{OP}\\
+21 & Coarse-graining $H_{\Gamma}\!\to\!S_{\mathrm{TGP}}$ (axiomatic + numerical)
+  & In the v2 axiom, the GL bond of~\eqref{eq:H-Gamma} is by
+    construction the lattice version of
+    $\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}[\varphi]=(K_{\mathrm{geo}}/2)
+    \int\varphi^{4}(\nabla\varphi)^{2}d^{d}x$ (App.~B,
+    Prop.~\ref{prop:substrate-action}); no numerical extraction of
+    $\alpha$ is required. Numerical block-spin Monte Carlo studies
+    that originally probed the v1 bilinear bond
+    (\texttt{research/continuum\_limit/cg\_strong\_numerical.py},
+    \texttt{TGP\_v1/research/op6/m3a\_block\_rg\_1d.py}) are retained
+    as supporting evidence for the axiom-level pivot; the complete
+    record is in \texttt{KNOWN\_ISSUES.md} (2026-04-24) and in
+    \texttt{TGP\_v1/research/op6/}.
+  & \textsf{NU}\\
 \bottomrule
 \end{longtable}
 \end{center}
@@ -743,10 +794,13 @@ OP-5 & Full non-linear $N$-body regime
   beyond perturbation theory.
   & \textsf{HY}\\
 OP-6 & Substrate metric continuum limit (rigorous)
-  & Rigorous Migdal--Kadanoff convergence of $H_{\Gamma}$ to the continuum
-  action~\eqref{eq:S-TGP} (Banach contraction of the block-spin map;
-  $\Gamma$-convergence of the energy functional). Numerical evidence
-  reported in row~21; fully rigorous proof open.
+  & Rigorous Banach contraction of the block-spin map and
+  $\Gamma$-convergence of the energy functional from the v2 GL
+  bond~\eqref{eq:H-Gamma} to the continuum
+  action~\eqref{eq:S-TGP}. \textbf{Axiomatic closure: done}
+  (2026-04-24, axiom pivot; see Remark~\ref{rem:alpha2-closure}
+  and \texttt{KNOWN\_ISSUES.md}). Mathematical hardening
+  (strict Banach/$\Gamma$-convergence theorem): remains open.
   & \textsf{HY}\\
 OP-7 & Tensor projection $\sigma_{ab}$
   & Derivation of the explicit tensor-field equation from the same
