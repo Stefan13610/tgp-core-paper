@@ -5,6 +5,66 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-25 — M9.1 (statyka + PPN): pure power-form metric falsified by β_PPN
+
+### Status
+
+**TGP gravity sector with metric `g_tt = -c²/φ`, `g_rr = φ` and full
+nonlinear Φ-EOM is falsified at the post-Newtonian level.** Numerical
+solution of the Φ-EOM for a static spherical source produces an
+asymptotic expansion `ε(r) = a₁/r + a₂/r² + a₃/r³ + ...` with
+`c₂ := a₂/a₁² = -0.992 ± 0.005` (analytic limit `-1` exactly), giving
+**β_PPN = 2(1 − c₂) = 3.98 ± 0.01**. Observation: β_PPN = 1.000 ±
+1·10⁻⁴ (Mercury, Cassini, LLR). Deviation `~3·10⁴` σ.
+
+OP-2b therefore remains **open**, but the path forward is no longer a
+purely numerical RG cross-check (closed by M3–M8 at scheme-independent
+level) — instead it is a structural question about the **metric ansatz
+itself** versus the substrate.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Foundational ontology | `TGP/TGP_v1/TGP_FOUNDATIONS.md` | Single-Φ Z₂ substrate immovable; gravity = collective fluctuation effect (Sakharov / Verlinde / Volovik tradition); GR target = numerical analog "in the limit", not analytic isomorphism. |
+| Analytical setup | `TGP/TGP_v1/research/op-newton-momentum/M9_1_setup.md` | Φ-EOM linearization → γ_PPN = 1 (exact, by metric ansatz); β_PPN = 2 in linear power form, β_PPN = 1 in exponential reparametrization; whether full nonlinear Φ-EOM dynamically picks one is THE question. |
+| Numerical solver | `TGP/TGP_v1/research/op-newton-momentum/m9_1_static.py` | scipy.solve_bvp on Φ-EOM with v(r)=r·ε(r) substitution; tests T1–T5. |
+| Convergence study | `TGP/TGP_v1/research/op-newton-momentum/debug_rmax.py` | c₂ vs R_max: 100→-0.71, 200→-0.87, 400→-0.97, 800→-0.992 (analytic -1.000). |
+| Pipeline sanity | `TGP/TGP_v1/research/op-newton-momentum/debug_t3.py` | Same fit pipeline on linearized solver gives \|a₂\| ~ 10⁻¹¹ (clean noise floor). |
+| Verdict | `TGP/TGP_v1/research/op-newton-momentum/M9_1_results.md` | T1, T2, T4, T5 PASS; T3 FAIL (β_PPN ≈ 4 vs observed 1, ~3·10⁴ σ). |
+
+### Implications
+
+1. **Cannot improve via tighter numerics.** Analytic asymptotic series
+   is exact; numerical c₂ converges to -1 to 1% at R_max=800. The
+   prediction β_PPN = 4 is a structural feature of TGP in its current
+   formulation, not a calculational artefact.
+2. **OP-2b path forward (M9.1′ — metric ansatz audit).** Three options
+   without breaking single-Φ Z₂ substrate:
+   - (a) Alternative metric reparametrization: e.g., `g_tt = -c²·exp(-η)`,
+     `g_rr = exp(+η)`. Compatible with `f·h = 1` substrate budget but
+     requires η ≠ ε; needs derivation from substrate.
+   - (b) Matter back-reaction: stress-energy of matter modifies Φ-EOM
+     at higher order. Not yet axiomatized in TGP.
+   - (c) M9.2 (momentum / Lenz back-reaction) might inform: if inertia
+     forces a different metric structure, c₂ may shift.
+3. **Cycle M9.2 and M9.3 are gated by M9.1′.** Without GR-compatible
+   statics, momentum (M9.2) and GW radiation (M9.3) tests of TGP
+   gravity are premature.
+4. **Substrate is NOT renegotiated.** Per `TGP_FOUNDATIONS.md` §1.2 +
+   §5: TGP = single fundamental scalar Z₂ + gravity-as-collective-
+   fluctuation. Multi-component substrate or fundamental graviton
+   would constitute a different theory.
+
+### Cross-connection to M3–M8
+
+M3–M8 closed the FP-universality question (β/γ < 0 at WF FP, scheme-
+independent under NPRG cross-check). M9.1 closes the broken-phase
+classical PPN question (β_PPN = 4, falsified). Both negative at the
+mathematical level **for current TGP formulation**, both leave room
+within the ontology (single Z₂ scalar + emergent gravity) for
+structural revisions of the metric/source coupling.
+
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
 External reviewer audit delivered 2026-04-25. Full response plan in
