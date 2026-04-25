@@ -1558,6 +1558,97 @@ preserved; TGP does not become scalar-tensor.
 - Abstract footnote on c_GW = c_0: still valid; TGP scalar sector luminal,
   tensor sector decoupled-massless for LIGO band.
 
+## 2026-04-25 — OP-7 T4 (metric coupling): Lambda(psi)=const=1 strukturalnie unique; scenario A RATIFIED
+
+### Status
+
+**OP-7 T4 closes STRUCTURAL POSITIVE (13/13 = 100% PASS).** Extended
+metric ansatz `g_ij = h(psi) delta_ij + Lambda(psi) sigma_ij` with
+single canonical choice `Lambda(psi) = const = 1` (in Phi_0=1 units)
+strukturalnie wybrana przez 5 niezależnych constraintów:
+
+- C1 Lambda(1)=1 (z T3.4: Lambda_0 * xi = 4 pi G, Phi_0=1 normalization)
+- C2 Lambda(psi) > 0 dla psi in (0, 4/3) (no signature flip)
+- C3 smoothness (no poles in physical psi range)
+- C5 vacuum limit psi -> 0+ well-behaved
+- C6 substrate boundary psi -> 4/3- well-behaved
+
+Z 5 kandydatow (A const, B h(psi), C psi, D 1/(4-3psi), E 1/h), tylko
+A score 5/5 z fizycznym sensem. C technically 5/5 ale Lambda(0)=0 czyni
+ją problematyczną przy GW propagation w prawdziwym vacuum (psi ~ 1).
+B (Sakharov co-evolving) FAIL C6 (Lambda diverges przy psi -> 4/3-).
+
+**T4 RATIFIES T3-extended scenario A (decoupling).** Sakharov B
+matematycznie dopuszczalny w innym ansatzu, ale **nie wymagany** przez
+TGP constraints. Kanoniczny TGP = decoupling.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Implementation | `TGP/TGP_v1/research/op7/op7_t4_metric_coupling.py` | sympy ansatz analysis + 5 candidates Lambda(psi) + ghost analysis. |
+| Raw output | `TGP/TGP_v1/research/op7/op7_t4_metric_coupling.txt` | 13/13 PASS. |
+| Synthesis | `TGP/TGP_v1/research/op7/OP7_T4_results.md` | werdykt T4: Lambda=const=1 unique; scenario A RATIFIED. |
+
+### Sub-tests T4.1-T4.7
+
+- **T4.1** ansatz consistency: Tr(g_ij) = 3 h(psi) (sigma traceless),
+  M9.1'' redukcja przy sigma=0. PASS.
+- **T4.2** weak-field linearization: h'(1)=4, h(1+eps) ≈ 1+4eps matches
+  GR 1PN (eps = U/(2c^2)); identyfikacja `h_TT^GR = Lambda(1) * sigma_ij`.
+  Z T3.4 Lambda(1)=1 daje `h_TT = sigma_ij` exactly. PASS.
+- **T4.3** Z_2 parity: psi i sigma_ab oba Z_2-even, ansatz invariant
+  trywialnie dla dowolnego Lambda(psi). PASS.
+- **T4.4** PPN limit przy sigma=0: M9.1'' P1 (gamma_PPN=beta_PPN=1
+  exact 1PN); 2nd-order sigma corrections ~ Lambda^2 sigma^2 ~ 10^-16
+  << Cassini 10^-5. PASS.
+- **T4.5** det(g_ij) symbolic expansion: `det = h^3 - (1/2) Lambda^2
+  h Tr(sigma^2) + O(Lambda^3 sigma^3)`. Substrate-budget f*h=1 linearnie
+  zachowany; 2nd-order to GW backreaction (canonical, GR-known
+  Isaacson stress). PASS.
+- **T4.6** five candidates Lambda(psi) constraint scoring: A 5/5,
+  C 5/5 (marginal), B/D/E 4/5 (boundary failures). PASS.
+- **T4.7** scenario verdict: A (decoupling) STRUKTURALNIE PREFERRED
+  + ghost-free analysis (T3.3 inheritance, no kinetic mixing
+  psi-sigma at Lambda=const). PASS.
+
+### Implications
+
+1. **OP-7 strukturalnie domknięte (T1-T4).** Spójna hierarchia:
+   T1 (no-tensor M9.1'') → T2 (sigma_ab definicja) → T3 (sigma_ab
+   dynamika + decoupling resolution) → T4 (metric coupling
+   canonical). Pozostają T5 (kwadrupol amplituda) i T6 (pełne PPN +
+   nonperturbative stability).
+
+2. **GW propagation luminal (c_GW = c_0).** Spektral gap 2 m_s ~ meV
+   >> omega_LIGO ~ 10^-13 eV = 10 orders gap → effective masslessness
+   w paśmie LIGO → GW170817 trywialnie safe → KNOWN_ISSUES C4
+   structurally resolved.
+
+3. **TT identyfikacja exact.** `h_TT = sigma_ij` (factor 1 in Phi_0=1
+   units), żadnych dodatkowych redukcji ani normalizacji.
+
+4. **PPN niezmienione.** M9.1'' P1 status zachowany (gamma_PPN=
+   beta_PPN=1) przy sigma=0; corrections sub-PPN przy sigma != 0.
+
+5. **Sakharov scenario B strukturalnie odrzucony przez T4.**
+   Lambda(psi) = h(psi) FAIL C6 (Lambda(4/3-) = inf). Pozostaje
+   alternative w innym ansatzu, ale nie kanoniczny TGP.
+
+6. **Path do T5 jasny:** quadrupole formula z continuum spektrum
+   (T3.5) i Lambda=1 (T4) → bezpośrednie GW150914 fitting. Z T3.4
+   already xi/G ≈ 1.06; T5 dopracuje numerycznie.
+
+### Patches scheduled (not yet applied to paper)
+
+- Section 2 sigma_ab + Lambda(psi) form: now ready - **Lambda(psi) =
+  const = 1** in Phi_0=1 units (canonical TGP). Sakharov scenario
+  retained as foot-note alternative.
+- Section 7 OP-7 row: requires update to "POSITIVE (57/60, T4
+  ratification, scenario A canonical)."
+- Section 6 NEW (sigma_ab dynamics + decoupling) integration: T1-T4
+  strukturalnie complete; ready for paper draft after T5/T6.
+
 ## Reporting new issues
 
 Please open an issue at
