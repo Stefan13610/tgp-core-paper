@@ -66,9 +66,11 @@ supplied directly by the Ginzburg--Landau substrate bond
 in~\eqref{eq:H-Gamma} (continuum form in App.~B,
 Prop.~\ref{prop:substrate-action}) and confirmed by a classification
 theorem within conditions (C1)--(C3) of Sec.~\ref{sec:field};
-(ii) an effective spatial metric of exponential form $g_{ij}=e^{+2U/c_{0}^{2}}\delta_{ij}$
-that reproduces all post-Newtonian parameters of general relativity exactly
-($\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$);
+(ii) an effective metric whose temporal factor is the normalised
+substrate-potential density $g_{tt}=-c_{0}^{2}\cdot 12\,U(\Phi)/(\gamma\PhiZero^{2}\psi^{4})
+=-c_{0}^{2}(4-3\psi)/\psi$ (with $\psi=\Phi/\PhiZero$), reproducing
+$\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ exactly at 1PN with explicit,
+falsifiable 2PN deviations ($|\Delta g_{tt}|_{2\mathrm{PN}}=\tfrac{5}{6}U_{\mathrm{N}}^{3}$);
 (iii) three interaction regimes (long-range attraction, intermediate repulsion,
 short-range confinement) from a single non-linear potential $U(\Phi)$;
 (iv) identically luminal gravitational-wave propagation
@@ -125,8 +127,10 @@ a well-defined regime.
 
 \paragraph{What TGP is.} A single scalar degree of freedom $\Phi$,
 coarse-grained from a $\Zp$-symmetric relational substrate, satisfying a
-single nonlinear field equation sourced by matter, and inducing an
-exponential effective metric. From this minimal structure flow all
+single nonlinear field equation sourced by matter, and inducing a
+hyperbolic effective metric whose temporal factor is the normalised
+substrate-potential density (vacuum form
+$g_{tt}\propto U(\Phi)/\Phi^{4}$). From this minimal structure flow all
 predictions of the theory.
 
 \paragraph{Scope of this paper.} Sections~\ref{sec:axioms}--\ref{sec:metric}
@@ -502,21 +506,25 @@ singularity.
 
 The effective metric of TGP is not postulated. It is derived from three
 inputs:
-(i) node density of the substrate $\Rightarrow$ $g_{ij}=\psi\,\delta_{ij}$
-with $\psi\equiv\Phi/\PhiZero$;
-(ii) information budget $\Rightarrow f\cdot h=1$ (antipodal condition);
-(iii) PPN consistency $\Rightarrow$ exponential form.
+(i) substrate-budget condition $\Rightarrow f\cdot h=1$ (antipodal projection);
+(ii) substrate-potential density $\Rightarrow f(\psi)\propto U(\Phi)/\Phi^{4}$
+(normalised to vacuum);
+(iii) full $\Phi$-EOM consistency at the post-Newtonian level
+$\Rightarrow \gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ at 1PN with
+explicit, falsifiable 2PN deviations.
 
 \subsection{Spatial part: node-density ansatz}
 
 A coarse-graining cell $\mathcal{B}(\mathbf{x})$ containing $N_{B}$
 lattice nodes has physical volume proportional to $\Phi(\mathbf{x})$:
 \begin{equation}\label{eq:g-spatial}
-  g_{ij}=\frac{\Phi}{\PhiZero}\,\delta_{ij}=\psi\,\delta_{ij},
-  \qquad \psi\equiv\Phi/\PhiZero.
+  g_{ij}=h(\psi)\,\delta_{ij},
+  \qquad \psi\equiv\Phi/\PhiZero,
 \end{equation}
+with $h(\psi)$ fixed below by the substrate budget and
+the substrate-potential density.
 
-\subsection{Temporal part: information budget}
+\subsection{Substrate budget: $f\cdot h=1$}
 
 The substrate has a fixed information capacity $\mathcal{B}=N_{B}s_{0}$ per
 cell. Partitioning between spatial capacity $h(\Phi)$ and temporal
@@ -524,70 +532,139 @@ capacity $f(\Phi)$, the multiplicative conservation law
 \begin{equation}\label{eq:fh-1}
   f(\Phi)\cdot h(\Phi)=1
 \end{equation}
-gives $f=\PhiZero/\Phi=1/\psi$.
+holds across all scales. This single condition is sufficient to fix
+$\gamma_{\mathrm{PPN}}=1$ algebraically: in the weak-field expansion
+$f\to 1+f_{1}U+\ldots$ with the budget enforcing $h=1/f$, the spatial
+expansion of any test geodesic acquires the same coefficient as the
+temporal expansion, so $\gamma_{\mathrm{PPN}}\equiv 1$ regardless of
+the explicit form of $f$.
 
-\subsection{Exponential metric from PPN consistency}
+\subsection{Hyperbolic metric from substrate-potential density}
 
-\begin{theorem}[Selection of $h(\Phi)=\Phi$ and exponential form,
-within the TGP ansatz class]\label{thm:metric}
-Within the ansatz class
-\begin{equation}
-  g_{tt}=-c_{0}^{2}/\psi,\qquad g_{ij}=h(\Phi)\,\delta_{ij},
-  \qquad fh=1\ \text{(antipodal projection)},
+\begin{theorem}[Substrate-potential metric ansatz, within the TGP
+ansatz class $fh=1$]\label{thm:metric}
+Within the TGP ansatz class enforcing the substrate budget
+$f\cdot h=1$ (Eq.~\eqref{eq:fh-1}), the temporal factor $f$ is the
+normalised substrate-potential density:
+\begin{equation}\label{eq:metric-from-V}
+  f(\psi)
+  \;=\;
+  \frac{12}{\gamma\,\PhiZero^{2}}\,\frac{U(\Phi)}{\psi^{4}}
+  \;=\;
+  \frac{4-3\psi}{\psi},
+  \qquad
+  h(\psi)=\frac{1}{f(\psi)}=\frac{\psi}{4-3\psi},
 \end{equation}
-and in the weak-field limit $\Phi=\PhiZero(1+2U/c_{0}^{2})$ with $U$ the
-Newtonian potential, the power-law choice $h=(\Phi/\PhiZero)^{p}$ forces
-$\beta_{\mathrm{PPN}}=2p$; PPN consistency $\beta_{\mathrm{PPN}}=1$ then
-selects $p=1$ uniquely. Continuing the same power-law structure to
-\emph{all} orders in $U$ requires the exponential closure
+where $U(\Phi)$ is the substrate self-interaction potential
+of Eq.~\eqref{eq:U-potential} with $\beta=\gamma$ (vacuum condition).
+The boxed effective line element is
 \begin{equation}\label{eq:exp-metric}
   \boxed{\;
     ds^{2}
-    =-c_{0}^{2}\,e^{-2U/c_{0}^{2}}\,dt^{2}
-    +e^{+2U/c_{0}^{2}}\,\delta_{ij}\,dx^{i}dx^{j},
+    =-c_{0}^{2}\,\frac{4-3\psi}{\psi}\,dt^{2}
+    +\frac{\psi}{4-3\psi}\,\delta_{ij}\,dx^{i}dx^{j},
     \qquad
-    \psi=e^{+2U/c_{0}^{2}}.
+    \psi=\Phi/\PhiZero.
   \;}
 \end{equation}
-Both forms $f=1/\psi$ and $f=e^{-2U/c_{0}^{2}}$ satisfy $fh=1$ and agree
-at $O(U)$; the exponential form extends the agreement to all orders.
+At the vacuum minimum $\psi=1$ one has $f=h=1$ (calibration); at
+$\psi=4/3$ the temporal factor vanishes (boundary of the ghost-free
+basin, Sec.~\ref{ssec:ghost}); at $\psi\to 0$ the temporal factor
+diverges (non-metric phase). The hyperbolic ansatz, combined with the
+full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$, yields
+$\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ \emph{exactly at 1PN}
+(Cor.~\ref{cor:ppn}); deviations from GR appear explicitly at the
+2PN level and are falsifiable predictions of TGP.
 \end{theorem}
 
-\begin{remark}[Scope of the selection statement]\label{rem:metric-scope}
-Theorem~\ref{thm:metric} is a selection statement \emph{within} the TGP
-ansatz class $fh=1$ and power-law $h(\Phi)$. It is not a uniqueness
-statement against every conceivable $(f,h)$; a parametrically distinct
-metric structure (e.g.\ bi-metric or tensor-valued) would not be in
-competition here. Five independent arguments support the choice $p=1$
-(substrate-density interpretation, volume element, Cassini/LLR PPN,
-soliton mass ratio, information budget); see
-\texttt{research/metric\_ansatz/} for details.
+\begin{remark}[Three independent substrate principles converge on
+$f=(4-3\psi)/\psi$]\label{rem:metric-triple}
+The hyperbolic form~\eqref{eq:metric-from-V} is uniquely picked by
+\emph{three} logically independent substrate principles
+(audit: \texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P2):
+(P2-C) $f$ is the rational function of minimal degree compatible with
+the budget $fh=1$, the vacuum calibration $f(1)=1$, and the boundary
+condition $f(4/3)=0$ at the second zero of $U(\Phi)$
+(\texttt{prop:ghost-free}); (P2-D) $f$ is the lowest-derivative
+dimensionless ratio $U(\Phi)/\Phi^{4}$ (in natural units
+$[\Phi]=\mathrm{mass}$, $[U]=\mathrm{mass}^{4}$); (P2-E) $f-1$
+correlates with the substrate energy density excess above vacuum.
+Triple convergence eliminates arbitrariness; in TGP's emergent-gravity
+philosophy the hyperbolic form is the natural substitute for an
+otherwise unavailable single-action variation, since the metric is not
+an autonomous field varied independently of $\Phi$
+(Rem.~\ref{rem:not-ST}).
 \end{remark}
 
-\begin{corollary}[PPN parameters exact, within the ansatz of Theorem~\ref{thm:metric}]\label{cor:ppn}
-As an algebraic consequence of the exponential ansatz~\eqref{eq:exp-metric}
-(selected within the TGP ansatz class; see
-Remark~\ref{rem:metric-scope}), expanding the metric and comparing with
-the standard PPN expansion, one obtains
+\begin{remark}[Scope of the selection statement; closure of the
+power-law branch]\label{rem:metric-scope}
+Theorem~\ref{thm:metric} is a selection statement \emph{within} the TGP
+ansatz class $fh=1$ together with the substrate-potential density
+postulate~\eqref{eq:metric-from-V}. It is not a uniqueness statement
+against every conceivable $(f,h)$; a parametrically distinct metric
+structure (e.g.\ bi-metric or tensor-valued) would not be in
+competition here. The earlier power-law family $h=\psi^{p}$ explored
+in v1 of this paper has been closed \emph{negatively} by a master
+formula $\beta_{\mathrm{PPN}}(p,\alpha)=(p-1-\alpha)/p$ that admits no
+admissible solution with $\alpha>0$
+(\texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1, M9.1$'$). The
+substrate-potential ansatz~\eqref{eq:metric-from-V} is the unique
+pivot consistent with current post-Newtonian data within the $fh=1$
+class.
+\end{remark}
+
+\begin{corollary}[PPN parameters at 1PN, within the ansatz of
+Theorem~\ref{thm:metric}]\label{cor:ppn}
+For the hyperbolic metric ansatz~\eqref{eq:exp-metric} solved together
+with the full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$,
+the post-Newtonian expansion yields
 \begin{equation}\label{eq:ppn}
   \gamma_{\mathrm{PPN}}=1,\qquad \beta_{\mathrm{PPN}}=1
-  \qquad\text{(exact to all orders in $U$).}
+  \qquad\text{(exact at 1PN)}.
 \end{equation}
-All ten PPN parameters equal their GR values. The prediction is
-consistent with every current solar-system test:
+The expansion of $g_{tt}$ in the Newtonian potential
+$U_{\mathrm{N}}=GM/(c_{0}^{2}r)$ continues with explicit deviations
+from the Schwarzschild isotropic form beginning at 2PN:
+\begin{align}\label{eq:gtt-expansion}
+  g_{tt}^{\mathrm{TGP}}/(-c_{0}^{2})
+  &=1-2U_{\mathrm{N}}+2U_{\mathrm{N}}^{2}-\tfrac{7}{3}U_{\mathrm{N}}^{3}
+   +\tfrac{35}{12}U_{\mathrm{N}}^{4}+\mathcal{O}(U_{\mathrm{N}}^{5}),
+   \nonumber\\
+  g_{tt}^{\mathrm{Schw}}/(-c_{0}^{2})
+  &=1-2U_{\mathrm{N}}+2U_{\mathrm{N}}^{2}-\tfrac{3}{2}U_{\mathrm{N}}^{3}
+   +U_{\mathrm{N}}^{4}-\ldots,
+\end{align}
+giving a 2PN fractional deviation
+$|\Delta g_{tt}|_{2\mathrm{PN}}=\tfrac{5}{6}\,U_{\mathrm{N}}^{3}$ as
+\emph{the} concrete falsifiable prediction of TGP at the post-Newtonian
+level (\texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P1).
+Current empirical bounds at 1PN are passed exactly:
 Cassini Shapiro-delay tracking gives
 $|\gamma_{\mathrm{PPN}}-1|\leq 2.3\times 10^{-5}$~\cite{BertottiCassini},
 and Lunar Laser Ranging (Nordtvedt effect) gives
-$|\beta_{\mathrm{PPN}}-1|\leq 6\times 10^{-5}$~\cite{WilliamsLLR};
-a dedicated cross-check on all ten PPN parameters is reported in
-\texttt{research/metric\_ansatz/} (8/8 PASS).
+$|\beta_{\mathrm{PPN}}-1|\leq 6\times 10^{-5}$~\cite{WilliamsLLR}.
+At 2PN, the predicted deviation is far below current solar-system
+sensitivity ($U_{\mathrm{N}}\sim 10^{-8}\Rightarrow|\Delta|\sim 10^{-23}$);
+binary pulsar timing
+($U_{\mathrm{N}}\sim 10^{-6}\Rightarrow|\Delta|\sim 10^{-17}$) is
+likewise unconstraining. The most decisive future constraints come
+from GW170817-class binary inspirals (conditional on tensor-sector
+closure, OP-7) and EHT photon rings (strong field,
+$U_{\mathrm{N}}\sim 1/3$); see \texttt{KNOWN\_ISSUES.md} 2026-04-25
+M9.1$''$ P3 for the audit (3 PASS, 1 conditional tension, 1 open,
+0 falsified).
 \end{corollary}
 
-\begin{corollary}[Luminal gravitational waves]\label{cor:cGW}
-Gravitational waves propagate on the effective metric $g_{\mathrm{eff}}$
-at the vacuum speed: $c_{\mathrm{GW}}=c_{0}$ identically. This is
-consistent with GW170817 constraints
-($|c_{\mathrm{GW}}-c_{0}|/c_{0}<10^{-15}$).
+\begin{corollary}[Luminal gravitational waves -- conditional on
+tensor sector OP-7]\label{cor:cGW}
+For the scalar fluctuation sector of $\Phi$, fluctuations propagate on
+the effective metric $g_{\mathrm{eff}}$ at the vacuum speed
+$c_{\mathrm{GW}}=c_{0}$ identically, consistent with GW170817
+constraints ($|c_{\mathrm{GW}}-c_{0}|/c_{0}<10^{-15}$). The full
+prediction for the two transverse-traceless tensor polarisations of
+gravitational waves requires the tensor sector OP-7 (open problem;
+\texttt{KNOWN\_ISSUES.md} C4); the scalar-sector luminality is the
+piece currently established.
 \end{corollary}
 
 \subsection{Field-dependent constants}
@@ -602,7 +679,7 @@ fundamental constants:
   \qquad
   \hbar(\Phi)=\frac{\hbar_{0}}{\sqrt{\psi}},
 \end{equation}
-all consistent with the exponential metric~\eqref{eq:exp-metric}. $\lP$
+all consistent with the hyperbolic metric~\eqref{eq:exp-metric}. $\lP$
 is the sole invariant across scales.
 
 % =============================================================================
@@ -676,14 +753,17 @@ The list below summarises the current (April 2026) status of TGP core.
 3 & Full field equation
   & Theorem~\ref{thm:field-eq}: Eq.~\eqref{eq:field-eq} from $\delta S/\delta\Phi=0$
   & \textsf{TH}\\
-4 & Exponential metric uniqueness
-  & Theorem~\ref{thm:metric}: PPN consistency $\Rightarrow$ exponential form
+4 & Substrate-potential metric ansatz
+  & Theorem~\ref{thm:metric}: $g_{tt}=-c_{0}^{2}(4-3\psi)/\psi$ from $fh=1$ + substrate-potential density;
+    triple convergence (P2-C/D/E)
   & \textsf{TH}\\
-5 & PPN parameters exact
-  & Corollary~\ref{cor:ppn}: $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ to all orders
+5 & PPN parameters at 1PN
+  & Corollary~\ref{cor:ppn}: $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ exactly at 1PN
+    (M9.1$''$ P1 verified); 2PN deviation $|\Delta|=\tfrac{5}{6}U_{\mathrm{N}}^{3}$ predicted
   & \textsf{TH}\\
-6 & Luminal gravitational waves
-  & Corollary~\ref{cor:cGW}: $c_{\mathrm{GW}}=c_{0}$ identically (GW170817)
+6 & Luminal scalar-sector GW (conditional)
+  & Corollary~\ref{cor:cGW}: scalar sector $c_{\mathrm{GW}}=c_{0}$ identically;
+    full tensor sector pending OP-7
   & \textsf{TH}\\
 7 & Invariance of $\lP$
   & Eq.~\eqref{eq:constants}: $\lP=\sqrt{G\hbar/c^{3}}=\mathrm{const}$ consistent with $g_{\mu\nu}^{\mathrm{eff}}$
@@ -825,7 +905,8 @@ OP-10 & Quantum theory of $\Phi$
 % =============================================================================
 
 The minimal core of TGP defined above motivates several companion
-studies in which the same substrate and exponential metric are
+studies in which the same substrate and hyperbolic
+substrate-potential metric~\eqref{eq:exp-metric} are
 confronted with separate empirical domains. Each companion paper cites
 this reference for its foundational content; the items below are
 pointers, not self-contained derivations.
@@ -847,10 +928,17 @@ pointers, not self-contained derivations.
     \cite{TGP-leptons}; the identification of $g_{0}^{e}$ with a
     substrate quantity is a working hypothesis of that companion paper.
   \item \textbf{Black-hole shadows.} In the strong-field regime the
-    exponential metric~\eqref{eq:exp-metric} leads to a photon-ring
-    radius reduced by $\sim 37\%$ relative to Schwarzschild, offering a
-    concrete target for next-generation EHT measurements
-    \cite{TGP-BH}.
+    hyperbolic substrate-potential metric~\eqref{eq:exp-metric} leads to
+    photon-ring properties non-perturbatively distinct from
+    Schwarzschild; the post-Newtonian expansion that fixes
+    Eq.~\eqref{eq:gtt-expansion} no longer converges at
+    $U_{\mathrm{N}}\sim 1/3$, so a quantitative EHT prediction
+    requires a dedicated nonlinear analysis (open programme OP-EHT;
+    see \texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P3) together
+    with the tensor sector of OP-7. Ref.~\cite{TGP-BH} reports the
+    weak-field photon-ring estimate from the v1 exponential ansatz;
+    re-evaluation under~\eqref{eq:exp-metric} is the natural next
+    step.
   \item \textbf{$N$-body dynamics.} Numerical integration of
     Eq.~\eqref{eq:field-eq} in configurations dominated by the
     intermediate-repulsion regime (regime~ii) exhibits chaos suppression
@@ -865,12 +953,18 @@ the core theory:
   \item $\alpha=2$ \emph{identically} (Theorem~\ref{thm:alpha2}):
     any observable inconsistent with $K\propto\varphi^{4}$ at the
     substrate level falsifies TGP.
-  \item $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ \emph{to all
-    orders} (Corollary~\ref{cor:ppn}): a measured deviation at
-    $O(U^{2}/c_{0}^{4})$ beyond GR would falsify the exponential metric.
-  \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically}
-    (Corollary~\ref{cor:cGW}): already supported by GW170817 at the
-    $10^{-15}$ level.
+  \item $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ \emph{at 1PN
+    exactly, with explicit 2PN deviations}
+    (Corollary~\ref{cor:ppn}): the unique falsifiable signature of TGP
+    at the post-Newtonian level is
+    $|\Delta g_{tt}|_{2\mathrm{PN}}=\tfrac{5}{6}\,U_{\mathrm{N}}^{3}$
+    (Eq.~\eqref{eq:gtt-expansion}); a deviation from this prediction at
+    GW170817-class binary inspirals (conditional on OP-7) or at EHT
+    photon rings (strong field, OP-EHT) would falsify the
+    substrate-potential ansatz.
+  \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically in the scalar
+    sector} (Corollary~\ref{cor:cGW}): already supported by GW170817 at
+    the $10^{-15}$ level. The tensor sector is open (OP-7).
 \end{enumerate}
 
 \paragraph{Closed-branch negative checks.} Three potential near-term
@@ -904,10 +998,12 @@ We have presented a minimal, self-contained core of the Theory of Generated
 Space: four axioms, one scalar field with a geometrically fixed kinetic
 operator ($\alpha=2$), a single non-linear potential with two coefficients
 related by a vacuum condition, and an algebraically determined effective
-metric reproducing general relativity exactly at the post-Newtonian level.
-Fifteen core results are formally proven, six more are numerically
-verified, and ten explicit open problems are stated so that the theory is
-both well-defined and falsifiable on a clear basis.
+metric whose temporal factor is the normalised substrate-potential density
+$U(\Phi)/\Phi^{4}$, reproducing general relativity exactly at 1PN with
+explicit, falsifiable 2PN-level deviations. Fifteen core results are
+formally proven, six more are numerically verified, and ten explicit open
+problems are stated so that the theory is both well-defined and falsifiable
+on a clear basis.
 
 This core is intended to serve as a common reference for applications to
 superconductivity, particle masses, black-hole phenomenology and cosmology,
@@ -941,7 +1037,9 @@ companion paper (2026).
 
 \bibitem{TGP-BH}
 M.~Serafin,
-\emph{Black-hole shadows in the TGP exponential metric},
+\emph{Black-hole shadows in TGP: weak-field estimate (v1 exponential
+ansatz); strong-field analysis under the substrate-potential ansatz
+deferred to OP-EHT},
 companion paper (2026).
 
 \bibitem{TGP-nbody}

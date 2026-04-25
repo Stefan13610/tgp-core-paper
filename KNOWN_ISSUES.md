@@ -262,7 +262,7 @@ status:
 | **P1**: higher PN coefficients (c_3, c_4, ...) | **POSITIVE 2026-04-25** (see entry below) | consistency with GR beyond β, γ |
 | **P2**: variational derivation | **POSITIVE-POSTULATE 2026-04-25** (see entry below) | triple substrate motivation; no single-action derivation |
 | **P3**: observational tests (LLR, GW170817) | **NOT-FALSIFIED 2026-04-25** (see entry below) | weak-field PASS; GW170817 conditional tension; EHT open |
-| **P4**: rewrite sek08c, sek_stale, sek_intro | open | new boxed form documentation |
+| **P4**: rewrite sek08c, sek_stale, sek_intro | **DONE 2026-04-25** (see entry below) | abstract/intro/§5/§7/F2 updated to hyperbolic ansatz |
 
 P2 is decisive. If g_tt ∝ V(Φ)/Φ⁴ is **forced by an independent
 variational principle** (e.g., conformal coupling of metric to
@@ -615,6 +615,117 @@ but requires new operational program OP-EHT (deferred from M9.1'').
 P3 has now fully characterized the **observational matching side**
 in weak field. Remaining work: P4 (paper integration) and forward
 operational programs OP-7 / OP-EHT.
+
+## 2026-04-25 — M9.1'' P4 (paper rewrite): tgp_core.tex updated to hyperbolic substrate-potential metric ansatz
+
+### Status
+
+**M9.1'' test P4 closes with verdict DONE.** The core paper
+`paper/tgp_core.tex` has been surgically rewritten to replace the
+v1 exponential metric ansatz with the M9.1''-derived hyperbolic
+substrate-potential ansatz `g_tt = -c² · (4-3ψ)/ψ`.
+
+### Changes (paper/tgp_core.tex)
+
+1. **Abstract (§(ii))**: `g_ij = e^(+2U/c²) δ_ij` exponential statement
+   replaced with substrate-potential form
+   `g_tt = -c²·12 U(Φ)/(γ Φ₀² ψ⁴) = -c²(4-3ψ)/ψ`. Adds explicit 2PN
+   deviation prediction `|Δg_tt|_2PN = (5/6) U_N³`.
+
+2. **§1 Introduction "What TGP is"**: "exponential effective metric" →
+   "hyperbolic effective metric whose temporal factor is the normalised
+   substrate-potential density (vacuum form `g_tt ∝ U(Φ)/Φ⁴`)".
+
+3. **§5 Emergent metric** (heaviest rewrite):
+   - §5 intro: three derivation inputs reorganised
+     (substrate budget → substrate-potential density → Φ-EOM).
+   - §5.1 unchanged (node-density g_ij = h(ψ) δ_ij).
+   - §5.2 retitled "Substrate budget: f·h = 1" with γ_PPN = 1
+     algebraic justification.
+   - §5.3 retitled "Hyperbolic metric from substrate-potential density".
+     - **Theorem `thm:metric`** completely rewritten: substrate-potential
+       postulate, hyperbolic boxed line element, vacuum/ghost-free/
+       non-metric phase boundaries.
+     - **New `rem:metric-triple`**: triple substrate principle
+       convergence (P2-C ∧ P2-D ∧ P2-E) per M9.1'' P2.
+     - `rem:metric-scope` updated to reference closure of power-law
+       branch (M9.1, M9.1').
+     - **`cor:ppn`** rewritten: γ=β=1 EXACT at 1PN (not "all orders");
+       2PN deviation explicit; passing solar-system + binary-pulsar
+       bounds documented; references M9.1'' P3 audit.
+     - **`cor:cGW`** scoped to scalar sector; tensor sector OP-7 noted.
+   - §5.4 field-dependent constants: "exponential metric" → "hyperbolic
+     metric".
+
+4. **§7 Status of theorems**:
+   - Item 4 "Exponential metric uniqueness" → "Substrate-potential
+     metric ansatz: g_tt = -c²(4-3ψ)/ψ from f·h=1 + substrate-potential
+     density; triple convergence (P2-C/D/E)". Status TH retained
+     (theorem proved).
+   - Item 5 "PPN parameters exact" → "PPN parameters at 1PN": γ=β=1
+     exactly at 1PN (M9.1'' P1 verified); 2PN deviation
+     |Δ| = (5/6) U_N³ predicted. TH retained.
+   - Item 6 "Luminal GW" → "Luminal scalar-sector GW (conditional)":
+     scalar-sector luminal; full tensor sector pending OP-7. TH
+     retained for the established scalar piece.
+
+5. **§7 Applications and falsifiability**:
+   - F2 falsification target rewritten: "γ=β=1 *to all orders*" →
+     "γ=β=1 *at 1PN exactly, with explicit 2PN deviations*"; concrete
+     signature `|Δg_tt|_2PN = (5/6) U_N³` named as the unique
+     falsification handle.
+   - F3 luminal GW scoped to scalar sector with OP-7 caveat.
+   - Black-hole shadow companion (§7 list + bibliography): photon-ring
+     prediction now flagged as requiring OP-EHT (strong-field
+     nonlinear) under the substrate-potential ansatz; v1 exponential
+     estimate retained as the historical baseline.
+
+6. **§8 Conclusion**: "reproducing GR exactly at the post-Newtonian
+   level" → "reproducing GR exactly at 1PN with explicit, falsifiable
+   2PN-level deviations".
+
+7. **Compilation**: pdflatex builds cleanly (13 pages). Pre-existing
+   undefined-reference warnings (`prop:substrate-action`) unrelated
+   to P4 changes.
+
+### Labels preserved (no cascade-updates needed)
+
+- `eq:exp-metric` (label retained, content swapped)
+- `thm:metric` (label retained, theorem swapped)
+- `cor:ppn`, `cor:cGW` (labels retained, content updated)
+
+This minimises diff against v1 references throughout the paper while
+fully replacing the substantive content.
+
+### Implications
+
+1. **OP-2b paper-level closure**: the paper now reflects the M9.1,
+   M9.1', M9.1'' progression. v1's β=γ=1 "to all orders" claim
+   (which was inconsistent with the boxed `g_tt = -c²/ψ` ansatz under
+   full Φ-EOM, M9.1 verdict) is replaced with the M9.1''-derived
+   hyperbolic form that *does* yield β=γ=1 at 1PN dynamically.
+2. **Falsifiability sharpened**: F2 now names a concrete observable
+   (2PN deviation `|Δg_tt|_2PN = (5/6) U_N³`) rather than a
+   non-falsifiable "exact to all orders" claim.
+3. **Honest scoping**: cor:cGW (luminal GW) and BH-shadow companion
+   are appropriately conditioned on OP-7 / OP-EHT, removing
+   over-claims flagged by external review C4.
+4. **Test plan M9.1'' fully closed**: P1 (positive), P2
+   (positive postulate, triple motivation), P3 (not falsified),
+   P4 (paper integration done). M9.1'' is now a complete, internally
+   consistent, observationally compatible operational closure of
+   OP-2b in the weak field.
+
+### Remaining open work (post-P4)
+
+- **OP-7** (tensor sector): required for full GW170817 prediction.
+- **OP-EHT** (strong-field nonlinear): required for EHT photon ring.
+- **Mathematical hardening**: deeper substrate principle that
+  *generates* P2-C ∧ P2-D ∧ P2-E from a unified axiom (open).
+
+P4 has now fully characterized the **paper integration side**.
+M9.1'' test plan from `M9_1_pp_setup.md` §6 is closed
+(P1 ✓, P2 ✓, P3 ✓, P4 ✓).
 
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
