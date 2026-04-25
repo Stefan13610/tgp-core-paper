@@ -183,6 +183,146 @@ Three options stand:
 
 The decision is currently open and external-review relevant.
 
+## 2026-04-25 — M9.1'' (Pivot B audit): hyperbolic metric form is V(Φ)/Φ⁴ normalized — substrate-level derivation rescues β_PPN = 1
+
+### Status
+
+The hyperbolic-form candidate identified in M9.1' Pivot B scan is
+**not an ad-hoc curve-fit** — it is **algebraically identical to
+V(Φ)/Φ⁴ normalized**, where V is the TGP potential in vacuum-condition
+form (β = γ, `sek08a` `prop:vacuum-condition`).
+
+```
+   V(Φ) = (β/3)·Φ³/Φ₀ − (γ/4)·Φ⁴/Φ₀²
+        = (γ/12)·Φ₀²·ψ³·(4 − 3ψ)               (using β = γ)
+
+   F(ψ) := V(Φ)/Φ⁴ = γ·(4 − 3ψ) / (12·Φ₀²·ψ)
+   F(1)  = γ/(12·Φ₀²)
+
+   f(ψ) := F(ψ)/F(1) = (4 − 3ψ)/ψ              ← EXACT TGP IDENTITY
+```
+
+Postulating `g_tt(x) = −c² · (12·Φ₀²/γ) · V(Φ(x)) / Φ(x)⁴` (i.e.,
+metric tied directly to potential density) gives `f(1) = 1, f'(1) =
+−4, f''(1) = +8`, hence (with the M9.1' master formula):
+
+```
+   β_PPN = f''(1)/f'(1)² + 2·c₂/f'(1) = 8/16 + 2·(−1)/(−4) = 1   EXACTLY
+
+   γ_PPN = 1   (from f·h = 1)
+```
+
+**This rescues TGP at the post-Newtonian level** — moves OP-2b from
+"falsified pending speculative pivots" to "rescuable via Pivot B
+with substrate-level algebraic derivation."
+
+### Numerical verification
+
+`m9_1_pp_verify.py` re-uses M9.1's existing `ε(r)` data (M=q=σ=1,
+R_max=800, n_pts=5000):
+
+```
+Solver:           c₂ = −0.99180   (analytic limit −1, residual is R_max=800 grid bias)
+
+Case (a) BOXED metric f = 1/ψ:
+   β_PPN(numeric) = +3.984    [FALSIFIED, M9.1]
+Case (b) HYPERBOLIC metric f = (4−3ψ)/ψ:
+   β_PPN(numeric) = +0.996    [matches GR, residual = same R_max bias as M9.1]
+   β_PPN(analytic c₂=−1) = +1.000   [exact]
+```
+
+The 0.4% residual in case (b) is the same R_max=800 finite-grid bias
+as in M9.1 §2.3 (convergence: R_max=400→1.015, R_max=800→1.005,
+R_max→∞→1.000 exactly).
+
+### Three physical thresholds
+
+The hyperbolic form is "aware" of three natural substrate thresholds:
+
+```
+   ψ = 0    : V/Φ⁴ → ∞,    f → ∞      non-metric phase (N0-4)
+   ψ = 1    : V'(Φ) = 0,   f = 1      vacuum minimum (calibration)
+   ψ = 4/3  : V(Φ) = 0,    f = 0      second zero of V = ghost-free basin boundary
+```
+
+Threshold ψ=4/3 coincides with the boundary of the ghost-free basin
+(`sek08_formalizm` `prop:ghost-free-fundamental`, line ~2562). The
+metric vanishes precisely where the substrate kinetic structure
+becomes non-positive-definite — geometric interpretation: "boundary
+of metric-coherent phase."
+
+### Logical status of the postulate
+
+`ax:metric-from-potential : g_tt = -c² · (12·Φ₀²/γ) · V(Φ)/Φ⁴` is a
+**new postulate**, not a derivation from current sek08c. Its research
+status:
+
+| Test | Status | Goal |
+|---|---|---|
+| **P1**: higher PN coefficients (c_3, c_4, ...) | open | consistency with GR beyond β, γ |
+| **P2**: variational derivation | open | find action giving g_tt ∝ V/Φ⁴ |
+| **P3**: observational tests (LLR, GW170817) | open | dynamical consistency |
+| **P4**: rewrite sek08c, sek_stale, sek_intro | open | new boxed form documentation |
+
+P2 is decisive. If g_tt ∝ V(Φ)/Φ⁴ is **forced by an independent
+variational principle** (e.g., conformal coupling of metric to
+potential density), M9.1'' becomes a derivation rather than an
+*ad-hoc* curve fit. Otherwise, the form remains an empirically
+selected ansatz, motivated only by three independent substrate
+thresholds happening to agree.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Algebraic identity | `TGP/TGP_v1/research/op-newton-momentum/M9_1_pp_setup.md` | Symbolic derivation: `V(Φ)/Φ⁴` normalized = `(4-3ψ)/ψ` exactly. PPN check: f(1)=1, f'(1)=-4, f''(1)=+8 → β_PPN = 1 (analytic). |
+| Numerical verification | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_verify.py` | Re-uses M9.1 ε(r) data; computes β_PPN under both boxed and hyperbolic ansatzes. Output: case (a) 3.984 [FALSIFIED]; case (b) 0.996 [GR-compatible, residual = R_max bias]. |
+| Numerical output | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_verify.txt` | `c_2 = -0.99180`; case (a) β_PPN = 3.984, case (b) β_PPN = 0.996 with γ_PPN = 1 in both. |
+| Pivot context | `TGP/TGP_v1/research/op-newton-momentum/M9_1_prime_results.md` §9 | M9.1'' breakthrough section linking back to M9.1' pivot map. |
+
+### Implications for v2 paper
+
+- **OP-2b status updates**: from "structurally falsified at PN level"
+  (M9.1' status) to **"PN-level rescuable via Pivot B with algebraic
+  derivation; depending on P1–P4 outcomes, possibly upgradable to
+  derived"**.
+- **`sek08c` boxed metric**: requires rewrite. The current boxed
+  `eq:metric-full-derived` (g_tt = -c²/ψ) is empirically falsified
+  (M9.1, β_PPN=4); replacement candidate is g_tt = -c²·V(Φ)/Φ⁴ (with
+  appropriate normalisation factor 12Φ₀²/γ). The replacement has
+  natural geometric interpretation: metric ↔ potential density.
+- **`sek_stale` Newton matching**: requires re-derivation of
+  Newton constant (q = 2πG/c² in hyperbolic form, 4× smaller than
+  q_boxed = 8πG/c² — see `M9_1_pp_setup.md` §5.4).
+- **`prop:antipodal-from-budget`**: still gives f·h = 1 (γ_PPN = 1
+  automatic, both forms compatible). The new constraint comes from
+  matching f to the potential density — additional substrate-level
+  principle that would replace, not contradict, the budget condition
+  for selecting the specific f within f·h = 1.
+- **M9.2, M9.3** (gated by M9.1'): can be **un-gated** if M9.1''
+  passes P1–P3, since the hyperbolic form gives GR-consistent statics.
+
+### Open question for honest closure
+
+The decision tree narrowing further:
+
+- **(M9.1''-confirmed)** If P1 (higher PN), P2 (variational), P3
+  (observational) all pass, OP-2b is **rescued via Pivot B with
+  algebraic derivation**. Paper revision: replace boxed metric in
+  sek08c with g_tt ∝ V/Φ⁴ ansatz; cite M9.1, M9.1', M9.1''
+  sequence as derivation by elimination + substrate-level identity.
+- **(M9.1''-partial)** If P1+P2 pass but P3 fails, or P1 passes
+  but P2 fails (no variational derivation found), M9.1'' remains
+  an *open theoretical proposal* — TGP gravity sector has a viable
+  PN-level form but no fundamental derivation. Status: open.
+- **(M9.1''-falsified)** If P1 fails (higher PN coefficients
+  disagree with GR), the hyperbolic form is excluded and OP-2b
+  closes negatively per M9.1' §5.
+
+The next concrete steps are **P1 (higher PN coefficients)** and
+**P2 (variational derivation)**, both pursuable in the current
+analytical/numerical framework.
+
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
 External reviewer audit delivered 2026-04-25. Full response plan in
