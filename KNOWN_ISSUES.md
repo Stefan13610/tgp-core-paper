@@ -1370,6 +1370,99 @@ Audited independently:
   change required (separate review of that paper is in progress
   for unrelated issues).
 
+## 2026-04-25 — OP-7 T3 (sigma_ab dynamics): STRUCTURAL POSITIVE with Phi_0/m_sigma TENSION; EHT-quick: M9.1'' photon ring +14.6% (Sgr A* outside 10% bound)
+
+### Two-track update from 2026-04-25 second sprint
+
+After T1+T2 closure (kinematic half of OP-7), two parallel tracks ran:
+
+**Track A — OP-7 T3 (sigma_ab dynamics):**
+
+T3 has 4 sub-tests run in `TGP/TGP_v1/research/op7/`:
+- T3.1 (`op7_t3_sigma_dynamics.py`, 11/11 PASS): structural derivation
+  of EOM `box(sigma_ab) + m_sigma^2 sigma_ab = -xi T_ab^TT` via TWO
+  independent paths — (A) effective Lagrangian and (B) composite
+  inheritance from s-EOM. Path A and Path B agree structurally with
+  identification `m_sigma^2 = 2 m_s_eff^2` (composite mass = 2x base).
+  Single-Phi axiom preserved; TGP does NOT become scalar-tensor.
+- T3.2 (`op7_t3_2_m_sigma_scale.py`, 4/7 PASS): identifies critical
+  Phi_0/m_sigma TENSION. Natural m_sigma scale ~ Phi_0; cosmologically
+  motivated Phi_0 ~ Lambda_obs^(1/4) ~ meV would give m_sigma ~ meV,
+  which violates GW170817 dispersion bound (~2e-19 eV) by 16 orders.
+  Resolution paths: (R1) hypothesis C (massless) supported by
+  Bethe-Salpeter analysis (T3-extended), (R2) Phi_0 decoupled from
+  Lambda_obs, (R3) partial falsification testable at LIGO 3G.
+- T3.3 (`op7_t3_3_ghost_analysis.py`, 5/5 PASS): structural
+  ghost-free verdict. Path A Hamiltonian H = pi^2 + (1/4)(grad)^2 +
+  (1/2)m^2 sigma^2 positive-definite. Path B inherits H_s positivity.
+  No Ostrogradski. Massless C admissible with structural caveat
+  (no trivial protection mechanism in single-Phi Z_2 — needs T3-extended).
+- T3.4 (`op7_t3_4_xi_coupling.py`, 5/5 PASS): xi/G ~ 1.06 from
+  GW150914 strain matching (h_predicted=9.4e-22 vs observed 1e-21).
+  GR-equivalent quadrupole formula structurally; identifies three
+  smoking guns (LIGO 3G dispersion, LIGO O5+ 2PN deviation, ngEHT
+  photon ring).
+
+T3 verdict: STRUCTURAL POSITIVE 25/28 = 89% PASS, single-Phi axiom
+saved, ghost-free, GR-equivalent amplitude. **OPEN: Phi_0/m_sigma scale
+tension requires T3-extended (Bethe-Salpeter / 1-loop) to resolve.**
+
+See `TGP/TGP_v1/research/op7/OP7_T3_results.md` for full synthesis.
+
+**Track B — EHT-quick (M9.1'' static spherical photon ring):**
+
+EHT-quick (`TGP/TGP_v1/tooling/scripts/gravity/eht_photon_ring_m911.py`,
+5/6 PASS) solved the vacuum M9.1'' Phi-EOM via inward integration with
+DOP853 (rtol=1e-12) using 7-term PN tail boundary at r=1000 r_g (M9.1''
+P1 coefficients c_1=1, c_2=-1, c_3=5/3, c_4=-10/3, c_5=22/3, c_6=-154/9,
+c_7=374/9).
+
+Result: **TGP photon ring r_ph = 3.880 r_g (areal) vs GR 3.000 r_g**;
+critical impact parameter b_crit = 5.952 r_g vs GR 3 sqrt(3) = 5.196,
+giving **+14.6% shadow inflation**.
+
+- M87*: 45.48 uas vs EHT 42.0 +- ~3 uas → +8.3% (boundary)
+- Sgr A*: 62.01 uas vs EHT 51.8 +- 2.3 uas → +19.7% (**outside 10% bound**)
+
+EHT verdict: INCONCLUSIVE-leaning-NEGATIVE. M87* sits on EHT 2019
+systematics boundary; Sgr A* exceeds EHT 2022 envelope. Static spherical
+result is **independent of OP-7** (T1 proved sigma_ab=0 for static
+spherical), so adding tensor dynamics cannot rescue. The +14.6% effect
+is a robust falsifiable feature of M9.1''+single-Phi at strong field,
+traceable to the explicit 2PN deviation `(5/6) U^3` from M9.1'' P1.
+Future ngEHT (~1% precision) would unambiguously test this.
+
+See `TGP/TGP_v1/research/op7/EHT_quick_results.md` for full report.
+
+### Implications for paper
+
+OP-7 row of section 7 status table now reflects:
+- T1+T2 closed positive (kinematics)
+- T3 STRUCTURAL POSITIVE with explicit Phi_0/m_sigma tension flagged
+- T4-T6 still open
+- EHT-quick result ADDED as independent strong-field deviation (separate
+  from OP-7 sigma sector)
+
+**Critical operational decisions identified for next sprint:**
+1. **Phi_0 scale**: brainstorm 8.9 (Phi_0 ~ Lambda_obs^(1/4)) needs
+   refinement; Phi_0 may need decoupling from cosmological constant origin.
+2. **m_sigma from 1-loop**: Bethe-Salpeter analysis to confirm/reject
+   massless hypothesis C; otherwise TGP gives concrete LIGO 3G prediction.
+3. **EHT path forward**: accept +14.6% as testable smoking gun (passes
+   philosophical "GR is 1PN-only resonance"), or reconsider M9.1'' form
+   (very expensive given M9.1'' P2 triple convergence).
+4. **Paper integration timing**: deferred until T3-extended + T4 close.
+
+### Patches scheduled (not yet applied to paper)
+
+- Section 2 sigma_ab definition: still pending (deferred until T3+T4 close
+  so paper update can include both kinematics and dynamics consistently).
+- Section 7 OP-7 row: updated 2026-04-25 to show "kinematic half closed,
+  dynamical half STRUCTURAL POSITIVE with Phi_0 tension."
+- New corollary `cor:strong-field-deviation` to record EHT photon ring
+  result (deferred until M9.1'' P5 strong-field full analysis or 
+  acceptance as feature).
+
 ## Reporting new issues
 
 Please open an issue at
