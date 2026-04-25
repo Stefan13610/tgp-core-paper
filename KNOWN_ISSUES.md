@@ -727,7 +727,94 @@ P4 has now fully characterized the **paper integration side**.
 M9.1'' test plan from `M9_1_pp_setup.md` §6 is closed
 (P1 ✓, P2 ✓, P3 ✓, P4 ✓).
 
-## 2026-04-25 — external review: six critiques (C1–C6), disposition
+## 2026-04-25 — OP-7 T1+T2 (tensor sector kinematics): no-tensor structural for M9.1'' single-Φ; σ_ab from H_Γ as composite operator validated
+
+### Status
+
+**OP-7 kinematic foundations close positively.** Two structural tests:
+
+- **T1 (no-tensor for M9.1'' single-Φ)**: 7/7 PASS. SVT decomposition
+  shows that perturbations of the M9.1'' hyperbolic metric `ds² = -c₀²
+  (4-3ψ)/ψ dt² + ψ/(4-3ψ) δ_ij dx^i dx^j` driven by `δψ` give
+  **only** the breathing scalar mode; vector and TT sectors vanish
+  identically. Single-Φ is structurally incapable of producing 2 GR-
+  matching TT polarisations.
+
+- **T2 (σ_ab from H_Γ as composite)**: 12/12 PASS. The tensor projection
+  postulated in `tgp_core.tex` §2 ("One substrate, two projections") is
+  realised concretely as the **gradient strain tensor**:
+  ```
+  K_ab(x) = ⟨(∂_a ŝ)(∂_b ŝ)⟩_B
+  σ_ab(x) = K_ab - (1/3) δ_ab Tr(K)        (5 d.o.f. spin-2)
+  ```
+  All six required properties verified analytically (sympy) and
+  numerically (32³ lattice MC):
+  - bilinear in ŝ (composite, not new d.o.f.)
+  - Z₂-parity: σ(ŝ) = σ(-ŝ) (exact, lattice-checked)
+  - symmetric + traceless by construction
+  - SO(3)-covariant: σ(R[ŝ]) = R σ(ŝ) Rᵀ (sympy + lattice)
+  - σ_ab → 0 in isotropic vacuum (anisotropy 0.6%, < 1% noise floor)
+  - σ_ab ≠ 0 under binary-source quadrupole (16x noise floor signal,
+    x↔y broken with axisymmetry around binary axis: σ_xx ≠ σ_yy = σ_zz,
+    consistent with GW150914 geometry).
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| OP-7 master plan | `TGP/TGP_v1/research/op7/OP7_setup.md` | 6-test plan T1–T6 (kinematic + dynamic + consistency). |
+| T1 implementation | `TGP/TGP_v1/research/op7/op7_t1_no_tensor.py` | sympy SVT decomposition under M9.1'' ansatz. |
+| T1 raw output | `TGP/TGP_v1/research/op7/op7_t1_no_tensor.txt` | 7/7 PASS. |
+| T1 verdict | `TGP/TGP_v1/research/op7/OP7_T1_results.md` | POSITIVE. Single-Φ M9.1'' structurally has only breathing mode; σ_ab extension gives exactly 2 d.o.f. TT after transverse + traceless conditions. |
+| T2 implementation | `TGP/TGP_v1/research/op7/op7_t2_sigma_from_HGamma.py` | sympy (Z₂ + SO(3)) + numpy lattice MC (vacuum, quadrupole, parity, covariance). |
+| T2 raw output | `TGP/TGP_v1/research/op7/op7_t2_sigma_from_HGamma.txt` | 12/12 PASS. |
+| T2 verdict | `TGP/TGP_v1/research/op7/OP7_T2_results.md` | POSITIVE. σ_ab is well-defined emergent composite operator from H_Γ kinetic term. |
+
+### Implications
+
+1. **Single-substrate axiom preserved (TGP_FOUNDATIONS §1).** σ_ab is
+   NOT an independent tensor field — it's a composite of single ŝ via
+   the gradient bilinear. TGP remains single-Φ Z₂ scalar theory; it is
+   NOT scalar-tensor.
+
+2. **GW170817 conditional tension status (M9.1'' P3) clarified.** The
+   tension arises because single-Φ M9.1'' produces only scalar (breathing)
+   GW signal — strictly inconsistent with 2-polarisation LIGO/Virgo
+   detection. T1+T2 confirm this is **not a falsification of TGP**, but
+   a **mandate for σ_ab dynamics + metric coupling** (T3–T5).
+
+3. **C4 critique (LIGO 5% bound) status update.** P1.4 patch noted that
+   tensor GW polarisations require OP-7. T1+T2 close the **kinematic**
+   half of OP-7: σ_ab exists, has 5 d.o.f., reduces to 2 d.o.f. under TT
+   (= h+, h×). The **dynamical** half (T3–T5) remains: equations of
+   motion, metric coupling Λ(ψ), quadrupole formula amplitude.
+
+4. **Concrete formula upgrade to paper §2.** Paper currently writes
+   σ_ab ∝ ⟨ŝ·ŝ_{+â}⟩^TF (nearest-neighbor bilinear). T2 shows this
+   is problematic in ordered phase (dominated by v₀² constant). The
+   correct natural composite from H_Γ kinetic term is the **gradient
+   strain** K_ab - (1/3) δ_ab Tr(K). Paper §2 Remark "One substrate, two
+   projections" should be updated to reflect this in subsequent paper
+   revision (deferred until T3+T5 close, to update §2 atomically with
+   tensor sector EOM and amplitude).
+
+### Remaining open work (post-T1+T2)
+
+- **OP-7 T3** (HIGH): variational derivation of σ_ab dynamics
+  `□σ_ab + m_σ² σ_ab = -ξ T_ab^TT` from S_TGP[ŝ] (mass term from MF
+  self-consistency).
+- **OP-7 T4** (HIGH): metric coupling
+  `g_ij = h(ψ) δ_ij + Λ(ψ) σ_ij`, ghost-free, c_GW = c₀ at vacuum.
+- **OP-7 T5** (HIGH): quadrupole formula `h+, h× ∝ Q̈_ij/r`; matching
+  ξ_eff to GW150914 amplitude.
+- **OP-7 T6** (MED): full PPN consistency (σ=0 for spherical sources),
+  Z₂-parity at metric level.
+
+OP-7 is currently at 2/6 (T1+T2 closed). The remaining 4 tests
+together close the dynamical and consistency halves; success would
+unconditionally remove the GW170817 tension and the C4 over-claim.
+
+
 
 External reviewer audit delivered 2026-04-25. Full response plan in
 `TGP/TGP_v1/research/external_review_2026-04-25/review_response_plan.md`.
