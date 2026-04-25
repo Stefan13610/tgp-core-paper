@@ -1463,6 +1463,101 @@ OP-7 row of section 7 status table now reflects:
   result (deferred until M9.1'' P5 strong-field full analysis or 
   acceptance as feature).
 
+## 2026-04-25 — OP-7 T3-extended (Bethe-Salpeter + symmetry protection): Phi_0/m_sigma TENSION RESOLVED via spectral decoupling
+
+### Status
+
+**T3 dynamical-half closure improved from MIXED (89%) to STRUCTURAL POSITIVE
+(94%, 44/47).** The Phi_0/m_sigma tension identified in T3.2 — naturally
+m_sigma ~ Phi_0 ~ meV vs GW170817 bound m_sigma < 2e-19 eV (16 orders
+discrepancy) — is **structurally resolved** by the combination of:
+
+- **T3.5 (Bethe-Salpeter spectral analysis, 10/10 PASS):** "m_sigma^2 =
+  2 m_s^2" from T3.1 is the leading Källén-Lehmann moment, **NOT** an
+  isolated propagator pole. Free composite sigma_ab has spectral continuum
+  from threshold s = 4 m_s^2 with kinematic suppression rho_TT(s) ~ (1 -
+  4m_s^2/s)^(5/2). For natural TGP coupling g_natural ~ O(1), the system
+  sits in the **S1 free continuum regime** (g_natural / g_crit_low ≈ 0.029
+  for cutoff Lambda/m=10), with NO bound state pole below threshold.
+
+- **T3.6 (symmetry protection scenarios, 9/9 PASS):** Three distinct
+  mechanisms found admissible:
+  - **(P4) Decoupling [PREFERRED]:** spectral gap from 0 to 2 m_s ~ meV;
+    omega_LIGO ~ 4e-13 eV sits **10 orders of magnitude** in gap. sigma_ab
+    propagator analytic, no mass-like dispersion correction visible to
+    LIGO. Phi_0 ~ Lambda_obs^(1/4) ~ meV (sec.8.9 brainstorm) preserved.
+  - **(P3) Sakharov induced gravity [admissible, pending T4]:** Phi_0 ~
+    M_Planck * sqrt(192 pi^2) ~ 10^29 eV; emergent diff invariance protects
+    m_h_emergent = 0; sigma_ab inherits via Lambda(psi)*sigma_ab = h_TT
+    identification (T4 test).
+  - **(P5) ULDM [admissible]:** Phi_0 ~ 1e-22 eV (ultralight DM scale);
+    sigma_ab fundamentally light; Phi_0 = Lambda_obs link sacrificed but
+    TGP gains ULDM dark matter candidacy.
+
+- **(P1) Z_2 Goldstone:** structural NO — discrete symmetry, no Goldstone.
+- **(P2) Translation Goldstone:** local only — vacuum sigma=0 in isotropy,
+  no protection for long-wavelength GW propagation.
+
+**Verdict T3 (full):** 44/47 = 94% PASS, **STRUCTURAL POSITIVE** with
+Phi_0/m_sigma tension RESOLVED via spectral decoupling. Single-Phi axiom
+preserved; TGP does not become scalar-tensor.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| T3.5 implementation | `TGP/TGP_v1/research/op7/op7_t3_5_bethe_salpeter.py` | sympy spectral density rho_TT + scipy bubble integral + brentq pole search; cutoff-regulated Pi(s) for physical g_crit. |
+| T3.5 raw output | `TGP/TGP_v1/research/op7/op7_t3_5_bethe_salpeter.txt` | 10/10 PASS. |
+| T3.6 implementation | `TGP/TGP_v1/research/op7/op7_t3_6_symmetry_protection.py` | 5-scenario analysis (Z_2, translation, Sakharov, decoupling, ULDM); decoupling check m_s/omega_LIGO ~ 10^10. |
+| T3.6 raw output | `TGP/TGP_v1/research/op7/op7_t3_6_symmetry_protection.txt` | 9/9 PASS. |
+| Synthesis verdict | `TGP/TGP_v1/research/op7/OP7_T3_extended_results.md` | Three viable scenarios (decoupling preferred); Phi_0/m_sigma resolution detailed. |
+| Updated status table | `TGP/TGP_v1/research/op7/OP7_setup.md` | T3 row: POSITIVE 44/47=94%, 2026-04-26. |
+
+### Implications
+
+1. **Cosmologically motivated Phi_0 ~ meV is now structurally GW-safe.**
+   Before T3-extended: tension by 16 orders. After: spectral gap 2 m_s ~
+   meV >> omega_LIGO ~ 10^-13 eV by 10 orders; effective masslessness in
+   GW-relevant frequency range.
+
+2. **Three viable scenarios refine TGP testability:**
+   - (A) Decoupling: predicts visible deviation only at omega ~ 2 m_s ~
+     meV ~ 250 GHz. Outside LISA (mHz), Cosmic Explorer (10 kHz), Einstein
+     Telescope (10 kHz). Visible ONLY in proposed THz GW detectors or
+     primordial PBH inspirals.
+   - (B) Sakharov: Phi_0 ~ M_Planck; predicts pure GR-like dispersion.
+     Hardest to falsify; requires T4 verification.
+   - (C) ULDM: Phi_0 ~ 1e-22 eV; ULDM dark matter signatures + GW
+     dispersion at LIGO 3G (~2030).
+
+3. **Single-Phi Z_2 axiom retained.** sigma_ab remains composite operator
+   from same substrate; no new tensor d.o.f. introduced.
+
+4. **Brainstorm sec.8.6 (TGP as Sakharov) and sec.8.9 (Phi_0 ~ Lambda_obs)
+   are NON-EXCLUSIVE.** Decoupling scenario (A) realizes both
+   simultaneously: Phi_0 ~ meV preserves cosmological constant link, while
+   spectral gap provides effective masslessness.
+
+5. **T4 (Lambda(psi) metric coupling) becomes critical path.** T4 will
+   determine whether Sakharov P3 path is structurally selected (via
+   Lambda(psi)*sigma_ab = h_TT_emergent identification), or whether
+   decoupling scenario A is the natural pick.
+
+6. **Track B (EHT) status unchanged.** EHT-quick verdict
+   INCONCLUSIVE-leaning-NEGATIVE (Sgr A* shadow +19.7% outside 10%
+   envelope) is independent of sigma_ab dynamics; depends on M9.1'' static
+   spherical strong-field nonlinearity. Resolved by ngEHT (~2030+) or
+   M9.1'' P5 strong-field rewrite.
+
+### Patches scheduled (not yet applied to paper)
+
+- Section 2 sigma_ab definition: STILL pending (now deferred until T4
+  closes, since scenario A vs B affects which Lambda(psi) form to print).
+- Section 7 OP-7 row: requires re-update from "MIXED (25/28)" to
+  "POSITIVE (44/47, T3-extended decoupling resolution)."
+- Abstract footnote on c_GW = c_0: still valid; TGP scalar sector luminal,
+  tensor sector decoupled-massless for LIGO band.
+
 ## Reporting new issues
 
 Please open an issue at
