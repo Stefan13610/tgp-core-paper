@@ -36,11 +36,20 @@ be dynamical. Test A (MK-RG in Φ-variables,
   is salvageable. If μ → irrelevant, OP-2b is fundamentally open.~~
   → **Completed 2026-04-25; see entry below.**
 - **P3.1 Z_Φ in MK-RG:** wave-function renormalisation of composite.
-  Now leading candidate for OP-2b after Test A negative.
+  ~~Now leading candidate for OP-2b after Test A negative.~~
+  → **Completed 2026-04-25 as M5; see entry below. NEGATIVE.**
 - **P3.2 GL-bond operator in MK-RG:** bond flow, not just on-site.
-  Now leading candidate for OP-2b after Test A negative.
+  ~~Now leading candidate for OP-2b after Test A negative.~~
+  → **Completed 2026-04-25 as M6 (Track A) + M7 (Track B); see entries
+  below. M6 closure-in-principle at unphysical J_GL ≈ 5.89; M7 shows
+  J_GL is strongly irrelevant at the M3 FP. NEGATIVE.**
 - **P3.3 OP-7 (tensor sector):** 2 polarisations for GR-matching GW.
-- **P3.4 NPRG:** last-resort cross-check; can verify P3.1+P3.2.
+  Now the only remaining structural path for restoring β = γ at
+  criticality after M3–M8.
+- **P3.4 NPRG:** last-resort cross-check.
+  → **Completed 2026-04-25 as M8; see entry below. CONFIRMS M3–M7
+  verdict at scheme-independent level (β/γ at FP minimum is
+  universally negative).**
 
 ## 2026-04-25 — Test A (M4): H-S Jacobian does NOT close OP-2b
 
@@ -262,6 +271,99 @@ J_GL); that off-diagonal mixing in the full operator basis cannot
 produce a relevant eigenvector with non-trivial GL component;
 that single-site MK-RG is the right framework (NPRG is the
 gold-standard cross-check).
+
+## 2026-04-25 — M8 (NPRG/Wetterich, P3.4): non-perturbative cross-check **CONFIRMS** M3–M7 verdict on OP-2b
+
+### Status
+
+OP-2b is **CONFIRMED OPEN** at the level of single-component scalar
+Z₂ field theory. The non-perturbative gold-standard cross-check
+(Wetterich exact RG in LPA with Litim regulator, polynomial
+truncation around `ρ̃ = 0`) reproduces the 3D Ising Wilson–Fisher
+fixed point with literature precision and yields a **same-sign**
+result on the scheme-independent observable `β/γ` evaluated at the
+FP minimum:
+
+```
+ν_LPA(N=10) = 0.6492        (literature: 0.6496, agreement to 0.05%)
+β/γ at FP minimum (NPRG):    -0.326
+β/γ at FP minimum (MK-RG):   -0.444   (same formula, evaluated at MK FP)
+```
+
+Both schemes give `β/γ < 0`, confirming that the OP-2b gap is a
+**universality-class feature of 3D single-component scalar Z₂
+field theory**, not an artefact of the Migdal–Kadanoff scheme. All
+five investigations (M3, M4, M5, M6, M7) and the non-perturbative
+cross-check (M8) now agree at the scheme-independent level.
+
+A subtle but important second finding: the **polynomial-coefficient
+ratio** `B*/Γ* = (3/2)(a_3/a_4)` taken literally as the "same"
+observable across schemes has **opposite signs** in NPRG and MK-RG
+(NPRG: `+0.367` at N=10, MK-RG: `−0.5687`). This is a scheme
+convention difference (Taylor expansion at `ρ̃ = 0` vs. derivatives
+at the FP minimum), not a physical disagreement. Quantities of the
+form `β/γ` should be read at the FP minimum, where they are
+LPA-invariant; polynomial-coefficient ratios at `ρ̃ = 0` mix
+short-distance shape information with vacuum-point physics.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Analytical setup | `TGP/TGP_v1/research/op1-op2-op4/M8_NPRG_setup.md` | LPA flow eq. for Litim regulator in d=3, polynomial truncation around `ρ̃=0`, FP equations (3-k)·a_k = c·[1/(1+m²)]_k, mapping to MK-RG (a_3/a_4 = (2/3)(B/Γ)), validation gate ν ∈ [0.55, 0.70], decision matrix on `a_3/a_4`. |
+| Implementation | `TGP/TGP_v1/research/op1-op2-op4/nprg_lpa_3d.py` | Polynomial-truncation FP solver via fsolve; structured grid of initial guesses (MK-RG-inspired alternating signs + 20 random fallbacks); WF validation (residual < 1e-6, exactly 1 positive eigenvalue, ν gate). Scheme-independent β/γ at FP minimum via brentq for `v'_*(ρ̃_0) = 0` plus chain-rule on derivatives. |
+| Numerical result | `nprg_lpa_3d_results.txt` | N=2 analytic seed reproduced (a₁ = -1/13, ν = 0.5427). WF FP found at N = 4, 5, 6, 7, 8, 10 (unique distinct a₃/a₄ at each N). N=10: a₁ = -0.1859, a₂ = +2.4322, a₃ = +11.08, a₄ = +45.26, ν = 0.6492. N ≥ 12: no WF root (small radius of convergence around ρ̃=0). β/γ at ρ̃₀ = 0.0306: NPRG -0.326, MK -0.444 (both negative). |
+| Verdict | `M8_results.md` | Two-level analysis: (i) polynomial ratio is scheme-dependent and flips sign across schemes; (ii) scheme-independent `β/γ` at FP minimum has same sign in both schemes. OP-2b confirmed open at universality-class level. |
+
+### Implications
+
+- **No paper edits beyond what was already in place.** The v2 paper
+  already lists OP-2b as open after M3-M7; M8 confirms this
+  disposition at the non-perturbative level. The result strengthens
+  rather than changes the v2 disposition.
+- **`thm:beta-eq-gamma-triple` is genuinely unrescuable at the level
+  of single-component scalar Z₂ field theory.** All four channels
+  considered (bilinear bond, H-S Jacobian, Z_Φ, GL bond) plus the
+  non-perturbative gold-standard treatment fail to produce `β = γ`
+  at the WF FP. Closure requires multi-component physics (tensor
+  sector / OP-7), composite-operator mixing beyond LPA, or a
+  fundamentally different substrate ansatz.
+- **Subtle pedagogical point on observable choice:** quantities
+  reported as "ratios of polynomial coefficients at the origin"
+  should be replaced by "ratios of derivatives at the FP minimum"
+  whenever cross-scheme comparison is intended. M3-M7 implicitly
+  used the former; the M8 cross-check shows that the latter is the
+  correct invariant. Future M-series tests should use the FP-minimum
+  observable directly.
+- **Candidate ordering after M3-M8:**
+  1. **OP-7 (tensor sector, P3.3)** — only remaining structural path
+     for restoring `β = γ` at criticality, via multi-component or
+     tensor-mediated mechanism. This is the natural next investment.
+  2. Full operator-basis Jacobian at the extended FP (P3.2-Track-B
+     extended) — would search for relevant eigenvectors not aligned
+     with any single channel, but is now lower-priority since M8
+     already confirms the universality-class verdict at the
+     non-perturbative level.
+  3. LPA' (anomalous-dimension `η` flow) and broken-phase
+     polynomial expansion as quantitative refinements (M9 if
+     percent-level accuracy on β/γ is wanted).
+
+### What this proves and what it does not
+
+**Proves:** The Wetterich LPA with Litim regulator at d=3 has a WF
+FP with literature-matching `ν`, and at that FP the
+scheme-independent observable `β/γ` is negative, agreeing in sign
+with MK-RG. The OP-2b gap is a feature of 3D Ising universality at
+single-component scalar level, not of the MK scheme.
+
+**Does not prove:** That the result holds beyond LPA (`η ≠ 0`
+corrections); that it holds in multi-component / tensor extensions
+(OP-7); that the polynomial truncation around `ρ̃ = 0` would extend
+to N ≥ 12 (it does not, due to radius-of-convergence issues — but
+N = 10 already locks in `ν` to four significant digits). The
+Litim regulator was the only one tested; regulator-independence at
+LPA level is expected for sign-of-`β/γ`-at-FP-minimum but was not
+explicitly verified.
 
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
