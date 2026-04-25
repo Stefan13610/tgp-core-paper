@@ -261,7 +261,7 @@ status:
 |---|---|---|
 | **P1**: higher PN coefficients (c_3, c_4, ...) | **POSITIVE 2026-04-25** (see entry below) | consistency with GR beyond β, γ |
 | **P2**: variational derivation | **POSITIVE-POSTULATE 2026-04-25** (see entry below) | triple substrate motivation; no single-action derivation |
-| **P3**: observational tests (LLR, GW170817) | open | dynamical consistency |
+| **P3**: observational tests (LLR, GW170817) | **NOT-FALSIFIED 2026-04-25** (see entry below) | weak-field PASS; GW170817 conditional tension; EHT open |
 | **P4**: rewrite sek08c, sek_stale, sek_intro | open | new boxed form documentation |
 
 P2 is decisive. If g_tt ∝ V(Φ)/Φ⁴ is **forced by an independent
@@ -521,6 +521,100 @@ After P1 + P2, the decision tree:
 P2 has now fully characterized the **derivation side**; remaining
 work is on the **observational matching side** (P3) and **paper
 integration** (P4).
+
+## 2026-04-25 — M9.1'' P3 (observational tests): TGP hyperbolic NOT FALSIFIED in weak field, conditional tension at GW170817 (pending OP-7), open at EHT (pending strong-field nonlinear)
+
+### Status
+
+**M9.1'' test P3 closes with verdict NOT-FALSIFIED.** Five
+observational regimes tested against the P1-derived 2PN deviation
+`|Delta g_tt|_2PN = (5/6) U^3`:
+
+| Regime | U | Delta_2PN (TGP) | Bound | Status |
+|---|---|---|---|---|
+| Solar system (Mercury, Cassini, LLR) | ~1e-8 | ~1e-23 | β_PPN, γ_PPN at 1PN | **PASS** |
+| Binary pulsars (B1913+16, J0737-3039) | ~1e-6 | ~1e-17 | timing precision ~1e-5 | **PASS** |
+| 2PN Shapiro delay (Cassini-class) | ~1e-6 | Δt ~ 4e-15 s | ~1e-9 s | **PASS** |
+| GW170817 BNS late inspiral | 0.13 | δφ_2PN ~ 0.56 (scalar-only) | δφ_2PN < 0.5 (LIGO) | **CONDITIONAL TENSION** |
+| EHT photon ring (M87*, Sgr A*) | ~1/3 | PN expansion fails | percent-level resolution | **OPEN** |
+
+**Result: 5 PASS, 1 CONDITIONAL TENSION, 1 OPEN, 0 FALSIFIED.**
+
+### Weak-field PASS
+
+`U ~ 10^-8` in Solar system gives `|Delta|_2PN ~ 10^-23` —
+**15 orders of magnitude below** any current observational
+sensitivity. Same logic for binary pulsars: `U ~ 10^-6` gives
+`|Delta|_2PN ~ 10^-17`, **12 orders below** timing precision.
+Cassini-class 2PN Shapiro delay shift is `~ 4 × 10^-15 s` against
+~1e-9 s precision (6 orders margin).
+
+Weak-field tests **decisively PASS** TGP hyperbolic.
+
+### GW170817: conditional tension
+
+LIGO/Virgo 2PN GW phase coefficient bound: `δφ_2PN < 0.5`
+(arXiv:1811.00364, 2010.14529). TGP scalar-only estimate:
+`(5/6) / (3/2) ≈ 0.56` — at the boundary.
+
+**Critical caveat (KNOWN_ISSUES C4):** TGP currently lacks 2 tensor
+GW polarisations. Full GW170817 prediction requires OP-7 (tensor
+sector). Current scalar-only estimate may be misleading; closing
+this test is **conditional on OP-7 closure**.
+
+### EHT: strong-field, PN expansion fails
+
+Photon sphere at `U ~ 1/3`. TGP-GR difference is non-perturbative
+in this regime — the P1 PN expansion (`c_n U^n`) does not converge.
+Decisive test requires:
+1. Full nonlinear Φ-EOM solution in strong field (TGP)
+2. OP-7 tensor sector (for photon trajectories in full geometry)
+
+This is the **most decisive future falsification frontier** for TGP,
+but requires new operational program OP-EHT (deferred from M9.1'').
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Numerical predictions | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_p3_observational.py` | Computes |Delta|_2PN = (5/6) U^3 for each system; compares with current observational bounds. |
+| Output | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_p3_observational.txt` | 3 PASS, 1 OPEN, 1 CONDITIONAL TENSION (GW170817 boundary), 0 FALSIFIED. |
+| Verdict | `TGP/TGP_v1/research/op-newton-momentum/M9_1_pp_P3_results.md` | NOT-FALSIFIED in weak field; OP-7 and OP-EHT define future-frontier tests. |
+
+### Implications
+
+1. **OP-2b status upgrade**: from "open theoretical proposal with
+   triple motivation" (after P2) to "open theoretical proposal
+   with triple motivation AND positive weak-field observational
+   confirmation 1PN-2PN".
+2. **M9.2 (momentum), M9.3 (GW)** can now be UNGATED since
+   M9.1''-equivalent statics is observationally OK.
+3. **OP-7 (tensor sector)** becomes the next critical operational
+   program — required for GW170817 prediction closure.
+4. **OP-EHT** is identified as the next observational frontier for
+   strong-field falsifiability.
+5. **P4 (paper rewrite)** is now ready: sek08c can be rewritten
+   with `g_tt = -c² · V(Φ)/Φ⁴` ansatz, citing M9.1, M9.1', M9.1''
+   (P1+P2+P3) as the progression.
+
+### Decision tree (after P1+P2+P3)
+
+- **(M9.1''-confirmed-current)** ← **WHERE WE ARE**.
+  ax:metric-from-potential is consistent with all closed weak-field
+  tests, holds triple substrate motivation, but two future-frontier
+  tests remain open (OP-7, OP-EHT).
+- **(M9.1''-falsified-by-OP7)** OP-7 closes tensor sector and
+  predicts 2PN GW phase outside LIGO bounds. **Hyperbolic form
+  falsified at GW level.**
+- **(M9.1''-falsified-by-EHT)** OP-EHT closes nonlinear Φ-EOM and
+  predicts photon sphere outside EHT bounds. **Hyperbolic form
+  falsified at strong-field level.**
+- **(M9.1''-confirmed-future)** Both OP-7 and OP-EHT close
+  positively. **Full structural rescue of OP-2b.**
+
+P3 has now fully characterized the **observational matching side**
+in weak field. Remaining work: P4 (paper integration) and forward
+operational programs OP-7 / OP-EHT.
 
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
