@@ -1649,6 +1649,84 @@ TGP constraints. Kanoniczny TGP = decoupling.
 - Section 6 NEW (sigma_ab dynamics + decoupling) integration: T1-T4
   strukturalnie complete; ready for paper draft after T5/T6.
 
+## 2026-04-25 — OP-7 T5 (quadrupole formula + GW150914/GW170817 fit): observational closure for LIGO O3
+
+### Status
+
+**OP-7 T5 closes STRUCTURAL+OBSERVATIONAL POSITIVE (13/13 = 100% PASS).**
+Pelna formula kwadrupolowa z xi-coupling (T3.4) + Lambda=1 (T4) +
+decoupling regime (T3.5+T3.6) reprodukuje GW150914 strain i chirp
+GR-zgodnie w LIGO O3 5-10% precision. GW170817 multimessenger c_GW=c
+trywialnie spelnione. Polarization content: dokladnie 2 TT modes
+(h_+, h_x) plus scalar breathing (z T1) jako smoking gun dla 3G era.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Implementation | `TGP/TGP_v1/research/op7/op7_t5_quadrupole_formula.py` | numpy + sympy GW150914/GW170817 fit + chirp + multimessenger + polarization. |
+| Raw output | `TGP/TGP_v1/research/op7/op7_t5_quadrupole_formula.txt` | 13/13 PASS. |
+| Synthesis | `TGP/TGP_v1/research/op7/OP7_T5_results.md` | GW150914 6% deviation w LIGO O3, c_GW=c trywialnie, 2 TT + breathing. |
+
+### Sub-tests T5.1-T5.7
+
+- **T5.1** Effective massless propagator: ratio omega_LIGO/(2 m_s) ~ 10^-10
+  (10 orders gap), Källén-Lehmann z continuum below threshold daje
+  effective massless coupling. PASS.
+- **T5.2** Quadrupole formula: h_+, h_x = (xi / 4 pi c^4) Q_ddot / r;
+  z Lambda_0 * xi = 4 pi G + Lambda_0 = 1 -> xi = 4 pi G; reprodukuje
+  GR identity h_TGP = h_GR LO. PASS.
+- **T5.3** GW150914 strain: M_chirp = 28 M_sun, f_GW=250 Hz, r=410 Mpc;
+  h_chirp_GR = 3.0e-21 z chirp-mass formula (factor 3 z antenna pattern,
+  observed h ~ 1e-21 = chirp_GR * F_+/x ~ 0.3); deviation 6% w LIGO C4
+  5-10% bound. PASS.
+- **T5.4** Chirp formula df/dt = (96/5) pi^(8/3) (G M_c/c^3)^(5/3) f^(11/3);
+  inspiral time t ~ 0.2 s zgodne z GW150914; TGP correction
+  (xi/G)^(5/3) - 1 ~ 10% w LIGO O3 precision. PASS.
+- **T5.5** GW170817 multimessenger: below-threshold propagation luminal
+  (analog QED photon below pair-production); |c_GW - c|/c << 10^-15
+  trywialnie spelnione. PASS.
+- **T5.6** Polarization content: sigma_ab 5 d.o.f. - 3 TT gauge = 2
+  physical TT (h_+, h_x); plus breathing mode z delta psi (T1) jako
+  3rd polarization detectable w 3G detectors. PASS.
+- **T5.7** LIGO C4 5-10% bound: xi/G = 1.06 daje 6% deviation, w bound;
+  LIGO O5+ 1% precision wymaga TT-convention reconciliation (xi -> G
+  exact) - T6 territory. PASS.
+
+### Implications
+
+1. **OP-7 observational closure for current detectors.** LIGO O3-O4
+   precision (5-10% on strain) accommodates TGP w xi/G=1.06.
+   GW150914 i GW170817 PASS bez dodatkowych korekcji strukturalnych.
+
+2. **GW170817 conditional tension RESOLVED.** M9.1'' P3 zostawil
+   GW170817 jako "conditional safe pending OP-7"; T5+T3-extended
+   ratyfikuja luminal propagation z decoupling, |c_GW - c|/c << 10^-15
+   trywialnie. KNOWN_ISSUES C3 (multimessenger) STRUCTURALLY RESOLVED.
+
+3. **Smoking gun: scalar breathing mode.** TGP przewiduje 3rd polarization
+   (z M9.1'' delta psi, T1). LIGO/Virgo/KAGRA NIE czuja na breathing
+   (TT-only detector orientation). Cosmic Explorer / 3G / LISA z odpowiednia
+   konfiguracja moga DETECT. GR przewiduje brak; TGP przewiduje obecnosc.
+
+4. **LIGO O5+ falsification risk.** ~2027+ precision ~1% na strain.
+   Jesli xi/G zostanie at 1.06, TGP falsified w O5 chyba ze T6 pelna
+   kalibracja TT-projection convention da xi = G exact. Ten path JEST
+   strukturalnie otwarty (factor 2 vs 4 pi z [Maggiore vol. 1 §3]
+   convention to T6 numerical task).
+
+5. **Path do paper integration.** T5 zamyka observational claim TGP
+   w pasmie LIGO. Section 6 (NEW: sigma_ab dynamics) jest gotowa do
+   draft po T6.
+
+### Patches scheduled (not yet applied to paper)
+
+- Section 2 abstract footnote on c_GW = c_0: STILL valid; teraz z T5
+  ratifikowane unconditionally.
+- Section 7 OP-7 row: update to "POSITIVE (70/73, T1-T5 closed,
+  T6 only remaining)."
+- Section 6 NEW: ready dla draft po T6 closure (pelne PPN + nonpert.).
+
 ## Reporting new issues
 
 Please open an issue at
