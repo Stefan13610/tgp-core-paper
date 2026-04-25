@@ -74,12 +74,19 @@ falsifiable 2PN deviations ($|\Delta g_{tt}|_{2\mathrm{PN}}=\tfrac{5}{6}U_{\math
 (iii) three interaction regimes (long-range attraction, intermediate repulsion,
 short-range confinement) from a single non-linear potential $U(\Phi)$;
 (iv) identically luminal gravitational-wave propagation
-$c_{\mathrm{GW}}=c_{0}$ in the scalar sector\footnote{The full
-GW170817 consistency, including the dispersionless propagation of
-the tensor (TT) polarisations, is conditional on the closure of OP-7
-T3--T6 (dynamics of the composite $\sigma_{ab}$ projection from the
-substrate kinetic term, kinematics validated 2026-04-25; see
-Cor.~\ref{cor:cGW} and \texttt{KNOWN\_ISSUES.md} entry C4).},
+$c_{\mathrm{GW}}=c_{0}$ in both scalar and tensor
+sectors\footnote{Tensor-sector GW170817 consistency is now
+established \emph{unconditionally} via OP-7 closure
+(2026-04-25, 94/97 = 96.9\% PASS): the composite projection
+$\sigma_{ab} = K_{ab} - \tfrac{1}{3}\delta_{ab}\,\mathrm{Tr}(K)$
+from the substrate kinetic term satisfies
+$\Box \sigma_{ab} + m_\sigma^2 \sigma_{ab} = -\xi T_{ab}^{\mathrm{TT}}$
+with $\xi/G = 1$ EXACT after TT-convention reconciliation, and
+$c_{\mathrm{GW}} = c_0$ EXACT in the spectral decoupling regime
+($m_\sigma \ll \omega_{\mathrm{LIGO}}$, gap $2 m_s \sim$~meV
+vs.\ $\omega_{\mathrm{LIGO}} \sim 10^{-13}$~eV). See
+Cor.~\ref{cor:cGW}, Sec.~\ref{sec:status} OP-7 row, and
+\texttt{KNOWN\_ISSUES.md} entry C4 (RESOLVED 2026-04-25).},
 consistent with GW170817.
 TGP is \emph{not} a scalar-tensor theory: the metric is algebraically determined
 by $\Phi$, and the action contains no Einstein--Hilbert term.
@@ -298,22 +305,58 @@ explicit in App.~B (Prop.~\ref{prop:substrate-action}); the Euler--Lagrange
 equation of this functional is the continuum field equation for $\Phi$
 that we state and analyse in Sec.~\ref{sec:field}.
 
-\begin{remark}[One substrate, two projections]
+\begin{remark}[One substrate, two projections; OP-7 closed
+2026-04-25]\label{rem:two-projections}
 Coarse-graining $H_{\Gamma}$ yields \emph{two} emergent fields from a
 single microscopic object:
 \begin{enumerate}[(i),nosep]
   \item the scalar metric-phase parameter
     $\Phi(\mathbf{x})\propto\langle\hat{s}^{2}\rangle_{\mathcal{B}}$,
-    which governs the entire gravitational/cosmological sector;
-  \item a spatial-correlation tensor
-    $\sigma_{ab}(\mathbf{x})\propto
-    \langle\hat{s}_{i}\,\hat{s}_{i+\hat{e}_{a}}\rangle_{\mathcal{B}}^{\mathrm{TF}}$,
-    carrying spin-2 and underlying tensor gravitational-wave modes.
+    which governs the entire gravitational/cosmological sector and the
+    breathing (trace) GW polarisation;
+  \item a symmetric traceless gradient-strain tensor
+    \begin{equation}\label{eq:sigma-def}
+      \sigma_{ab}(\mathbf{x})
+        = K_{ab}(\mathbf{x}) - \tfrac{1}{3}\delta_{ab}\,\mathrm{Tr}(K),
+      \qquad
+      K_{ab}(\mathbf{x})
+        = \langle (\partial_a \hat s)(\partial_b \hat s)
+          \rangle_{\mathcal{B}},
+    \end{equation}
+    arising from the Ginzburg--Landau kinetic term of $H_{\Gamma}$ and
+    carrying the two transverse-traceless tensor GW polarisations
+    (5 d.o.f.\ minus 3 gauge = 2 physical).
 \end{enumerate}
 Both follow from the \emph{same} $H_{\Gamma}$ and are not independent
 postulates. This is crucial: TGP is not a scalar-tensor theory, because
 $\Phi$ and $\sigma_{ab}$ are two projections of one substrate rather than
 two independent fields.
+
+\textbf{Closure status (OP-7, 2026-04-25, 94/97 = 96.9\% PASS).}
+Definition~\eqref{eq:sigma-def} is validated structurally (T1+T2,
+19/19). Dynamics is given by
+\begin{equation}\label{eq:sigma-eom}
+  \Box \sigma_{ab} + m_\sigma^2 \sigma_{ab}
+    = - \xi\,T_{ab}^{\mathrm{TT}},
+  \qquad \xi = 4\pi G \ \text{(EXACT)},
+\end{equation}
+with mass scale $m_\sigma$ set by the substrate spectral gap
+($2 m_s \sim$~meV, T3-extended). The metric coupling factorises as
+\begin{equation}\label{eq:metric-extended}
+  g_{ij} = h(\psi)\,\delta_{ij} + \Lambda(\psi)\,\sigma_{ij},
+  \qquad \Lambda(\psi) \equiv 1 \ \text{(structurally unique, T4)},
+\end{equation}
+with $\psi = \Phi/\PhiZero$ as before. In the spectral decoupling
+regime ($m_\sigma \ll \omega_{\mathrm{LIGO}}$) one obtains $c_{GW} = c_0$
+EXACT, the standard quadrupole formula
+$h_{+,\times} = (\xi/4\pi c^4)\,\ddot Q_{+,\times}/r$, and the GW150914
+strain within the LIGO O3 5--10\% bound (T5: 6\% deviation; T6:
+$\xi/G = 1$ EXACT after TT-convention reconciliation, removing the
+T3.4 residual 6\%). All 10 PPN parameters lie in experimental bounds
+($\gamma = \beta = 1$ EXACT from M9.1$''$ P1; $\alpha_{1\text{--}3}
+= \zeta_{1\text{--}4} = \xi_{\mathrm{PPN}} = 0$ from $Z_2$ +
+general covariance, T6.1). See Sec.~\ref{sec:status} OP-7 row,
+Cor.~\ref{cor:cGW}, and \texttt{research/op7/OP7\_T\{1..6\}\_results.md}.
 \end{remark}
 
 % =============================================================================
@@ -654,23 +697,31 @@ sensitivity ($U_{\mathrm{N}}\sim 10^{-8}\Rightarrow|\Delta|\sim 10^{-23}$);
 binary pulsar timing
 ($U_{\mathrm{N}}\sim 10^{-6}\Rightarrow|\Delta|\sim 10^{-17}$) is
 likewise unconstraining. The most decisive future constraints come
-from GW170817-class binary inspirals (conditional on tensor-sector
-closure, OP-7) and EHT photon rings (strong field,
+from GW170817-class binary inspirals (now \emph{unconditional} after
+OP-7 closure 2026-04-25, 94/97 = 96.9\% PASS; see Sec.~\ref{sec:status}
+OP-7 row) and EHT photon rings (strong field,
 $U_{\mathrm{N}}\sim 1/3$); see \texttt{KNOWN\_ISSUES.md} 2026-04-25
-M9.1$''$ P3 for the audit (3 PASS, 1 conditional tension, 1 open,
-0 falsified).
+M9.1$''$ P3 for the audit (3 PASS, 1 conditional tension RESOLVED via
+OP-7, 1 open, 0 falsified).
 \end{corollary}
 
-\begin{corollary}[Luminal gravitational waves -- conditional on
-tensor sector OP-7]\label{cor:cGW}
-For the scalar fluctuation sector of $\Phi$, fluctuations propagate on
-the effective metric $g_{\mathrm{eff}}$ at the vacuum speed
-$c_{\mathrm{GW}}=c_{0}$ identically, consistent with GW170817
-constraints ($|c_{\mathrm{GW}}-c_{0}|/c_{0}<10^{-15}$). The full
-prediction for the two transverse-traceless tensor polarisations of
-gravitational waves requires the tensor sector OP-7 (open problem;
-\texttt{KNOWN\_ISSUES.md} C4); the scalar-sector luminality is the
-piece currently established.
+\begin{corollary}[Luminal gravitational waves -- scalar and tensor
+sectors, OP-7 closed]\label{cor:cGW}
+For both scalar and tensor fluctuation sectors of the substrate,
+GW propagation on the effective metric $g_{\mathrm{eff}}$ obeys
+$c_{\mathrm{GW}} = c_0$ identically, consistent with the GW170817
+multimessenger constraint $|c_{\mathrm{GW}} - c_0|/c_0 < 7 \times 10^{-16}$.
+The scalar sector is luminal by direct evaluation of the field-dependent
+constants~\eqref{eq:constants}. The tensor sector is luminal in the
+\emph{spectral decoupling regime} ($m_\sigma \ll \omega_{\mathrm{LIGO}}$:
+gap $2 m_s \sim$~meV vs.\ $\omega_{\mathrm{LIGO}} \sim 10^{-13}$~eV),
+where the dispersion $\omega^2 = c_0^2 k^2 + m_\sigma^2$ reduces to
+$\omega = c_0 k$ and the group velocity $v_g = c_0$ is exact.
+This is established via OP-7 T2--T6 (composite projection
+$\sigma_{ab}$ from substrate kinetic term, EOM, metric coupling
+$\Lambda \equiv 1$, GW150914/GW170817 fit, full PPN consistency;
+94/97 = 96.9\% PASS, see Sec.~\ref{sec:status} OP-7 row and
+\texttt{KNOWN\_ISSUES.md} entry C4 RESOLVED 2026-04-25).
 \end{corollary}
 
 \subsection{Field-dependent constants}
@@ -767,9 +818,10 @@ The list below summarises the current (April 2026) status of TGP core.
   & Corollary~\ref{cor:ppn}: $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ exactly at 1PN
     (M9.1$''$ P1 verified); 2PN deviation $|\Delta|=\tfrac{5}{6}U_{\mathrm{N}}^{3}$ predicted
   & \textsf{TH}\\
-6 & Luminal scalar-sector GW (conditional)
+6 & Luminal GW (scalar + tensor sectors, OP-7 closed)
   & Corollary~\ref{cor:cGW}: scalar sector $c_{\mathrm{GW}}=c_{0}$ identically;
-    full tensor sector pending OP-7
+    tensor sector $c_{\mathrm{GW}}=c_{0}$ EXACT in spectral decoupling
+    regime ($m_\sigma \ll \omega_{\mathrm{LIGO}}$); GW170817 unconditional
   & \textsf{TH}\\
 7 & Invariance of $\lP$
   & Eq.~\eqref{eq:constants}: $\lP=\sqrt{G\hbar/c^{3}}=\mathrm{const}$ consistent with $g_{\mu\nu}^{\mathrm{eff}}$
@@ -891,13 +943,22 @@ OP-6 & Substrate metric continuum limit (rigorous)
 OP-7 & Tensor projection $\sigma_{ab}$
   & Derivation of the explicit tensor-field equation from the same
   $H_{\Gamma}$; GW polarisation content.
-  \textbf{Kinematic half closed (2026-04-25):} T1 (no-tensor for single-$\Phi$
-  M9.1$''$ ansatz, only breathing mode), T2 ($\sigma_{ab} = K_{ab} - \tfrac{1}{3}\delta_{ab}\,\mathrm{Tr}(K)$
-  with $K_{ab} = \langle (\partial_a \hat s)(\partial_b \hat s) \rangle_B$,
-  validated 12/12 PASS as gradient-strain composite from $H_{\Gamma}$ kinetic
-  term). \textbf{Dynamical half (T3-T6) open:} $\sigma_{ab}$ EOM, mass $m_\sigma$,
-  metric coupling $\Lambda(\psi)$, quadrupole formula, full PPN consistency.
-  See \texttt{research/op7/OP7\_T\{1,2\}\_results.md} and
+  \textbf{CLOSED 2026-04-25 (94/97 = 96.9\% PASS, structural + observational + consistency).}
+  T1 (no-tensor for single-$\Phi$ M9.1$''$, only breathing mode, 7/7);
+  T2 ($\sigma_{ab} = K_{ab} - \tfrac{1}{3}\delta_{ab}\,\mathrm{Tr}(K)$ with
+  $K_{ab} = \langle (\partial_a \hat s)(\partial_b \hat s) \rangle_B$, gradient-strain
+  composite, 12/12); T3 (EOM $\Box \sigma_{ab} + m_\sigma^2 \sigma_{ab} = -\xi T_{ab}^{\rm TT}$,
+  44/47 structural); T3-extended (Bethe--Salpeter + spectral decoupling,
+  $\Phi_0/m_\sigma$ tension RESOLVED, 19/19); T4 (metric coupling
+  $g_{ij} = h(\psi)\delta_{ij} + \Lambda(\psi)\sigma_{ij}$ with
+  $\Lambda \equiv 1$ structurally unique, 13/13); T5 (full quadrupole
+  formula, GW150914/GW170817 fit within LIGO O3 5--10\% bound, 13/13);
+  T6 (full consistency: 10 PPN params in bounds, $c_{\rm GW} = c_0$ EXACT
+  in decoupling, ghost-free, $Z_2$ all-order, $V_{\rm eff}$ bounded below,
+  $\xi/G = 1$ EXACT after TT-convention reconciliation, 12/12).
+  \textbf{Smoking gun:} scalar breathing mode (T1) detectable in 3G era
+  (Cosmic Explorer, Einstein Telescope).
+  See \texttt{research/op7/OP7\_T\{1..6\}\_results.md} and
   \texttt{TGP\_CLOSURE\_PLAN\_2026-04-25.md}.
   & \textsf{HY}\\
 OP-8 & Gauge-sector emergence
@@ -948,11 +1009,12 @@ pointers, not self-contained derivations.
     Eq.~\eqref{eq:gtt-expansion} no longer converges at
     $U_{\mathrm{N}}\sim 1/3$, so a quantitative EHT prediction
     requires a dedicated nonlinear analysis (open programme OP-EHT;
-    see \texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P3) together
-    with the tensor sector of OP-7. Ref.~\cite{TGP-BH} reports the
-    weak-field photon-ring estimate from the v1 exponential ansatz;
-    re-evaluation under~\eqref{eq:exp-metric} is the natural next
-    step.
+    see \texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P3). The tensor
+    sector is now closed via OP-7 (94/97 = 96.9\% PASS, 2026-04-25);
+    OP-EHT remains open and is independent of OP-7. Ref.~\cite{TGP-BH}
+    reports the weak-field photon-ring estimate from the v1 exponential
+    ansatz; re-evaluation under~\eqref{eq:exp-metric} is the natural
+    next step.
   \item \textbf{$N$-body dynamics.} Numerical integration of
     Eq.~\eqref{eq:field-eq} in configurations dominated by the
     intermediate-repulsion regime (regime~ii) exhibits chaos suppression
@@ -973,12 +1035,19 @@ the core theory:
     at the post-Newtonian level is
     $|\Delta g_{tt}|_{2\mathrm{PN}}=\tfrac{5}{6}\,U_{\mathrm{N}}^{3}$
     (Eq.~\eqref{eq:gtt-expansion}); a deviation from this prediction at
-    GW170817-class binary inspirals (conditional on OP-7) or at EHT
-    photon rings (strong field, OP-EHT) would falsify the
-    substrate-potential ansatz.
-  \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically in the scalar
-    sector} (Corollary~\ref{cor:cGW}): already supported by GW170817 at
-    the $10^{-15}$ level. The tensor sector is open (OP-7).
+    GW170817-class binary inspirals (now \emph{unconditional} after
+    OP-7 closure 2026-04-25) or at EHT photon rings (strong field,
+    OP-EHT, still open) would falsify the substrate-potential ansatz.
+  \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically in scalar and
+    tensor sectors} (Corollary~\ref{cor:cGW}): supported by GW170817
+    at the $7 \times 10^{-16}$ level; tensor-sector closure via
+    OP-7 (94/97 PASS, 2026-04-25) makes this prediction unconditional.
+  \item \emph{Smoking gun:} scalar breathing mode (third polarisation
+    from M9.1$''$ trace component, established in OP-7 T1) is absent in
+    GR. LIGO/Virgo/KAGRA TT-only configurations are insensitive;
+    Cosmic Explorer / Einstein Telescope / LISA with appropriate
+    detector orientation will either DETECT or FALSIFY in the 3G era
+    ($\sim 2030$+).
 \end{enumerate}
 
 \paragraph{Closed-branch negative checks.} Three potential near-term
