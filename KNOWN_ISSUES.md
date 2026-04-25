@@ -5,12 +5,14 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
-## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 COMPLETE + PHASE 0+ KICKOFF DONE
+## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ (sketch + cosmology) COMPLETE
 
 ### Status
 
 **OP-M92 Phase 0 (readiness package) shipped 2026-04-25 morning;
-Phase 0+ (Candidate D structural sketch) shipped 2026-04-25 afternoon.**
+Phase 0+ (Candidate D structural sketch) shipped 2026-04-25 afternoon;
+Phase 0+ cosmology cross-check (w(z) ≥ −1 preservation under Candidate D)
+shipped 2026-04-25 evening.**
 Deferred conditional research program triggered by OP-EHT-A NEGATIVE on
 naive proper-time path. Trigger 1 (Track A failed): SATISFIED ✓.
 Trigger 2 (ngEHT 2030+ confirms GR shadow at 1%): DEFERRED 2030-2032.
@@ -114,8 +116,44 @@ dla obu outcomes (M9.2 pivot OR M9.1'' vindication) z named candidates.
 **Phase 1 deferred items** (full Phase 1 scheduled 2026 Q3-Q4 OR post-ngEHT):
 (a) full covariant Φ-EOM derivation; (b) self-consistent photon ring with
 matter coupling; (c) beyond-tree stability (loop corrections, ghost
-screening); (d) cosmological consequences (H_0, DESI w(z)); (e) equivalence
+screening); (d) cosmological consequences (H_0, DESI w(z)) — **PARTIAL CLOSURE
+2026-04-25 evening** (see Phase 0+ cosmology below); (e) equivalence
 principle / 5th force constraints.
+
+### Phase 0+ cosmology cross-check (Candidate D vs OP-DESI w(z) ≥ −1)
+
+**Question:** Czy Candidate D back-reaction term `α T^μν J_μ J_ν` w
+homogeneous FRW łamie OP-DESI prediction `w(z) ≥ −1` (de2 theorem,
+canonical kinetic)?
+
+**Method:** W FRW Φ=Φ(t), J_μ=(Φ̇,0,0,0), perfect fluid T^μν →
+T·J·J = ρ_m Φ̇². Effective kinetic coefficient
+`K_eff = −[1/(8πG)](1 − 8πG α ρ_m)`. Phantom crossing wymaga
+`8πG α ρ_m > 1`. Calibracja α z Sgr A* photon ring (R_S ≈ 1.27e10 m,
+α ≈ 0.1 R_S² → α_SI ≈ 180 s²).
+
+**Numerical results (3 α H₀² Ω_m × (1+z)³):**
+
+| Epoch | (1+z) | ratio | safety |
+|-------|-------|-------|--------|
+| Today | 1.00 | 8.08e−34 | 1.24e+33× |
+| Recombination | 1.09e+3 | 1.05e−24 | 9.53e+23× |
+| BBN | 4.00e+8 | 5.17e−08 | 1.93e+07× |
+| Phantom transition | z ≈ 1.07e+11 | 1.0 | (pre-BBN, unobservable) |
+
+**Verdict POSITIVE:**
+
+- Observable cosmology (today → BBN) wszystkie ratio << 1 → canonical
+  kinetic structure NEGATIVE preserved → de2 theorem `w_psi ≥ −1` valid
+- Phantom transition z ≈ 10¹¹ jest pre-BBN (unobservable régime, classical
+  FRW i tak się załamuje przed Planck epoch z ≈ 10³²)
+- OP-DESI niezależność preserved: phantom crossing observation falsifies
+  BOTH M9.1'' AND M9.2-D (ortogonalny falsification path do ngEHT shadow)
+
+**Implication:** Candidate D pivot path **strukturalnie zachowuje** OP-DESI
+prediction. Phase 1 item (d) cosmology partially closed — phantom-crossing
+sub-question RESOLVED. Pozostałe sub-items (DESI w(z) scale dependence,
+H_0 cross-impact, beyond-tree FRW corrections) deferred do full Phase 1.
 
 ### Cross-references
 
