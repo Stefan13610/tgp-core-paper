@@ -65,6 +65,124 @@ mathematical level **for current TGP formulation**, both leave room
 within the ontology (single Z₂ scalar + emergent gravity) for
 structural revisions of the metric/source coupling.
 
+## 2026-04-25 — M9.1′ (pivot analysis): no minimal pivot rescues β_PPN = 1
+
+### Status
+
+**Pivot analysis after M9.1 closes negatively.** Within the class of
+power-form metrics `f(ψ) = ψ^p`, `h(ψ) = ψ^(-p)` (i.e., `f·h = 1`,
+substrate-budget condition + γ_PPN = 1 automatic), with TGP's
+canonical kinetic Φ-EOM `∇²ε + α(∇ε)²/(1+ε) = source`, the master
+formula reads:
+
+```
+   c_2 = -α/2                                  (verified numerically, 0.8% accuracy)
+   β_PPN(p, α) = (p − 1 − α) / p               (master formula)
+   γ_PPN = +1                                  (automatic from f·h = 1)
+```
+
+**β_PPN = 1 requires α = -1 independently of p**, which violates N0-4
+(`K(0) = 0` requires `α > 0`, otherwise kinetic coupling diverges as
+`Φ → 0`, breaking the Z₂-symmetric phase). Hence **no choice of metric
+exponent p combined with admissible α > 0 can match GR β_PPN = 1**.
+
+### Key finding: sek08c internal inconsistency
+
+`sek08c` proposes TWO different metric ansatzes:
+
+1. **Boxed `eq:metric-full-derived`**: `g_tt = -c²/ψ`, `g_rr = ψ`
+   (i.e., `f = ψ^-1`, `p = -1`). This is the ansatz tested in M9.1
+   → β_PPN = 4.
+2. **`thm:antipodal-uniqueness`**: `f = ψ^(-1/2)`, `h = ψ^(+1/2)`
+   (i.e., `p = -1/2`). Theorem claims β_PPN = 1 "exactly to O(U²)"
+   in `rem:antipodal-implications`. **This claim is false**: direct
+   expansion gives β_metric = 3, and with TGP dynamics α=2 (c₂=-1)
+   → β_PPN = 7, not 1.
+
+The inconsistency: sek08c earlier uses `c_lok² = c₀²·f` (line 166),
+while `thm:antipodal-uniqueness` uses `c_lok² = c₀²·f/h` (condition
+C1). These two definitions yield different metric forms, neither
+giving β_PPN = 1 with full Φ-EOM.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Master formula derivation | `TGP/TGP_v1/research/op-newton-momentum/M9_1_prime_results.md` §3 | Analytical c₂(α) = -α/2 from asymptotic Φ-EOM solution; β_PPN(p, c₂) = (p-1)/p + 2c₂/p from PPN-matching to f=ψ^p, h=ψ^-p. |
+| α-scan solver | `TGP/TGP_v1/research/op-newton-momentum/m9_1_prime_scan.py` | Generalized BVP with arbitrary α. |
+| α-scan numerical | `TGP/TGP_v1/research/op-newton-momentum/m9_1_prime_scan.txt` | c₂ vs α: α=0→c₂=0, α=0.5→-0.248, α=1→-0.496, α=2→-0.992, α=3→-1.488 (analytic -α/2 within 0.8%). |
+| β_PPN scan over p (α=2) | M9_1_prime_results.md §3.4 | p=-1→β=4 (M9.1); p=-1/2→β=7; p=-2→β=2.5; p=-1/3→β=10. **No finite p < 0 gives β=1.** |
+
+### Pivot map
+
+| Pivot | Modification | Ontological status | β_PPN = 1? |
+|---|---|---|---|
+| A: change α | `sek08_formalizm` C3 | OK conditionally | NO for power-form metrics |
+| A′: α = −1 | violates N0-4 (K(0)=0) | **breaks Z₂ vacuum phase** | YES but excluded |
+| B: f outside ψ^p class | needs derivation from substrate | requires new foundation | conditionally YES (1-param family with α=2) |
+| C: drop ax:c | foundational change | reduces to Pivot B | unknown |
+| D: matter back-reaction (T_μν → Φ) | beyond ax:metric-coupling | risks new degrees of freedom | speculative |
+| **E: accept falsification** | OP-2b closes negatively | **TGP falsified at PN level** | — |
+
+### Implications
+
+1. **OP-2b structurally falsified**: combination of M3–M8 (FP-universality
+   negative) + M9.1 (β_PPN = 4) + M9.1′ (no minimal pivot in current
+   formulation) leaves OP-2b open only via Pivot B (non-power f) or
+   Pivot D (matter back-reaction), both speculative and outside the
+   present axiomatic foundation.
+2. **M9.2 and M9.3 indefinitely gated**: classical momentum dynamics
+   and GW radiation tests use the same (α, f) structure that fails
+   in M9.1′. Pursuing them in current formulation = testing
+   in a falsified regime.
+3. **Cycle M9 closes**: status of OP-2b is now structural, not
+   numerical. Further investigation requires either rebuilding the
+   substrate→metric bridge from a different fundamental structure
+   (Pivot B) or a different matter-substrate coupling (Pivot D),
+   both of which are outside the scope of the current paper.
+
+### Pivot B numerical scan: hyperbolic form candidate
+
+A candidate-search scan (`m9_1_prime_pivot_B.py`,
+`m9_1_prime_pivot_B.txt`) over six function classes for `f(ψ)`
+satisfying the constraint `f''(1) = f'(1)·(f'(1)+2)` (i.e., β_PPN=1
+with α=2, c₂=-1) found one form with a striking physical signature:
+
+```
+   f(ψ) = (4 − 3·ψ)/ψ,    h(ψ) = ψ/(4 − 3·ψ)
+   f(1)=1,   f'(1) = −4,   f''(1) = +8     ✓ β_PPN = γ_PPN = 1
+```
+
+**Zero of f at exactly ψ = 4/3** coincides with the **ghost-free
+basin boundary** of TGP (`sek08_formalizm` `prop:ghost-free-fundamental`,
+~line 2562: kinetic Lagrangian density positive throughout
+ψ ∈ (0, 4/3)). Geometrically: g_tt → 0 (and g_rr → ∞) precisely
+where the substrate kinetic structure becomes pathological.
+
+This is suggestive but **not derived from current sek08c**. The
+boxed eq:metric-full-derived comes from informational-budget
+minimization (`prop:antipodal-from-budget`) which yields f·h=1
+but does not select a particular f within that constraint. A
+hyperbolic-form pivot would require an ADDITIONAL substrate-level
+principle: e.g., "f vanishes at the kinetic basin boundary."
+
+### Open question for honest closure
+
+Three options stand:
+- **(B-pivot)** Pursue derivation of hyperbolic f(ψ) = (4−3ψ)/ψ
+  from a revised substrate-level principle. Could rescue OP-2b at
+  PN level but requires rewriting `sek08c`'s budget condition.
+- **(A-pivot)** Pursue α modification (different kinetic exponent).
+  Currently α<0 needed for power-form metrics, excluded by N0-4.
+  Would require different metric form anyway, so reduces to (B).
+- **(closure)** Accept M9 cycle as falsifying the gravity sector
+  in current axiomatic form and rewrite the TGP core paper as a
+  historical record of a programme that proposed concrete
+  structures and was empirically refuted at PN level, leaving the
+  hyperbolic-form question as an open research direction (M9.1'').
+
+The decision is currently open and external-review relevant.
+
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
 External reviewer audit delivered 2026-04-25. Full response plan in
