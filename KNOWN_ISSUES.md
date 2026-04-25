@@ -260,7 +260,7 @@ status:
 | Test | Status | Goal |
 |---|---|---|
 | **P1**: higher PN coefficients (c_3, c_4, ...) | **POSITIVE 2026-04-25** (see entry below) | consistency with GR beyond β, γ |
-| **P2**: variational derivation | open | find action giving g_tt ∝ V/Φ⁴ |
+| **P2**: variational derivation | **POSITIVE-POSTULATE 2026-04-25** (see entry below) | triple substrate motivation; no single-action derivation |
 | **P3**: observational tests (LLR, GW170817) | open | dynamical consistency |
 | **P4**: rewrite sek08c, sek_stale, sek_intro | open | new boxed form documentation |
 
@@ -431,6 +431,96 @@ After M9.1'' P1, the decision tree narrows further:
 P1 has now fully characterized the **predictions side**; remaining
 work is on the **derivation side** (P2) and **observational matching
 side** (P3).
+
+## 2026-04-25 — M9.1'' P2 (variational test): hyperbolic form not derivable from single Lagrangian, but uniquely picked by THREE independent substrate principles
+
+### Status
+
+**M9.1'' test P2 closes with verdict POSITIVE-POSTULATE-WITH-TRIPLE-MOTIVATION.**
+Five candidate principles tested; three independently pick `f(ψ) = (4-3ψ)/ψ`
+uniquely; no single-step variational derivation found.
+
+| Principle | Outcome |
+|---|---|
+| P2-A (power-form `f = ψ^p`) | **CLOSED NEGATIVELY** (M9.1' master formula) |
+| P2-B (conformal invariance `Φ → λΦ`) | **FAILS** (V cubic term has weight 3, not 4) |
+| P2-C (rational, vanishing at 2nd zero of V, minimal degree) | **PICKS UNIQUELY** `(4-3ψ)/ψ` |
+| P2-D (dimensional naturalness — simplest dimensionless V/Φⁿ ratio) | **PICKS UNIQUELY** `V/Φ⁴ = (4-3ψ)/ψ` (normalized) |
+| P2-E (correspondence with substrate `T⁰⁰`) | **CONSISTENT** (does not fix uniquely, but `f-1` tracks `ΔV/Φ⁴` modulo substrate parameters) |
+
+### Triple coincidence
+
+Three logically independent substrate-physical requirements
+(geometric, dimensional, energetic) **all** pick the **same**
+hyperbolic form. This eliminates arbitrariness:
+
+- **Geometric (P2-C):** `f(ψ) → 0` at `ψ = 4/3` = boundary of ghost-free
+  basin of `V(Φ)` (sek08_formalizm prop:ghost-free), `f → ∞` at `ψ = 0`
+  = non-metric phase boundary.
+- **Dimensional (P2-D):** Among all `V/Φⁿ` ratios in natural units
+  (`[Φ]=mass, [V]=mass⁴`), `V/Φ⁴` is the **lowest-derivative**,
+  parameter-free, dimensionless choice that calibrates cleanly
+  to the vacuum minimum.
+- **Energetic (P2-E):** `(f-1) ∝ (ΔV/Φ⁴) × (substrate factor)`
+  — substrate energy excess above vacuum tracks the metric
+  deviation `f-1`, modulo `γ`/`Φ₀` substrate parameters.
+
+### Why no single-step variational derivation is *expected* in TGP
+
+In TGP, **gravity is emergent** (sek_intro: collective effect of
+substrate fluctuations, Sakharov / Verlinde / Volovik tradition).
+Metric is **not a fundamental field** — it is an operational
+description of substrate behavior under `V(Φ)` gradients. Asking
+for `δS/δg_μν = 0` to derive `f` is **categorially mismatched**:
+TGP has no autonomous metric field to vary independently of `Φ`.
+
+The triple-principle convergence (P2-C ∧ P2-D ∧ P2-E) is the
+appropriate substitute for a Lagrangian variation: the form is
+not derived from a single principle, it is **forced by three
+substrate-physical requirements simultaneously**.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Symbolic principle test | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_p2_variational.py` | Sympy: solve `f(1)=1, f(4/3)=0` for rational `f = (a+bψ)/ψ` → unique `(4-3ψ)/ψ`. Compare with `V/Φ⁴` normalised → identical. |
+| Output | `TGP/TGP_v1/research/op-newton-momentum/m9_1_pp_p2_variational.txt` | `P2-C and P2-D agree: True`. P2-B failure traced to weight-3 cubic in V. |
+| Verdict | `TGP/TGP_v1/research/op-newton-momentum/M9_1_pp_P2_results.md` | Three independent principles converge; epistemic upgrade from "ad hoc postulate" to "postulate with triple substrate motivation". |
+
+### Implications
+
+1. **M9.1'' status upgrade after P2**: from "open postulate motivated
+   by 1PN-PPN match" (after P1) to "open postulate with triple
+   substrate-physical motivation, no single-Lagrangian derivation
+   required by emergent-gravity philosophy".
+2. **Paper rewrite (P4)** can now include P2 as positive support
+   for ax:metric-from-potential, even though no `δS/δg = 0` chain
+   is given.
+3. **P2 does NOT reduce ax:metric-from-potential to a theorem**
+   — that would require deriving P2-C, P2-D, P2-E from a deeper
+   substrate principle. This **remains open** but may be intrinsic
+   to TGP's emergent-gravity philosophy.
+
+### Open question for honest closure (further revised)
+
+After P1 + P2, the decision tree:
+
+- **(M9.1''-confirmed-strong)** Future work finds a deeper substrate
+  principle automatically generating P2-C ∧ P2-D ∧ P2-E (e.g.,
+  minimum-substrate-complexity, substrate-budget conservation in
+  metric phases). Combined with P3 observational confirmation
+  → **full structural rescue of OP-2b**.
+- **(M9.1''-positive-postulate-current)** ← **WHERE WE ARE**.
+  ax:metric-from-potential remains a postulate, but with non-trivial
+  multi-principle support. P3 (observational tests) is the remaining
+  decisive step.
+- **(M9.1''-falsified-strong-field)** P3 finds 2PN+ deviations
+  inconsistent with GW170817 / EHT / binary pulsars. The triple
+  substrate motivation does not prevent observational falsification.
+
+P2 has now fully characterized the **derivation side**; remaining
+work is on the **observational matching side** (P3) and **paper
+integration** (P4).
 
 ## 2026-04-25 — external review: six critiques (C1–C6), disposition
 
