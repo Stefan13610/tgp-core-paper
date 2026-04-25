@@ -5,6 +5,104 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 COMPLETE (readiness package shipped)
+
+### Status
+
+**OP-M92 zamknięty Phase 0 (readiness package)** — deferred conditional
+research program triggered by OP-EHT-A NEGATIVE on naive proper-time path.
+Trigger 1 (Track A failed): SATISFIED ✓. Trigger 2 (ngEHT 2030+ confirms
+GR shadow at 1%): DEFERRED 2030-2032.
+
+Phase 0 deliverable: 4 pre-analyzed M9.2 candidates + decision tree gotowy
+do execution post-ngEHT verdict, response time 2-4 weeks (vs 6-12 months
+from-scratch).
+
+⇒ **M9.1'' status:** alive standalone, falsifiable in 4-6 lat (ngEHT 2030+).
+⇒ **M9.2 readiness:** Candidate D (momentum back-reaction) leads ranking.
+
+### Sub-test breakdown (Phase 0)
+
+| Test | Cel | Wynik | Status |
+|------|-----|-------|--------|
+| **T-M92.1** | Reverse-engineer scenario (e) action | f_e doubly non-local (compares TGP at r_ph=3.88M to GR at r_ph=3M) | DIAGNOSTIC |
+| **T-M92.2** | Candidate A (dual-field) | Plausible strong-field, stringent weak-field (Brans-Dicke), HIGH structural risk | VIABLE* |
+| **T-M92.3** | Candidate B (conformal frame) | Plausible strong-field, problematic weak-field (Ω' constraints), MEDIUM risk | VIABLE* |
+| **T-M92.4** | Candidate C (q-flow) | Power-law q(ψ)~ψ^(-3/4) matches at photon ring (0.4%), FAILS 1PN | NOT VIABLE |
+| **T-M92.5** | Candidate D (momentum back-reaction) | T·J·J ~ U⁴ auto-pass weak-field, natural strong-field activation | PROMISING |
+| **T-M92.6** | Decision tree synthesis | ngEHT 2030+ branches: GR/Intermediate/TGP-like | DONE |
+| **TOTAL** | OP-M92 Phase 0 | Readiness package shipped | **PHASE 0 COMPLETE** |
+
+### Critical findings (Phase 0)
+
+1. **Scenario (e) coupling is doubly non-local.** f(ψ) = √(g_tt^GR/g_tt^TGP)
+   wymaga porównania g_tt^GR(r=3M) z g_tt^TGP(ψ=1.168) — DIFFERENT r values
+   dla dwóch metryk. Single-field M9.1'' nie ma natural mechanism dla
+   takiej non-locality. ⇒ M9.2 musi wprowadzić strukturalne rozszerzenie.
+
+2. **1PN expansion of scenario (e) breaks γ_PPN.** Linear-U coefficient
+   w f_e(ψ=1+2U) = 1 + 3U + ... → γ_PPN shift O(1) naruszający Cassini
+   2.3e-5. ⇒ scenario (e) jest fitted ansatz **tylko** przy photon ring,
+   nie globally consistent matter coupling.
+
+3. **Candidate D (momentum back-reaction) leads ranking.** S = S_M9.1'' +
+   α ∫ T^μν J_μ J_ν √-g d⁴x z J_μ = ∂_μ Φ. Strong-field activation
+   natural (T^μν dominuje), weak-field auto-pass (T·J·J ~ U⁴ → γ_PPN,
+   β_PPN preserved at 1PN bez tuning), physically motivated (substrate
+   Lenz-law analog). Ostrogradsky stability + ghost mode analysis pending.
+
+4. **Candidate C (q-flow) eliminated.** Power-law q(ψ) ~ ψ^(-3/4) matches
+   strong-field (0.4% gap) ale 1PN linear-U coefficient -3/2 dramatycznie
+   naruszający Mercury. Bez ψ-threshold mechanism, nie ma viable q-flow path.
+
+5. **Candidates A, B (dual-field, conformal frame) VIABLE z screening.**
+   Brans-Dicke style ω > 40000 dla Cassini, wymaga Vainshtein/chameleon
+   screening dla weak-field. Well-studied scalar-tensor framework, ale
+   strukturalnie expensive (drugi field violates single-Φ Z_2 substrate).
+
+### Decision tree (T-M92.6)
+
+```
+ngEHT 2030-2032 verdict:
+  - GR shadow at 1% (b/b_GR ∈ [0.99, 1.01]):  M9.2 PIVOT MANDATORY → Candidate D
+  - Intermediate (b/b_GR ∈ [0.90, 0.99]):     M9.1''' refinement
+  - TGP-like (b/b_GR ∈ [1.10, 1.20]):         M9.1'' VINDICATED (OP-EHT upgrades POSITIVE)
+```
+
+Probability assessment (Bayesian, post-OP-EHT-A): 50% / 30% / 20%.
+
+### Implications
+
+**M9.1'' standalone:** alive baseline, weak-field PASS + GW propagation PASS,
+strong-field deferred conditional na ngEHT 2030+. Theory health HIGH.
+
+**M9.2 readiness:** Phase 0 complete, post-verdict response time 2-4 weeks.
+Phase 0+ continuation (Candidate D variational derivation sketch) scheduled
+2026 Q3-Q4 (20% effort).
+
+**F4 falsifiability evolution:** OP-M92 OPEN strengthens F4 falsification
+narrative — TGP M9.1'' nie tylko falsifiable ale **operationally prepared**
+dla obu outcomes (M9.2 pivot OR M9.1'' vindication) z named candidates.
+
+### Patches required
+
+1. **paper/tgp_core.tex §applications BH shadows:** mention OP-M92 OPEN
+   z 4 pre-analyzed candidates, Candidate D leads ranking.
+2. **paper/tgp_core.tex §7 OP-9 row:** add OP-M92 sub-row z Phase 0 status.
+3. **F4 falsifiability:** harden do "M9.1'' standalone falsifiable + M9.2
+   pre-analyzed via OP-M92 Phase 0 readiness package."
+
+### Cross-references
+
+- [[research/op-m92/OP_M92_setup.md]] — formal scope
+- [[research/op-m92/op_m92_T1_action_reverse_engineer.py]] — T-M92.1 diagnostic
+- [[research/op-m92/op_m92_T2_T5_candidate_analysis.py]] — T-M92.2..T-M92.5
+- [[research/op-m92/OP_M92_decision_tree.md]] — T-M92.6 synthesis
+- [[research/op-m92/OP_M92_readiness_summary.md]] — interim closure
+- [[research/op-eht-A/OP_EHT_A_final_verdict.md]] — parent trigger 1
+
+---
+
 ## 2026-04-25 — OP-EHT-A (Track A: M9.1'' rescue from first principles): CLOSED NEGATIVE on naive proper-time path 8/12 PASS (67%)
 
 ### Status
