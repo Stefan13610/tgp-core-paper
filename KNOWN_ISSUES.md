@@ -5,7 +5,7 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
-## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ (sketch + cosmology + WEP) COMPLETE
+## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ FULL (incl. multi-source consistency ISSUE FLAGGED)
 
 ### Status
 
@@ -13,7 +13,9 @@ every claim in the paper has a traceable status.
 Phase 0+ (Candidate D structural sketch) shipped 2026-04-25 afternoon;
 Phase 0+ cosmology cross-check (w(z) ≥ −1 preservation) shipped 2026-04-25
 evening; Phase 0+ WEP / 5th force cross-check (MICROSCOPE / LLR Nordvedt)
-shipped 2026-04-25 night.**
+shipped 2026-04-25 night; Phase 0+ multi-source self-consistency
+(M87* vs Sgr A* α extraction) shipped 2026-04-25 late night —
+⚠️ ISSUE FLAGGED requiring Phase 1 derivation.**
 Deferred conditional research program triggered by OP-EHT-A NEGATIVE on
 naive proper-time path. Trigger 1 (Track A failed): SATISFIED ✓.
 Trigger 2 (ngEHT 2030+ confirms GR shadow at 1%): DEFERRED 2030-2032.
@@ -192,6 +194,86 @@ internal stress-energy decomposition.
 **Cross-program implication:** Candidate D 5th force NIE redukuje się do
 Brans-Dicke (derivative-derivative coupling, nie linear) → standard ω-bound
 nie aplikuje. MICROSCOPE / Eöt-Wash są PRIMARY probes; Cassini orthogonal.
+
+### Phase 0+ multi-source self-consistency check (Candidate D α universality)
+
+**Question:** Czy single physical α reproduces scenario (e) target shift
+(+1.46%) dla **wszystkich** Schwarzschild BHs (Sgr A*, M87*, GW150914,
+neutron stars)?
+
+**Method:** Phase 0+ structural sketch heuristic — α_geom ~ 0.1 (M_BH=1)
+universal w geom units. Conversion to SI: α_SI = α_geom × R_S(source)².
+Extract α_SI dla każdego źródła i sprawdź konsystencję.
+
+**Numerical results:**
+
+| Source | M (M_⊙) | R_S (m) | α_SI (m²) | Ratio vs Sgr A* |
+|--------|---------|---------|-----------|-----------------|
+| Sgr A* | 4.3e+6 | 1.27e+10 | 1.61e+19 | 1.0 (ref) |
+| M87* | 6.5e+9 | 1.92e+13 | 3.69e+25 | **2.3e+6** |
+| GW150914 | 65 | 1.92e+5 | 3.69e+9 | 2.3e-10 |
+| Neutron star | 1.4 | 4.13e+3 | 1.71e+6 | 1.06e-13 |
+
+⇒ α_SI spans **19 orders of magnitude** for sources differing by 9.5
+orders of magnitude in mass — α scales as M_BH², NOT a single physical
+constant.
+
+**Resolution paths analyzed:**
+
+- PATH A (TGP-intrinsic L_TGP): FAILS (single L_TGP cannot satisfy multiple sources)
+- PATH B (source-enhanced substrate density): FAILS (same M² scaling problem)
+- PATH C (α dimensionless × M_Pl⁻²): FAILS unphysically (requires α ~ 10⁸⁹)
+- PATH D (scenario (e) target non-universal): NOT VALID (target IS universal)
+- **PATH E (modified Candidate D z α(ψ) threshold near ψ=1.05): VIABLE**
+  — adds extra parameters but resolves multi-source + WEP simultaneously
+- PATH F (hybrid Candidate D + Candidate B): possible, deferred Phase 1
+
+**Verdict: ISSUE FLAGGED — not fatal but Phase 1 priority elevated.**
+
+Phase 0+ structural sketch pozostaje strukturalnie POSITIVE (5/5 steps
+internally consistent), ale rigorous Phase 1 covariant derivation
+**MUST** establish multi-source consistency PRZED claim że Candidate D
+universalnie reproduces scenario (e).
+
+**Critical impact na earlier Phase 0+ cross-checks:**
+
+- Cosmology (margin 1e+33×): ROBUST — α variation by 10¹⁰ still safe
+- LLR Nordvedt (margin 3e+15×): ROBUST — huge margin absorbs variation
+- GW c_GW (vacuum exact): STRUCTURAL — unaffected
+- **WEP MICROSCOPE (margin 6.7×): CALIBRATION-DEPENDENT** — M87*-calibrated
+  α gives η ~ 4e-10, **fails MICROSCOPE bound 1.1e-15 by 10⁵×**
+
+**Path E preference rationale:** α(ψ) z threshold near ψ=1.05 makes
+α effectively zero at lab scale (ψ_lab ≈ 1) while activating in
+strong-field. This **simultaneously** resolves multi-source consistency
+AND tightens MICROSCOPE margin (effectively zero α at Earth surface).
+
+**Phase 1 priority list REVISED:**
+1. **Multi-source self-consistency derivation (NEW #1)** — establish
+   if Path E (α(ψ) threshold) gives universal physical α
+2. WEP rigorous Nordvedt analysis (post-Path E)
+3. Photon ring numerical verification z modified action
+4. Cosmology perturbation scale dependence
+5. Loop corrections / ghost screening
+
+**Honest framing:** to NIE jest fatal blow dla M9.2-D pivot path —
+Path E modification jest technically viable. To jest **structural
+self-check identyfikujący strict requirement** dla Phase 1 derivation.
+Pre-emptive identification of structural issue PRZED ngEHT verdict
+oznacza że post-verdict response nie napotka surprise issues. Response
+time post-ngEHT 2030+ verdict pozostaje 2-4 weeks (sketch + Path E
+template strukturalnie pre-derived), choć Phase 1 effort wzrasta z
+6-12 miesięcy do 9-15 miesięcy.
+
+**Cross-program insight:** This issue is **CANDIDATE-INDEPENDENT** —
+any M9.2 pivot reproducing universal +14.56% strong-field deviation
+**must** explain how single physical parameter handles BHs across
+9+ orders of magnitude in mass. Candidates A (dual-field) and B
+(conformal frame) similarly require multi-source verification.
+Candidate C (q-flow) was already eliminated, but its ψ-threshold
+philosophy converges with Path E modification of Candidate D.
+**Effective post-Phase 0+ ranking:** Candidate D + Path E (which IS
+basically Candidate C revisited z momentum back-reaction structure).
 
 ### Cross-references
 
