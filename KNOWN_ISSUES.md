@@ -127,6 +127,13 @@ estimate and §6 for the comparison table with M4.
 
 ## 2026-04-25 — Test C (M6): GL bond closes OP-2b *in principle*, outside the perturbative regime
 
+> **Update 2026-04-25 (post-M7):** M6's closure-in-principle is
+> **resolved in the negative** by the M7 eigenvalue test (entry
+> below). The crossing at `J_GL ≈ +5.89` is **not** realised under
+> proper RG flow: J_GL is strongly irrelevant at the M3 fixed
+> point (|λ_GL| ≈ 0.07 ≪ 1). M6 below preserved as historical
+> record of the candidate-screening sequence.
+
 ### Status
 
 OP-2b status moves from **open** to **closure-in-principle**. The v2
@@ -184,6 +191,77 @@ The physical direction is correct: positive `J_GL` (gradient bond
 favouring smooth `Φ`-configurations) pushes `B/Γ` toward the
 `v² = β/γ` Lorentz-locking value, exactly as expected for the
 mechanism that produces local Lorentz invariance from coarse-graining.
+
+## 2026-04-25 — M7 (Track-B sketch): J_GL is **strongly irrelevant** at the M3 FP — M6 closure-in-principle does NOT lift
+
+### Status
+
+OP-2b returns to **OPEN at the level of single-channel single-site
+MK-RG**. M7 computes the J_GL eigenvalue under one MK step
+linearised at the 3D Ising WF fixed point (the M3 FP), addressing
+M6's central caveat. Result:
+
+```
+|λ_GL| ≈ 0.07     (L² norm projection onto O_GL, robust across
+                   n_outer ∈ {20,30,40,50}, n_max ∈ {8,12,16})
+```
+
+**Strongly irrelevant** (|λ_GL| ≪ 0.5 in all sub-extractions). Bare
+J_GL decays by a factor of ~14 per MK step at the M3 FP. M6's
+closure at `J_GL ≈ +5.89` is therefore **not** realised under
+proper RG flow: any small bare J_GL flows to zero in the IR
+before reaching the closure value.
+
+This **resolves M6's central caveat** ("Track A's first-order
+J_GL truncation is not trustworthy near the crossing") in the
+negative direction: the crossing exists in Track A but is washed
+out under proper RG flow. The GL bond, treated as an MK-flow
+operator at the M3 FP, **cannot** close OP-2b.
+
+### Evidence
+
+| Probe | File | Signal |
+|---|---|---|
+| Analytical setup | `TGP/TGP_v1/research/op1-op2-op4/M7_glbond_eigenvalue.md` | λ_GL = ∂J_GL_post_bar / ∂J_GL_pre_bar at (cb_M3*, J_GL=0). Uses 2D F(s_1, s_3) extraction; first-order linear response = `dF/dJ_GL_pre = -4·⟨bond_12 + bond_23⟩(s_1,s_3)`. Multiple decision criteria (relevant / irrelevant / strongly irrelevant). |
+| Implementation | `TGP/TGP_v1/research/op1-op2-op4/mk_rg_glbond_eig.py` | Vectorised inner s_2 quadrature (n_quad=1200) over 2D outer (s_1, s_3) grid; three independent eigenvalue extractions (monomial-basis lstsq, L² norm projection onto O_GL, finite-difference numerical perturbation); robustness scan over n_outer × n_max. |
+| Numerical result | `mk_rg_glbond_eig_results.txt` | M3 FP reproduced to 5 decimals. Bilateral symmetry to 1e-8. **L² projection: λ_GL_norm = +0.0704** (stable to 4 digits across all robustness configs). Monomial (2,6) extraction: 0.028–0.094 (basis-dependent). Canonical baseline: 4/K_new⁴ = 0.0048. |
+| Operator-mixing diagnostic | same | Shape ratio c(4,4)/c(2,6): expected −2 for pure GL; numerical −2.08 (n_max=16, n_outer=50) → −3.5 (n_max=12). Sub-leading mixing into "(s_1+s_3)^8 cross" operator; mixing-corrected eigenvalue still ≪ 1. |
+| Verdict | `M7_results.md` | OP-2b **back to open**. M6's closure-in-principle resolved in the negative. All three single-channel candidates (H-S, Z_Φ, GL) now exhausted at the level of single-site MK-RG. |
+
+### Implications
+
+- **No paper edits.** M7 confirms the v2 paper's "OP-2b open"
+  disposition. The flirt with closure-in-principle (M6) does not
+  survive proper RG flow.
+- **All three single-channel candidates from M3 §6 are exhausted**:
+  - M4: H-S Jacobian — bounded |diff| ≥ 1.62 above zero (no closure).
+  - M5: Z_Φ via η-deformation — bounded |diff| ≥ 1.69 above zero.
+  - M6+M7: GL bond — closure exists in Track A at unphysical
+    J_GL ≈ 5.89, but J_GL is strongly irrelevant under proper RG flow.
+- **Candidate ordering after M3+M4+M5+M6+M7:**
+  1. **P3.4 — NPRG (Wetterich)** with full Z_Φ + GL kinetic
+     ansatz. Promoted to leading remaining test. Resolves
+     ambiguities of single-site MK-RG at all orders.
+  2. Full operator-basis Jacobian at the extended FP (P3.2-Track-B
+     extended). Tests whether off-diagonal mixing among irrelevant
+     bond operators produces a relevant *eigenvector* of the full
+     operator-space Jacobian (a relevant direction not aligned with
+     any single channel).
+  3. Document OP-2b as a **genuine open problem** of single-site
+     MK-RG; closure requires NPRG-level treatment.
+
+### What this proves and what it does not
+
+**Proves:** The diagonal projection of the J_GL response at the M3
+FP is strongly irrelevant. M6's Track-A closure is not realised
+under proper RG flow.
+
+**Does not prove:** That J_GL is irrelevant at *every* fixed point
+of the extended flow (a different non-WF FP could host a relevant
+J_GL); that off-diagonal mixing in the full operator basis cannot
+produce a relevant eigenvector with non-trivial GL component;
+that single-site MK-RG is the right framework (NPRG is the
+gold-standard cross-check).
 
 ## 2026-04-24 — OP-6 closed via axiom pivot (v2 change)
 
