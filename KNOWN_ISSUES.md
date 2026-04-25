@@ -5,14 +5,15 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
-## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ (sketch + cosmology) COMPLETE
+## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ (sketch + cosmology + WEP) COMPLETE
 
 ### Status
 
 **OP-M92 Phase 0 (readiness package) shipped 2026-04-25 morning;
 Phase 0+ (Candidate D structural sketch) shipped 2026-04-25 afternoon;
-Phase 0+ cosmology cross-check (w(z) ≥ −1 preservation under Candidate D)
-shipped 2026-04-25 evening.**
+Phase 0+ cosmology cross-check (w(z) ≥ −1 preservation) shipped 2026-04-25
+evening; Phase 0+ WEP / 5th force cross-check (MICROSCOPE / LLR Nordvedt)
+shipped 2026-04-25 night.**
 Deferred conditional research program triggered by OP-EHT-A NEGATIVE on
 naive proper-time path. Trigger 1 (Track A failed): SATISFIED ✓.
 Trigger 2 (ngEHT 2030+ confirms GR shadow at 1%): DEFERRED 2030-2032.
@@ -154,6 +155,43 @@ T·J·J = ρ_m Φ̇². Effective kinetic coefficient
 prediction. Phase 1 item (d) cosmology partially closed — phantom-crossing
 sub-question RESOLVED. Pozostałe sub-items (DESI w(z) scale dependence,
 H_0 cross-impact, beyond-tree FRW corrections) deferred do full Phase 1.
+
+### Phase 0+ WEP / 5th force cross-check (Candidate D vs MICROSCOPE / LLR)
+
+**Question:** Czy Candidate D łamie WEP / Nordvedt 5th-force constraints
+(MICROSCOPE η < 1.1e-15, LLR η < 1.4e-13)?
+
+**Structural argument (zerowy rząd):** Modyfikacja `α T^μν J_μ J_ν` żyje
+w **gravitational sector** — variation w.r.t. matter fields nie dodaje
+nowego direct vertex. Matter EOM `∇_μ T^μν = 0` niezmodyfikowane →
+test bodies wszystkich kompozycji follow **same geodesics** of effective
+metric → UFF preserved at zeroth order.
+
+**Residual Nordvedt-like scaling:** `η ~ α |∇Φ|² × Δ(internal energy fraction)`
+
+| Test | η heuristic | bound | margin |
+|------|-------------|-------|--------|
+| MICROSCOPE Ti-Pt (Earth surface) | 1.64e-16 | 1.1e-15 | **6.7×** (TIGHT) |
+| LLR Nordvedt (Sun-Earth-Moon) | 4.66e-29 | 1.4e-13 | 3.0e+15× |
+| Internal pressure contribution | suppressed by p/(ρc²) ~ 10⁻²¹ | — | negligible |
+
+**Verdict POSITIVE z notą:**
+- Wszystkie bounds passed
+- MICROSCOPE jest **tightest constraint** ze wszystkich Phase 0+ tests
+  (cf. Cassini margin 9e+12×, OP-DESI margin 1e+33×)
+- 6.7× margin może w rigorous Phase 1 derivation albo loosen do ~100×
+  (solid PASS) albo tighten i pojawić się jako **new falsification probe**
+  via MICROSCOPE++ improvement
+
+**Phase 1 priority elevation:** rigorous WEP/Nordvedt analysis jest
+**highest priority** deferred item (przed cosmology perturbation theory,
+photon ring numerical, loop corrections). Wymaga proper covariant Φ-EOM
+perturbation derivation żeby ustalić proportionality factor i impact
+internal stress-energy decomposition.
+
+**Cross-program implication:** Candidate D 5th force NIE redukuje się do
+Brans-Dicke (derivative-derivative coupling, nie linear) → standard ω-bound
+nie aplikuje. MICROSCOPE / Eöt-Wash są PRIMARY probes; Cassini orthogonal.
 
 ### Cross-references
 
