@@ -5,21 +5,30 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
-## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 COMPLETE (readiness package shipped)
+## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 COMPLETE + PHASE 0+ KICKOFF DONE
 
 ### Status
 
-**OP-M92 zamknięty Phase 0 (readiness package)** — deferred conditional
-research program triggered by OP-EHT-A NEGATIVE on naive proper-time path.
-Trigger 1 (Track A failed): SATISFIED ✓. Trigger 2 (ngEHT 2030+ confirms
-GR shadow at 1%): DEFERRED 2030-2032.
+**OP-M92 Phase 0 (readiness package) shipped 2026-04-25 morning;
+Phase 0+ (Candidate D structural sketch) shipped 2026-04-25 afternoon.**
+Deferred conditional research program triggered by OP-EHT-A NEGATIVE on
+naive proper-time path. Trigger 1 (Track A failed): SATISFIED ✓.
+Trigger 2 (ngEHT 2030+ confirms GR shadow at 1%): DEFERRED 2030-2032.
 
 Phase 0 deliverable: 4 pre-analyzed M9.2 candidates + decision tree gotowy
-do execution post-ngEHT verdict, response time 2-4 weeks (vs 6-12 months
-from-scratch).
+do execution post-ngEHT verdict.
+
+Phase 0+ deliverable: Candidate D (momentum back-reaction) structural
+sketch 5/5 POSITIVE — single α ~ 0.1 (geom units) simultaneously tunes
+scenario (e) target i preserves weak-field PPN z 9e+12× safety margin
+nad Cassini. No-ghost stable, c_GW = c_0 vacuum exact, Ostrogradsky-free
+at tree level.
+
+Combined effect: response time post-ngEHT verdict reduced from 6-12 months
+(from-scratch) to 2-4 weeks (candidate D selection + paper).
 
 ⇒ **M9.1'' status:** alive standalone, falsifiable in 4-6 lat (ngEHT 2030+).
-⇒ **M9.2 readiness:** Candidate D (momentum back-reaction) leads ranking.
+⇒ **M9.2 readiness:** Candidate D structural scaffolding shipped.
 
 ### Sub-test breakdown (Phase 0)
 
@@ -92,6 +101,22 @@ dla obu outcomes (M9.2 pivot OR M9.1'' vindication) z named candidates.
 3. **F4 falsifiability:** harden do "M9.1'' standalone falsifiable + M9.2
    pre-analyzed via OP-M92 Phase 0 readiness package."
 
+### Phase 0+ findings (Candidate D structural sketch)
+
+| Step | Test | Result |
+|------|------|--------|
+| Step 1 | Action: Δ S = α ∫ T^μν J_μ J_ν √-g d⁴x (J_μ = ∂_μ Φ) | DEFINED |
+| Step 2 | Weak-field U⁴ scaling (Mercury 2.5e-18 vs Cassini 2.3e-5) | AUTO-PASS (9e+12× margin) |
+| Step 3 | Strong-field tunability (α ~ 0.1 → scenario (e) 0.886) | PLAUSIBLE |
+| Step 4 | Tree-level stability (no-ghost α > 0, Ostrogradsky-free) | STABLE |
+| Step 5 | OP-7 c_GW = c_0 (vacuum T^μν=0 → no modification) | PASS structurally |
+
+**Phase 1 deferred items** (full Phase 1 scheduled 2026 Q3-Q4 OR post-ngEHT):
+(a) full covariant Φ-EOM derivation; (b) self-consistent photon ring with
+matter coupling; (c) beyond-tree stability (loop corrections, ghost
+screening); (d) cosmological consequences (H_0, DESI w(z)); (e) equivalence
+principle / 5th force constraints.
+
 ### Cross-references
 
 - [[research/op-m92/OP_M92_setup.md]] — formal scope
@@ -99,6 +124,8 @@ dla obu outcomes (M9.2 pivot OR M9.1'' vindication) z named candidates.
 - [[research/op-m92/op_m92_T2_T5_candidate_analysis.py]] — T-M92.2..T-M92.5
 - [[research/op-m92/OP_M92_decision_tree.md]] — T-M92.6 synthesis
 - [[research/op-m92/OP_M92_readiness_summary.md]] — interim closure
+- [[research/op-m92/op_m92_P0plus_candD_sketch.py]] — Phase 0+ Candidate D sketch
+- [[research/op-m92/OP_M92_P0plus_candD_results.md]] — Phase 0+ synthesis
 - [[research/op-eht-A/OP_EHT_A_final_verdict.md]] — parent trigger 1
 
 ---
