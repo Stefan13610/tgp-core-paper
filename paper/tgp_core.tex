@@ -967,6 +967,16 @@ OP-8 & Gauge-sector emergence
   & \textsf{HY}\\
 OP-9 & Strong-field black-hole solutions
   & Complete catalogue of non-singular BH solutions; quasi-normal modes.
+  Photon-ring deviation $b_{\mathrm{crit}}^{\mathrm{TGP}}/b_{\mathrm{crit}}^{\mathrm{GR}}=1.1456$
+  ($+14.56\%$, M9.1$''$ exact) audited under \textbf{OP-EHT
+  (CLOSED CONDITIONAL POSITIVE, 2026-04-25, 13/18 = 72\% PASS):}
+  T1 PN truncation 4/4 ROBUST GENUINE; T2 mass calibration MC 1/3
+  (Sgr A$^*$ DISCRIMINATOR, 4$\sigma$); T3 q-renormalization 4/5
+  (scenario (e) coupling absorbs to $+1.46\%$, derivation OPEN);
+  T4 environment 1/3 (M87$^*$ OK, Sgr A$^*$ gap $\sim 3\sigma$);
+  T5 ngEHT window 3/3 (Sgr A$^*$ at $\geq 10\sigma$ by 2032).
+  See \texttt{research/op-eht/OP\_EHT\_final\_verdict.md} and
+  \texttt{KNOWN\_ISSUES.md}.
   & \textsf{HY}\\
 OP-10 & Quantum theory of $\Phi$
   & Second quantisation of $\Phi$ beyond the MS linear regime.
@@ -1008,13 +1018,28 @@ pointers, not self-contained derivations.
     Schwarzschild; the post-Newtonian expansion that fixes
     Eq.~\eqref{eq:gtt-expansion} no longer converges at
     $U_{\mathrm{N}}\sim 1/3$, so a quantitative EHT prediction
-    requires a dedicated nonlinear analysis (open programme OP-EHT;
-    see \texttt{KNOWN\_ISSUES.md} 2026-04-25 M9.1$''$ P3). The tensor
-    sector is now closed via OP-7 (94/97 = 96.9\% PASS, 2026-04-25);
-    OP-EHT remains open and is independent of OP-7. Ref.~\cite{TGP-BH}
-    reports the weak-field photon-ring estimate from the v1 exponential
-    ansatz; re-evaluation under~\eqref{eq:exp-metric} is the natural
-    next step.
+    requires a dedicated nonlinear analysis (programme OP-EHT,
+    \textbf{closed CONDITIONAL POSITIVE 2026-04-25, 13/18 = 72\% PASS}).
+    The PN tail recurrence extended analytically to $n=15$ shows the
+    deviation $b_{\rm crit}^{\rm TGP}/b_{\rm crit}^{\rm GR}=1.1456$
+    (i.e.\ $+14.56\%$ over GR) is robust and genuine, with a geometric
+    convergence ratio $\sim 0.27$ (T1: 4/4 PASS). Effective EHT envelope
+    propagation through Monte Carlo over $(M_{\rm BH},D,\theta_{\rm ring})$
+    priors leaves M87$^*$ within 95\% CL (T2.1) but Sgr A$^*$ at 4$\sigma$
+    tension under the GRAVITY 2019 mass prior (T2.2: 1/3 PASS).
+    Q-renormalization scenario (e), $f(\psi)=\sqrt{g_{tt}^{\rm GR}/g_{tt}^{\rm TGP}}$,
+    reduces the deviation to $+1.46\%$ as a fitted ansatz (T3: 4/5 PASS),
+    with first-principles derivation from the M9.1$''$ Lagrangian as the
+    open path forward. Astrophysical environment (accretion + plasma)
+    saves M87$^*$ but cannot bridge the Sgr A$^*$ gap (T4: 1/3 PASS).
+    The ngEHT 2030--2032 timeline at $\sim 1\%$ shadow precision delivers
+    $\geq 10\sigma$ verdict on TGP M9.1$''$ via Sgr A$^*$ (T5: 3/3 PASS).
+    The tensor sector is independently closed via OP-7 (94/97 = 96.9\% PASS,
+    2026-04-25). Ref.~\cite{TGP-BH} reports the weak-field photon-ring
+    estimate from the v1 exponential ansatz; the strong-field re-evaluation
+    under~\eqref{eq:exp-metric} is captured by OP-EHT, with the
+    \texttt{research/op-eht/} directory containing T1--T5 numerical
+    audits and \texttt{OP\_EHT\_final\_verdict.md} the synthesis.
   \item \textbf{$N$-body dynamics.} Numerical integration of
     Eq.~\eqref{eq:field-eq} in configurations dominated by the
     intermediate-repulsion regime (regime~ii) exhibits chaos suppression
@@ -1037,7 +1062,9 @@ the core theory:
     (Eq.~\eqref{eq:gtt-expansion}); a deviation from this prediction at
     GW170817-class binary inspirals (now \emph{unconditional} after
     OP-7 closure 2026-04-25) or at EHT photon rings (strong field,
-    OP-EHT, still open) would falsify the substrate-potential ansatz.
+    OP-EHT closed CONDITIONAL POSITIVE 2026-04-25, $+14.56\%$ shadow
+    deviation falsifiable by ngEHT 2030--2032 at $\geq 10\sigma$ on
+    Sgr A$^*$) would falsify the substrate-potential ansatz.
   \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically in scalar and
     tensor sectors} (Corollary~\ref{cor:cGW}): supported by GW170817
     at the $7 \times 10^{-16}$ level; tensor-sector closure via
@@ -1122,7 +1149,8 @@ companion paper (2026).
 M.~Serafin,
 \emph{Black-hole shadows in TGP: weak-field estimate (v1 exponential
 ansatz); strong-field analysis under the substrate-potential ansatz
-deferred to OP-EHT},
+captured in OP-EHT (CLOSED CONDITIONAL POSITIVE 2026-04-25, 13/18 PASS,
+falsifiable by ngEHT 2030--2032 at $\geq 10\sigma$ on Sgr A$^*$)},
 companion paper (2026).
 
 \bibitem{TGP-nbody}

@@ -5,6 +5,112 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-25 — OP-EHT (strong-field photon ring): CLOSED CONDITIONAL POSITIVE 13/18 PASS (72%)
+
+### Status
+
+**OP-EHT zamknięty CONDITIONAL POSITIVE** — TGP M9.1'' photon ring
+deviation +14.56% over GR jest **GENUINE PHYSICS** (T1 robust to
+PN truncation n=15), nie absorbowane przez calibration (T2: Sgr A* 4σ),
+matter coupling fitted ansatz w T3 redukuje deviation do +1.46% ale
+wymaga first-principles derivation, environment OK dla M87* (T4) ale
+nie dla Sgr A*. Final test: T5 ngEHT 2030+ at 1% precision daje >10σ
+verdict by 2032.
+
+### Sub-test breakdown
+
+| Test | Cel | Wynik | Score |
+|------|-----|-------|-------|
+| **T1** | PN truncation robustness | deviation +14.56% genuine, ratio 0.269 | 4/4 ROBUST |
+| **T2** | Mass calibration MC | M87* OK 59% in 95% CL, Sgr A* 4σ tension | 1/3 |
+| **T3** | Q-renormalization audit | G/c² invariant; scenario (e) absorbs to +1.46% | 4/5 |
+| **T4** | Non-vacuum environment | M87* env OK ±5%; Sgr A* gap ~3σ | 1/3 |
+| **T5** | ngEHT window + verdict | ≥5σ Sgr A* by 2030; falsifiable by 2032 | 3/3 |
+| **TOTAL** | OP-EHT closure | **CONDITIONAL POSITIVE** | **13/18 = 72%** |
+
+### Critical findings
+
+1. **T1 deviation +14.56% jest ROBUST GENUINE.** PN tail recurrence c_n
+   extended to n=15; convergence ratio |Δb(n+1)/Δb(n)| ≈ 0.269 (geometric
+   convergent series); truncation error at n=15 < 10⁻⁴. Path "truncation
+   artefact" z EHT_quick §6 **EXCLUDED**.
+
+2. **T2 Sgr A* jest DISCRIMINATOR.** GRAVITY 2019 mass prior (4.297±0.013)e6
+   M☉ jest 20× tighter niż M87*. EHT 2022 ring at 4.4% precision. TGP
+   residual: +4.01σ (vs GR +0.64σ). M87* prior wystarczająco szeroki
+   (~10%) aby TGP fits z 59% w 95% CL — Sgr A* 2.1%.
+
+3. **T3 G/c² invariance LOCKS standard matching.** Q-renormalization
+   stałych G(ψ) = G_0/ψ + c²(ψ) = c_0²/ψ daje G/c² ≡ G_0/c_0² (analytic).
+   ⇒ matching A = GM/(2c²) **nie shiftuje się** przy proportional rescale.
+   Scenario (e) f(ψ) = √(g_tt^GR/g_tt^TGP) jest fitted ansatz redukujący
+   deviation do +1.46% — wymaga derivation z M9.1'' first principles.
+
+4. **T4 environment niewystarczające dla Sgr A*.** M87* high accretion
+   (M_dot ~ 10⁻⁴ M☉/yr) → ±5% env reach absorbuje +8.3% residual.
+   Sgr A* low accretion (M_dot ~ 10⁻⁸) → ±4% env reach NIE może absorbować
+   +19.7% deviation; gap ~3σ. **Sgr A* jest cleanest test photon ring TGP**.
+
+5. **T5 ngEHT window 2030-2032.** ngEHT prototype (2030, 1.5% Sgr A*) →
+   9.7σ TGP discrimination. Full ops (2032, 1.0%) → 14.6σ. BHEX space VLBI
+   (2035, 0.5%) → 29σ. **First ≥5σ verdict: 2030.**
+
+### Implications
+
+#### Path forward — DUAL TRACK
+
+**Track A — M9.1'' rescue (preferred):**
+Derive q-renormalization scenario (e) coupling f(ψ) = √(g_tt^GR/g_tt^TGP)
+z first principles M9.1'' Lagrangian. If successful → M9.1'' fully
+reconciled with EHT (3-4σ tension dissolves), path 3 z EHT_quick §6
+zamykany POSITIVE.
+
+**Track B — M9.2 conditional pivot (deferred):**
+Triggered ONLY IF (a) Track A derivation fails, AND (b) ngEHT 2030+
+confirms GR shadow at 1% precision. Wymaga natural f(ψ) coupling matter↔ψ
+recoverring GR strong-field while preserving M9.1'' weak-field PPN
+(P3 audit 3 PASS). Compatibility with OP-7 closure (c_GW=c_0
+unconditional) + M9.1'' weak-field success = strict gates.
+
+#### F4 falsifiability hardening
+
+Pre-OP-EHT: F4 was generic "TGP shadow within EHT 2024+ envelope".
+Post-OP-EHT: **F4 sharpened to specific +14.56% deviation, falsifiable
+by ngEHT 2030-2032 at >10σ on Sgr A* shadow** (PRIMARY target due to
+0.05% mass uncertainty from GRAVITY 2030+ S-stars).
+
+#### Cross-impact OP-7
+
+OP-EHT is **independent** of OP-7 (T1 σ_ab=0 dla static spherical was
+established by OP-7 T1; OP-EHT inherits this conclusion, eliminating
+sigma sector contribution). However, M9.1'' strong-field deviation is
+shared metric between OP-7 (GW propagation) and OP-EHT (photon ring).
+- If Track A succeeds: M9.1'' validated in both OP-7 + OP-EHT.
+- If M9.2 pivot needed: OP-7 GW result must be re-validated under M9.2.
+
+### Patches required
+
+1. **paper/tgp_core.tex §7 OP-EHT row:** Add "CLOSED CONDITIONAL POSITIVE
+   13/18 = 72% — TGP shadow +14.56% over GR is genuine, falsifiable by
+   ngEHT 2030-2032 at >10σ Sgr A*."
+2. **F4 falsifiability:** Sharpen to specific Sgr A* shadow at ngEHT 2030+
+   1% precision.
+3. **Section 2 / applications BH shadows:** Note T3 q-renorm scenario (e)
+   open derivation path.
+
+### Cross-references
+
+- [[research/op-eht/OP_EHT_setup.md]] — formal plan T1-T5
+- [[research/op-eht/OP_EHT_T1_results.md]] [[research/op-eht/OP_EHT_T2_results.md]]
+  [[research/op-eht/OP_EHT_T3_results.md]] [[research/op-eht/OP_EHT_T4_results.md]]
+  [[research/op-eht/OP_EHT_T5_results.md]] — sub-test verdicts
+- [[research/op-eht/OP_EHT_final_verdict.md]] — synthesis
+- [[research/op7/EHT_quick_results.md]] — punkt wyjścia +14.6%
+- [[research/op7/OP7_T1_results.md]] — σ_ab=0 dla static spherical
+- [[research/op-newton-momentum/M9_1_pp_P3_results.md]] — M9.1'' P3 audit
+
+---
+
 ## 2026-04-25 — M9.1 (statyka + PPN): pure power-form metric falsified by β_PPN
 
 ### Status
