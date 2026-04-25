@@ -5,6 +5,92 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-25 — OP-EHT-A (Track A: M9.1'' rescue from first principles): CLOSED NEGATIVE on naive proper-time path 8/12 PASS (67%)
+
+### Status
+
+**OP-EHT-A zamknięty NEGATIVE on naive proper-time path** —
+Track A test M9.1'' rescue (czy q-renormalization scenario (e) coupling
+f(ψ) = √(g_tt^GR/g_tt^TGP) emerge naturalnie z M9.1'' Lagrangian)
+zamknięty: naive proper-time matter coupling z covariant action principle
+daje wrong strong-field magnitude (factor 0.652 vs target 0.886 → b_crit
+deviation -25.32% zamiast +1.46%). Weak-field PPN i c_GW=c_0
+auto-preserved.
+
+⇒ **M9.1'' nie ma natural first-principles rescue dla strong-field shadow.**
+⇒ **M9.2 conditional pivot becomes mandatory** if ngEHT 2030+ confirms GR.
+
+### Sub-test breakdown
+
+| Test | Cel | Wynik | Score |
+|------|-----|-------|-------|
+| **T-A1** | Derive proper-time coupling | sqrt(\|g_tt\|/c_0²) z covariant action; magnitude 0.652 vs target 0.886 | 2/3 PARTIAL |
+| **T-A2** | 1PN matching | f(ψ→1)=1; γ_PPN=β_PPN=1 zachowane | 3/3 PASS |
+| **T-A3** | Strong-field photon ring | Self-consistent A_eff=0.326 → b_crit=3.88 → **dev=-25.32%** | 1/3 FAIL |
+| **T-A4** | Mercury/Cassini/LLR | 2PN dev O(U³)=1.25e-25 << Cassini 2.3e-5 | 1/1 PASS |
+| **T-A5** | OP-7 c_GW=c_0 | σ_ab kinetic structure independent of matter coupling | 1/1 PASS |
+| **TOTAL** | OP-EHT-A | NEGATIVE on naive path | **8/12 = 67%** |
+
+### Critical findings
+
+1. **Naive proper-time coupling derives naturally:** covariant matter action
+   ∫ L_mat √(-g) d⁴x = ∫ (-q φ ρ_0/Φ_0) × √(\|g_tt\|/c_0²) × √g_spatial d⁴x.
+   Effective Φ-source: ρ_eff = ρ_0 × √(\|g_tt\|/c_0²). Mechanism in correct
+   direction (reduces source strength).
+
+2. **Magnitude mismatch:** at ψ_ph=1.168, Track A factor = 0.652;
+   scenario (e) target = 0.886 (gap 36%). Track A overshoots reduction.
+
+3. **Geometric invariance of ψ_ph:** photon ring eq 4r·eps' + (1-3eps)(1+eps)=0
+   gives fixed eps_ph z dimensionless solution; independent of A. Self-consistent
+   iteration trivializes (single-step convergence to A_eff = 0.326).
+
+4. **Weak-field preserved:** Track A coupling f(ψ→1) = 1 trivially preserves
+   γ_PPN = β_PPN = 1 at 1PN; 2PN deviation O(U³) for Mercury = 1.25e-25,
+   25 orders of magnitude below Cassini 2.3e-5.
+
+5. **GW propagation preserved:** σ_ab kinetic term structure (OP-7 closure)
+   determines c_GW; matter coupling f(ψ) renormalizes T^TT amplitude only,
+   not propagation kinematics. c_GW = c_0 EXACT structurally maintained.
+
+### Implications
+
+**M9.1'' standalone status:** alive in weak-field (Mercury/Cassini/LLR full
+PASS), alive in GW propagation (GW170817 unconditional via OP-7), ALE
+**no natural first-principles rescue dla strong-field**. Predicts +14.56%
+deviation, falsifiable by ngEHT 2030+.
+
+**Track B (M9.2 conditional pivot) priority elevated:**
+- Trigger 1 (Track A failed): SATISFIED ✓
+- Trigger 2 (ngEHT 2030+ confirms GR at 1%): DEFERRED 2030-2032
+- M9.2 minimum requirements:
+  (a) Natural strong-field absorption mechanism for f(ψ) = √(g_tt^GR/g_tt^TGP)
+  (b) Preservation of M9.1'' P3 weak-field PASS (Mercury/Cassini/LLR)
+  (c) Compatibility with OP-7 c_GW = c_0 closure
+  (d) Distinct falsifiable signature
+
+**F4 falsifiability hardening:** TGP M9.1'' standalone predykuje +14.56%
+strong-field shadow; ngEHT 2030+ at 1% Sgr A* daje >10σ verdict. Jeśli
+ngEHT confirms GR → M9.2 pivot unconditional.
+
+### Patches required
+
+1. **paper/tgp_core.tex §applications BH shadows:** mention OP-EHT-A
+   NEGATIVE on naive proper-time path, M9.2 conditional pivot becomes
+   mandatory if ngEHT 2030+ confirms GR.
+2. **F4 falsifiability:** harden to "M9.1'' standalone CANNOT pass ngEHT
+   2030+ test; M9.2 pivot mandatory if Sgr A* shadow consistent with GR".
+3. **OP-7 row:** unchanged (OP-7 closure independent).
+
+### Cross-references
+
+- [[research/op-eht-A/OP_EHT_A_setup.md]] — formal plan T-A1..T-A5
+- [[research/op-eht-A/OP_EHT_A_final_verdict.md]] — synthesis
+- [[research/op-eht/OP_EHT_final_verdict.md]] — parent OP-EHT closure
+- [[research/op-eht/OP_EHT_T3_results.md]] — scenario (e) ansatz definition
+
+---
+
 ## 2026-04-25 — OP-EHT (strong-field photon ring): CLOSED CONDITIONAL POSITIVE 13/18 PASS (72%)
 
 ### Status
