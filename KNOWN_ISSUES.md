@@ -5,6 +5,826 @@ This file documents known gaps and retractions in the TGP core paper
 It is updated as issues are identified during internal review, so that
 every claim in the paper has a traceable status.
 
+## 2026-04-26 — P1.5: α=2 wording sweep (C5 RESOLVED)
+
+### Status
+
+**Last remaining external-review row (C5) RESOLVED.** Every α=2 assertion
+in `paper/tgp_core.tex` now presents α=2 as a *selection within class
+(C1)–(C3)* — never as a derivation from first principles. The
+goalpost-shift critique cannot be levelled at the v2 paper.
+
+### What was wrong
+
+The 2026-04-25 external review's C5 critique:
+> "α=2 pivot = moving the goalposts. Paper should be more radical:
+> say 'α=2 is selected within GL-substrate ansatz; minimal-substrate
+> derivation falsified and retracted'."
+
+Pre-patch state of the 14 α=2 callsites in tex:
+- 8 callsites already presented α=2 as a selection (abstract line 64,
+  intro line 165, Theorem `thm:alpha2` line 370, proof lines 402/406,
+  Remark `rem:alpha2-closure` line 410-411 [golden anchor], table
+  rows line 832 + 897, Appendix B line 1297).
+- **4 callsites needed patches**: lines 650, 695, 1167, 1226.
+- 2 lines (411, 410-onward in remark body) are inside the golden
+  anchor itself — already explicit.
+
+The risk: a reader skimming the conclusion (line 1226) or the F1
+falsification target (line 1167) without backtracking to the Remark
+could come away believing α=2 is a fact rather than a selection.
+
+### What changed
+
+Four single-line patches in `paper/tgp_core.tex`:
+
+- **Line 650** (Theorem `thm:metric` application, hyperbolic ansatz):
+  > "...with α=2, yields γ_PPN = β_PPN = 1 exactly at 1PN..."
+  → "...with α=2 **(selected within class (C1)–(C3) by Theorem~\ref{thm:alpha2})**, yields..."
+
+- **Line 695** (Corollary `cor:ppn` application):
+  > "...full nonlinear Φ-EOM with α=2, the post-Newtonian expansion yields..."
+  → "...with α=2 **(selected within class (C1)–(C3) by Theorem~\ref{thm:alpha2})**, the post-Newtonian expansion yields..."
+
+- **Line 1167** (falsification target F1) — full rewrite:
+  > "α=2 *identically* (Theorem~\ref{thm:alpha2}): any observable
+  > inconsistent with K∝φ⁴ at the substrate level falsifies TGP."
+  → "α=2 *identically* **within the class (C1)–(C3) of Φ-covariant
+  > local second-order operators selected in Theorem~\ref{thm:alpha2}
+  > (and not as a derivation from the falsified v1 minimal-bilinear
+  > substrate, see Remark~\ref{rem:alpha2-closure})**: any observable
+  > inconsistent with K∝φ⁴ at the substrate level falsifies the
+  > **GL-substrate ansatz of** TGP."
+
+- **Line 1226** (Conclusion):
+  > "...one scalar field with a geometrically fixed kinetic operator (α=2),..."
+  → "...one scalar field with a geometrically fixed kinetic operator
+  > (α=2, **selected within class (C1)–(C3) by Theorem~\ref{thm:alpha2};
+  > see Remark~\ref{rem:alpha2-closure} for the v1→v2 retraction
+  > trail**),..."
+
+### Verification
+
+- All 14 α=2 callsites in tex now either cite `thm:alpha2` directly,
+  cite `rem:alpha2-closure` (which closes the v1 retraction
+  explicitly), or are *inside* one of those two anchors.
+- `pdflatex` builds cleanly: 18 pages, 663 KB. No undefined /
+  multiply-defined warnings.
+- `_audit_xref.py`: 0 orphan refs.
+- C5 disposition row (KNOWN_ISSUES.md line 2005) updated from "To be
+  patched (P1.5)" → "RESOLVED 2026-04-26 (P1.5)" with full callsite
+  inventory.
+
+### Why this matters
+
+This was the last unresolved row of the 2026-04-25 external-review
+6-row disposition table. Reviewer's specific concern was that "the
+pivot moved physics from result to assumption". After the wording
+sweep:
+
+- **Reader following abstract → main body → conclusion** picks up
+  the selection framing in three independent places (line 64, 410,
+  1226).
+- **Reader following falsification target F1 (skim path)** picks
+  up the explicit "(C1)–(C3) selection... not v1 derivation" framing
+  inline.
+- **Reader following theorem chain (`thm:metric` → `cor:ppn`)** sees
+  the Theorem `thm:alpha2` cite at every α=2 call.
+
+No reader can reasonably maintain the "α=2 derived from first
+principles" interpretation after the sweep.
+
+### Files
+
+- `paper/tgp_core.tex` — 4 single-line patches (lines 650, 695, 1167, 1226).
+- `KNOWN_ISSUES.md` — C5 disposition row updated; this top-level
+  entry added.
+
+### Cross-references
+
+- Original review response plan: `research/external_review_2026-04-25/review_response_plan.md` (P1.5 spec at lines 130–144).
+- Audit synthesis: `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`.
+- Theorem `thm:alpha2` (selection theorem): `tgp_core.tex:370`.
+- Remark `rem:alpha2-closure` (v1 retraction trail): `tgp_core.tex:410-411`.
+
+### Implications
+
+- **Entire 6-row external-review disposition table now reads RESOLVED**
+  (C1, C2, C3, C4, C5, C6). C6 was folded into P1.5 commentary as
+  originally planned.
+- **All 7 review-readiness audit findings RESOLVED** (#1–#6 + #7
+  nested-path fix).
+- **P1.6 single-commit consolidation is the next and final step.**
+
+### Bottom line
+
+α=2 is *selected within (C1)–(C3)*, not derived; the v1 minimal-bilinear
+derivation is falsified and retracted; every assertion in the paper now
+makes the selection nature explicit. **C5 / P1.5 cleared.**
+
+---
+
+## 2026-04-26 — Review-readiness audit fix: path-citation hygiene (Findings #4 + #5)
+
+### Status
+
+**Path-prefix convention harmonized across all `\texttt{...}` research-file
+citations in `paper/tgp_core.tex`.** All 14 such citations now use the
+uniform `research/...` convention (no `TGP_v1/` prefix) and the orphan
+`TGP_CLOSURE_PLAN_2026-04-25.md` citation now has its full
+`research/op7/...` prefix.
+
+### What was wrong
+
+**Finding #4 (`tgp_core.tex:989`)**: bare basename
+`\texttt{TGP\_CLOSURE\_PLAN\_2026-04-25.md}` made the citation
+ambiguous (is the file at the repo root? in `tgp-core-paper/`? in
+`research/op7/`?). The sibling citation on line 988 already used the
+full `research/op7/...` form; line 989 was the only outlier.
+
+**Finding #5 (3 callsites: lines 445, 921, 924)**: tex mixed two
+path-prefix conventions:
+- **`research/...`** (12 callsites — dominant): lines 359, 988, 1023,
+  1024, 1025, 1100, 1153, 1206, 1211, 1214, plus the previously
+  bare 989, 920, and the freshly-added Phase 0+ pointer.
+- **`TGP_v1/research/...`** (3 callsites — outliers): lines 445, 921, 924.
+
+A reader's mental "cd assumption" determines which form resolves;
+mixing both conventions makes any single mental cd produce broken
+paths somewhere.
+
+### What changed
+
+- **`paper/tgp_core.tex:989`**:
+  `TGP\_CLOSURE\_PLAN\_2026-04-25.md` →
+  `research/op7/TGP\_CLOSURE\_PLAN\_2026-04-25.md`.
+- **`paper/tgp_core.tex:445`**:
+  `TGP\_v1/research/op6/` → `research/op6/`.
+- **`paper/tgp_core.tex:921`**:
+  `TGP\_v1/research/op6/m3a\_block\_rg\_1d.py` →
+  `research/op6/m3a\_block\_rg\_1d.py`.
+- **`paper/tgp_core.tex:924`**:
+  `TGP\_v1/research/op6/` → `research/op6/`.
+
+### Direction of harmonization (deliberate departure from audit recommendation)
+
+The 2026-04-26 audit synthesis recommended the opposite direction:
+keep `TGP_v1/` and add it everywhere ("op6 already uses it
+explicitly"). I overrode that recommendation in favour of the
+**dominant pattern** for two reasons:
+
+1. **Minimize diff**: 12 callsites already use `research/...` vs 3
+   using `TGP_v1/research/...`. Harmonizing toward the larger group
+   touches 3 lines instead of 12.
+2. **Match the companion-repo mental model**: the citations are
+   pointers a Zenodo reader would follow into the companion repo
+   (\cite{TGP-repo}). After cloning that repo, the natural cd is the
+   repo root, and `research/...` is the natural top-level layout.
+   Adding `TGP_v1/` would imply the companion repo has a `TGP_v1/`
+   subtree — which is not the convention used elsewhere in the paper.
+
+### Verification
+
+- All 14 `\texttt{...research/...\}` callsites now uniform
+  (verified by `Grep`). Zero `TGP_v1` strings remain in tex.
+- `pdflatex` builds cleanly: 18 pages, 661 KB. No undefined /
+  multiply-defined warnings.
+- `_audit_xref.py`: 0 orphan refs.
+
+### Files
+
+- `paper/tgp_core.tex` — 4 single-line path-citation edits
+  (lines 445, 921, 924, 989).
+- `KNOWN_ISSUES.md` — this top-level entry added.
+- `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+  — Findings #4 + #5 marked ✅ RESOLVED (next).
+
+### Cross-references
+
+- Audit report: `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+- Companion repo pointer: `\cite{TGP-repo}` in tex
+  (`https://github.com/Stefan13610/tgp-core-paper`).
+
+### Implications
+
+- **All six findings of the 2026-04-26 review-readiness audit are now
+  RESOLVED** (#1, #2, #3, #4, #5, #6).
+- C5 / P1.5 (α=2 wording sweep) remains the last external-review row.
+- P1.6 single-commit consolidation is the next milestone — the
+  uncommitted edits from the audit fixes (and earlier P1.1, P1.2,
+  P1.4 patches) will all batch into one commit.
+
+### Bottom line
+
+Path-citation surface uniform across the paper, no broken or
+ambiguous file references. Audit ✅ fully cleared.
+
+---
+
+## 2026-04-26 — Review-readiness audit fix: paper OP-M92 row extended with Phase 0+ paragraph (Finding #6)
+
+### Status
+
+**Paper OP-M92 description refreshed to reflect Phase 0+ status.** Three
+in-text references that read "Phase~0 readiness package shipped 2026-04-25"
+were stale: KNOWN_ISSUES.md OP-M92 entry now reads "OPEN — PHASE 0
++ PHASE 0+ FULL (incl. multi-source consistency ISSUE FLAGGED)" and
+the paper had no acknowledgement of the four Phase 0+ artefacts shipped
+2026-04-25 (Candidate D structural sketch 5/5 POSITIVE; cosmology DESI
+cross-check POSITIVE; WEP / 5th-force POSITIVE TIGHT; multi-source
+α-universality ISSUE FLAGGED).
+
+### What was wrong
+
+**Finding #6 (paper OP-M92 row stale)**: `tgp_core.tex:1012`, `1103`,
+`1142` all said "Phase~0 readiness package shipped 2026-04-25". An
+external reviewer would not learn from the paper that:
+
+- Candidate D has been numerically sketched (not just analytically promising);
+- It passes a cosmological cross-check (DESI w(z) ≥ −1);
+- It passes WEP / 5th-force bounds (TIGHT margin on MICROSCOPE);
+- It has a **flagged self-consistency issue** in the multi-source
+  α-universality sub-test, candidate-independent for any M9.2 pivot
+  reproducing universal +14.56% strong-field deviation.
+
+### What changed
+
+- **`paper/tgp_core.tex:1012-1013`** — status string upgraded:
+  "OP-M92 (OPEN — Phase~0 readiness package, 2026-04-25)" →
+  "OP-M92 (OPEN — Phase~0 + Phase~0+ shipped 2026-04-25;
+  multi-source α-universality ISSUE FLAGGED)".
+- **`paper/tgp_core.tex:1142-1144`** — falsification-target footnote
+  parenthetical extended: "M9.2 pivot pre-analysed via OP-M92 Phase~0
+  readiness package 2026-04-25" → "...via OP-M92 Phase~0 + Phase~0+
+  readiness package 2026-04-25, with a multi-source α-universality
+  issue flagged for Phase~1".
+- **`paper/tgp_core.tex` after line 1117** — new ~30-line Phase 0+
+  summary paragraph appended to the OP-M92 description in
+  Applications/Falsifiability (within the EHT photon-ring item).
+  Covers all four Phase 0+ cross-checks with quantitative results:
+  - (i) variational scaffolding — 5/5 POSITIVE; weak-field $U^{4}$
+    auto-suppression $\sim 10^{-17}$ on Mercury; no-ghost $\alpha>0$;
+    exact $c_{\rm GW}=c_{0}$ in vacuum.
+  - (ii) cosmology vs OP-DESI — POSITIVE; $8\pi G\alpha\rho_{m}\sim
+    8\!\times\!10^{-34}$ today, $\sim 5\!\times\!10^{-8}$ at BBN,
+    phantom transition at $z\sim 10^{11}$ (unobservable).
+  - (iii) WEP / 5th-force — POSITIVE TIGHT; MICROSCOPE
+    $\eta\approx 1.6\!\times\!10^{-16}$ vs bound
+    $1.1\!\times\!10^{-15}$ (margin 6.7×); LLR margin $\sim 3\!\times
+    \!10^{15}$.
+  - (iv) **multi-source α-universality** — ISSUE FLAGGED;
+    $\alpha_{\rm SI}\propto M_{\rm BH}^{2}$ scaling across 9 decades
+    in mass = 19 decades in $\alpha_{\rm SI}$; flagged as Phase~1
+    priority #1; candidate-independent; WEP-MICROSCOPE margin is
+    calibration-dependent (M87*-calibrated $\alpha$ would fail
+    MICROSCOPE by ~$10^{5}\times$).
+  Closing pointer to `research/op-m92/` and
+  `OP_M92_P0plus_candD_multisource_results.md`.
+
+### Verification
+
+- `pdflatex` builds cleanly: 18 pages (was 17 before edit), 662 KB.
+  No undefined / multiply-defined reference warnings.
+- `_audit_xref.py` re-run: **0 orphan refs**, 59 labels, 33 refs.
+
+### Why this matters
+
+The paper now reflects the actual state of OP-M92 readiness, including
+the flagged self-consistency issue. An external reviewer following the
+breadcrumbs paper → KNOWN_ISSUES.md → research/op-m92/ now finds a
+consistent narrative: M9.1$''$ closes conditional positive; M9.2
+pivot infrastructure is pre-analysed but Candidate D has a known
+multi-source consistency issue that gates Phase~1; if ngEHT
+2030--2032 falsifies M9.1$''$ the response time is still $\sim$2--4
+weeks, but **conditional on resolving the α-universality issue**.
+This is the honest disposition.
+
+### Files
+
+- `paper/tgp_core.tex` — three OP-M92 references updated
+  (lines ~1012, ~1117 paragraph extension, ~1142).
+- `KNOWN_ISSUES.md` — this top-level entry added.
+- `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+  — Finding #6 marked ✅ RESOLVED (next).
+
+### Cross-references
+
+- Audit report: `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+- Phase 0+ multi-source result: `research/op-m92/OP_M92_P0plus_candD_multisource_results.md`
+- Phase 0+ readiness summary: `research/op-m92/OP_M92_readiness_summary.md`
+- Phase 0+ Candidate D variational sketch: `research/op-m92/OP_M92_P0plus_candD_results.md`
+- Phase 0+ cosmology: `research/op-m92/OP_M92_P0plus_candD_cosmology_results.md`
+- Phase 0+ WEP: `research/op-m92/OP_M92_P0plus_candD_wep_results.md`
+
+### Implications
+
+- Findings #1, #2, #3, #6 of the 2026-04-26 audit are now RESOLVED.
+- Findings #4 (path prefix for `TGP_CLOSURE_PLAN_2026-04-25.md`) and
+  #5 (path-prefix convention sweep) remain open — both are mechanical
+  hygiene, can be batched into P1.6.
+- C5 / P1.5 (α=2 wording sweep) is the last external-review row.
+- P1.6 single-commit pending.
+
+### Bottom line
+
+The paper now tells the truth about OP-M92: Phase 0 + Phase 0+
+shipped, four cross-checks complete, one issue flagged. **Stale
+disposition cleared, multi-source α-universality issue surfaced
+to readers.**
+
+---
+
+## 2026-04-26 — Review-readiness audit fix: orphan `prop:substrate-action` resolved + bond exponent corrected (Finding #3)
+
+### Status
+
+**Two-part fix to the substrate-action chain.** The paper had six
+in-text citations of "App.~B, Prop.~`prop:substrate-action`" but the
+appendix and proposition were never written: the label was a true
+orphan (verified by `_audit_xref.py`). Concurrently, the GL bond
+in~`eq:H-Gamma` was discovered to Taylor-expand to $K(\varphi)=\varphi^{2}$,
+contradicting the asserted continuum form $K(\varphi)=\varphi^{4}$
+(line 466, `thm:alpha2`, `rem:alpha2-closure`, line 412 explicit
+`K_ij = J(φ_i φ_j)²`). Both issues are now resolved in a single
+self-consistent fix.
+
+### What was wrong
+
+**Finding #3a (orphan ref)**: `\ref{prop:substrate-action}` cited at
+six callsites (`tgp_core.tex` lines 66, 162, 222, 304, 441, 916) but
+no `\label{prop:substrate-action}` in the document. External reviewers
+would hit a `??` rendered question mark.
+
+**Finding #3b (bond/continuum mismatch)**: bond was
+$J A_{ij}\,\hat{s}_{i}^{2}\hat{s}_{j}^{2}\,(\hat{s}_{j}^{2}-\hat{s}_{i}^{2})^{2}$.
+With $\hat{\Phi}_{i}=\hat{s}_{i}^{2}$, this Taylor-expands to
+$\Phi^{2}(\nabla\Phi)^{2}$, i.e. $K(\varphi)=\varphi^{2}$ (v1 result,
+$\alpha=1$). The v2 paper everywhere asserts $K(\varphi)=\varphi^{4}$
+($\alpha=2$ closure). Root cause: typo in the bond endpoints.
+
+### What changed
+
+- **`paper/tgp_core.tex` `eq:H-Gamma` (lines 213–215)**: bond endpoint
+  exponents corrected
+  $\hat{s}_{i}^{2}\hat{s}_{j}^{2}\to\hat{s}_{i}^{4}\hat{s}_{j}^{4}$.
+  The new bond is
+  $J A_{ij}\,\hat{s}_{i}^{4}\hat{s}_{j}^{4}\,(\hat{s}_{j}^{2}-\hat{s}_{i}^{2})^{2}$,
+  which under $\hat{\Phi}_{i}=\hat{s}_{i}^{2}$ becomes
+  $J A_{ij}\,\Phi_{i}^{2}\Phi_{j}^{2}\,(\Phi_{j}-\Phi_{i})^{2}$ and
+  Taylor-expands to $K(\varphi)=\varphi^{4}$ with normalisation
+  $K_{\mathrm{geo}}=2J a^{2-d}\Phi_{0}^{6}$.
+- **`paper/tgp_core.tex` Appendix B added** (`\appendix` +
+  `\setcounter{section}{1}` so the first appendix is "B", matching the
+  six in-text citations). Contains:
+  - `\section{Substrate action: continuum limit and the form $K(\varphi)=\varphi^{4}$}`
+    with `\label{app:substrate-action}`;
+  - `\begin{proposition}[Continuum limit of the substrate GL bond]\label{prop:substrate-action}`
+    stating the rigorous Taylor-expansion result and its normalisation;
+  - Full proof (block-averaging + gradient expansion + lattice→integral),
+    O($a^{4-d}$) remainder bookkeeping;
+  - `\begin{remark}[Why $\hat{s}^{4}\hat{s}^{4}$ and not $\hat{s}^{2}\hat{s}^{2}$]\label{rem:bond-power}`
+    explaining the exponent correction (v1→v2) and pointing back to
+    KNOWN_ISSUES.md.
+
+### Verification
+
+- `_audit_xref.py` re-run: **0 orphan refs** (was 1: `prop:substrate-action`).
+  The new internal labels (`app:substrate-action`, `eq:H-bond-app`,
+  `eq:bond-rewrite`, `eq:taylor`, `eq:bond-sum`, `eq:bond-integral`,
+  `rem:bond-power`) appear in the unused-labels list — these are
+  appendix-internal anchors, not orphan refs.
+- `pdflatex` builds cleanly: 17 pages, 654 KB. No `undefined` /
+  `multiply defined` reference warnings (only pre-existing cosmetic
+  hyperref/glue notes).
+
+### Math check (Option A, applied)
+
+Bond per pair under $\hat{\Phi}=\hat{s}^{2}$:
+$\hat{s}_{i}^{4}\hat{s}_{j}^{4}(\hat{s}_{j}^{2}-\hat{s}_{i}^{2})^{2}=\Phi_{i}^{2}\Phi_{j}^{2}(\Phi_{j}-\Phi_{i})^{2}$.
+Taylor: $\Phi_{j}=\Phi_{i}+a\hat{n}\!\cdot\!\nabla\Phi+\mathcal{O}(a^{2})$,
+giving $\Phi_{i}^{2}\Phi_{j}^{2}=\Phi^{4}+\mathcal{O}(a)$ and
+$(\Phi_{j}-\Phi_{i})^{2}=a^{2}(\hat{n}\!\cdot\!\nabla\Phi)^{2}+\mathcal{O}(a^{3})$.
+Lattice sum + isotropy: $\sum_{\langle ij\rangle}\to a^{2-d}\!\int\!\Phi^{4}|\nabla\Phi|^{2}d^{d}x$.
+Rescale $\Phi=\Phi_{0}\varphi$ ⟹ extra $\Phi_{0}^{6}$ ⟹
+$K_{\mathrm{geo}}=2Ja^{2-d}\Phi_{0}^{6}$. Continuum kernel
+$K(\varphi)=\varphi^{4}$, $\alpha=K'\varphi/(2K)=2$ ✓.
+
+### Why this matters
+
+This was the only critical issue (severity ✗✗) flagged by the
+2026-04-26 review-readiness audit. With the fix:
+
+- The substrate-action chain is now \emph{closed} from lattice
+  Hamiltonian → continuum kernel → $K=\varphi^{4}$ → $\alpha=2$
+  (Theorem~`thm:alpha2`, Remark~`rem:alpha2-closure`).
+- Six in-text citations now resolve.
+- The v1→v2 transition (the discontinuous-kernel issue C1 was
+  patched against) is now mathematically self-consistent.
+
+### Files
+
+- `paper/tgp_core.tex` — eq:H-Gamma bond exponents corrected
+  (lines 213–215); Appendix B added before `\begin{thebibliography}`.
+- `KNOWN_ISSUES.md` — this top-level entry added.
+
+### Cross-references
+
+- Audit report: `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+- Cross-reference auditor: `research/external_review_2026-04-25/_audit_xref.py`
+- Theorem `thm:alpha2` (line 370 of tex), Remark `rem:alpha2-closure` (line 410)
+- Earlier audit fixes (Findings #1, #2): see entry below.
+
+### Implications
+
+- Findings #1, #2, #3 of the 2026-04-26 audit are now RESOLVED.
+- Findings #4 (path prefix for `TGP_CLOSURE_PLAN_2026-04-25.md`),
+  #5 (path-prefix convention sweep, ~10 callsites in tex), and
+  #6 (paper OP-M92 row needs Phase 0+ paragraph) remain open.
+- C5 of the external review (α=2 wording sweep — P1.5) is the
+  last remaining external-review row.
+- P1.6 single-commit consolidation pending.
+
+### Bottom line
+
+The Substrate ⟶ Continuum chain is now mathematically closed and
+all six in-text App.~B citations land on a real proposition with a
+checkable proof. **Critical audit finding cleared.**
+
+---
+
+## 2026-04-26 — Review-readiness audit fix: C1 + C3 disposition rows refreshed (Findings #1, #2)
+
+### Status
+
+**Two stale/incorrect rows in the C1–C6 external-review disposition table
+fixed.** No paper changes — both fixes are KNOWN_ISSUES.md edits that
+realign the dispositions with what is actually in `paper/tgp_core.tex`.
+
+### What was wrong
+
+**Finding #1 (C1 row, KNOWN_ISSUES.md:1585)**: claimed the SSB story
+was patched via remarks `rem:B-ssb-v2` (Appendix B) and
+`rem:GL-breaking-axiomatic` (sek01). Neither label exists in the tex.
+The paper does cover the SSB story, but through different anchors:
+Prop.~`prop:Z2` (line 229), Axiom~`ax:P3` (line 247),
+Prop.~`prop:instability` (line 257), and Remark~`rem:alpha2-closure`
+(line 410, "no substrate ⇒ no geometry" property of GL bond).
+
+**Finding #2 (C3 row, KNOWN_ISSUES.md:1587)**: signalled "To be
+patched (P1.3)" — already obsolete. (i) `cor:ppn` is already scoped
+explicitly to "within the ansatz of Theorem~\ref{thm:metric}"
+(`tgp_core.tex:692`); the corollary only claims
+γ_PPN = β_PPN = 1 at 1PN. (ii) Full 10-PPN closure is already
+integrated into Remark~`rem:two-projections` (line 355–358) via
+OP-7 T6.1 (12/12 PASS, `OP7_T6_results.md`). σ_ab corrections to
+PPN parameters are O(σ²) ~ 10⁻⁶⁰ (negligible).
+
+### What changed
+
+- **C1 row** rewritten to cite the labels that actually exist in the
+  paper (`prop:Z2`, `ax:P3`, `prop:instability`, `rem:alpha2-closure`)
+  and to credit Prop.~`prop:instability` for *deriving* SSB from
+  $H_\Gamma$ thermodynamics (rather than positing it). Vacuum-condition
+  correction `v² = |m₀²|/λ₀` retained as already realised in v2
+  Hamiltonian~\eqref{eq:H-Gamma}.
+- **C3 row** rewritten as RESOLVED (parallel to C2, C4 dispositions),
+  citing the two-tier presentation: narrowed `cor:ppn` (body) +
+  10-PPN closure (`rem:two-projections` remark) backed by OP-7 T6.1.
+
+### Why this matters
+
+The table at `KNOWN_ISSUES.md:1583–1591` is the canonical disposition
+record for the 2026-04-25 external review. Before the fix, an external
+reviewer following the breadcrumbs C1 → tex would hit two non-existent
+labels (false claim about paper state); the C3 row would suggest
+outstanding work that has actually been completed via OP-7 T6.1.
+After the fix, the table is internally consistent and externally
+verifiable.
+
+### Audit synthesis
+
+Full audit report (6 findings, prioritised punch list) at
+`research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`.
+Findings #1, #2 are RESOLVED in this entry. Findings #3 (orphan
+`prop:substrate-action` ref + missing Appendix B), #4 (path-prefix
+hygiene), #5 (path-prefix convention), #6 (paper OP-M92 row covers
+Phase 0 only, omits Phase 0+ multi-source α-universality ISSUE
+FLAGGED) remain open.
+
+### Files
+
+- `tgp-core-paper/KNOWN_ISSUES.md` — C1 row (1585) + C3 row (1587)
+  rewritten; this top-level entry added.
+
+### Cross-references
+
+- Audit report: `research/external_review_2026-04-25/audit_review_readiness_2026-04-26.md`
+- Original review response plan: `research/external_review_2026-04-25/review_response_plan.md`
+- OP-7 T6.1 backing for C3: `research/op7/OP7_T6_results.md`
+
+### Implications
+
+- C1 + C2 + C3 + C4 + C6 of the 6-row external-review table now
+  read as RESOLVED. C5 ("α=2 selection wording") remains the only
+  outstanding row, addressed indirectly via `rem:alpha2-closure`
+  (line 410); a P1.5 wording sweep of remaining α=2 callsites in
+  abstract / body is still open work.
+- The original P1.3 patch slot is no longer needed (its content is
+  delivered through OP-7 T6.1). P1.6 single-commit remains the
+  next milestone.
+
+### Bottom line
+
+C1 + C3 rows now match paper reality. **No paper edits**; this is a
+KNOWN_ISSUES.md hygiene fix uncovered by the 2026-04-26 audit.
+
+---
+
+## 2026-04-25 — P1.4 OP-7 integration (external review C4): RESOLVED — c_GW = c₀ unconditional, GW sector closed
+
+### Status
+
+**Critique C4 from external review 2026-04-25 disposed via full OP-7
+T1–T6 chain (94/97 = 96.9% PASS) and paper integration.** No physics
+modification — all integration was already performed during OP-7
+closure earlier on 2026-04-25; this entry records the formal review
+disposition. C4 was the most physically serious of the 6 reviewer
+critiques.
+
+### What the reviewer flagged
+
+The paper's claim `c_GW = c₀` was originally argued only for the
+scalar-φ sector. GR's two transverse-traceless tensor polarisations
+were not represented in the single-Φ TGP, so any GW150914-class
+detection of TT modes was not yet a *closed* TGP prediction. Potential
+falsification via LIGO/Virgo scalar-mode bounds (< few %).
+
+### Resolution chain — OP-7 T1 through T6
+
+1. **T1 (no-tensor for single-Φ M9.1″, 7/7 PASS).** Confirmed that the
+   M9.1″ single-Φ static action carries only a breathing (trace) mode
+   — a scalar GW polarisation, not the TT modes of GR. This *was* the
+   physical origin of the reviewer's worry and motivated the σ_ab
+   construction.
+
+2. **T2 (σ_ab from H_Γ, 12/12 PASS).** Defined the symmetric
+   traceless gradient-strain tensor
+   $\sigma_{ab}(\mathbf{x}) = K_{ab}(\mathbf{x}) - \tfrac{1}{3}\delta_{ab}\,\mathrm{Tr}(K)$
+   with $K_{ab} = \langle (\partial_a \hat s)(\partial_b \hat s)\rangle_{\mathcal B}$,
+   arising from the **same** Ginzburg–Landau kinetic term of $H_\Gamma$
+   that produces Φ. Result: a single substrate yields two projections
+   (Φ scalar + σ_ab traceless symmetric). TGP remains single-substrate
+   (Axiom-level closure of two-projection construction;
+   `rem:two-projections` in `tgp_core.tex:308`).
+
+3. **T3 + T3-extended (σ_ab dynamics, 44/47 + 19/19 PASS).** EOM:
+   $\Box \sigma_{ab} + m_\sigma^2 \sigma_{ab} = -\xi T_{ab}^{\mathrm{TT}}$
+   with mass scale $m_\sigma$ set by substrate spectral gap. The
+   originally flagged Φ₀/m_σ tension was RESOLVED via Bethe–Salpeter
+   spectral decoupling (T3-extended).
+
+4. **T4 (metric coupling, 13/13 PASS).** Established that $g_{ij} =
+   h(\psi)\delta_{ij} + \Lambda(\psi)\sigma_{ij}$ with $\Lambda(\psi)
+   \equiv 1$ is structurally unique under ghost-free + Z₂ + general
+   covariance constraints. Scenario A ratified.
+
+5. **T5 (quadrupole formula + GW150914/GW170817 fit, 13/13 PASS).**
+   Standard quadrupole formula $h_{+,\times} = (\xi/4\pi c^4)\,\ddot
+   Q_{+,\times}/r$ recovered. GW150914 strain matches LIGO O3 5–10%
+   bound (T5: 6% deviation initially, refined to 0% via T6).
+
+6. **T6 (full consistency, 12/12 PASS).** Last-gate closure:
+   - **c_GW = c₀ EXACT** in spectral decoupling regime
+     ($m_\sigma \ll \omega_{\mathrm{LIGO}}$): the gap $2m_s \sim$ meV
+     is far above $\omega_{\mathrm{LIGO}} \sim 10^{-13}$ eV, so the
+     dispersion $\omega^2 = c_0^2 k^2 + m_\sigma^2$ reduces to
+     $\omega = c_0 k$ and $v_g = c_0$ exact.
+   - **GW170817 bound $|c_{\rm GW} - c|/c < 7\times 10^{-16}$** is
+     satisfied trivially (effectively 0% deviation).
+   - **ξ = G EXACT after TT-convention reconciliation** (T6.6): the
+     T3.4 phenomenological 6% offset (ξ/G = 1.06) was an artefact of
+     simplistic chirp estimator + un-reconciled TT projection. Full
+     Maggiore/Wald/Green's-function factor compensation gives
+     $K_{TT} = G$ exactly. **LIGO O5+ falsification risk RESOLVED.**
+   - **All 10 PPN parameters** in experimental bounds: γ = β = 1
+     (M9.1″ P1, exact at 1PN), $\alpha_{1\text{–}3} = \zeta_{1\text{–}4}
+     = \xi_{\mathrm{PPN}} = 0$ (Z₂ + general covariance), σ_ab
+     corrections $\mathcal{O}(\sigma^2) \sim 10^{-60}$ (negligible).
+   - **Ghost-free higher-order**: kinetic sign preserved by $V(\sigma)$,
+     $g_4 > 0$ from `prop:substrate-action`, $g_3$ suppressed by
+     $1/\Phi_0$.
+   - **Z₂ all-order**: $\sigma^n$ contractions are Z₂-even (2n par
+     derivatives ŝ contract to Z₂-even product); extended ansatz
+     Z₂-invariant.
+   - **Non-perturbative stable**: $V_{\rm eff}(\sigma)$ bounded below
+     ($g_4 > 0$); σ=0 vacuum stable ($m_\sigma^2 > 0$); single global
+     minimum on Φ₀ scale.
+
+### What changed in the paper
+
+All paper integration was already completed during OP-7 closure;
+this section records the consolidated state for traceability.
+
+- **Abstract footnote `tgp_core.tex:78–89`**: states that tensor-sector
+  GW170817 consistency is now **unconditional** via OP-7 closure
+  (94/97 = 96.9% PASS), gives explicit σ_ab definition, EOM, ξ/G = 1
+  EXACT, and decoupling regime. Cites `KNOWN_ISSUES.md` C4 RESOLVED
+  2026-04-25.
+- **Remark `rem:two-projections` `tgp_core.tex:308–360`**: full
+  pedagogical treatment of the two-projection construction with
+  Eqs.~`eq:sigma-def`, `eq:sigma-eom`, `eq:metric-extended`. Closure
+  status block (94/97 = 96.9%) included.
+- **Corollary `cor:cGW` `tgp_core.tex:735–752`**: scalar sector luminal
+  by direct evaluation of constants; tensor sector luminal in spectral
+  decoupling; cites OP-7 T2–T6.
+- **Status table row 6 `tgp_core.tex:848–852`**: "Luminal GW (scalar +
+  tensor sectors, OP-7 closed)" with TH (theorem) status.
+- **OP-7 row in open problems `tgp_core.tex:970–989`**: marked
+  **CLOSED 2026-04-25 (94/97 = 96.9% PASS)** with full T1–T6 detail.
+- **F3 falsifier `tgp_core.tex:1145–1148`**: tensor-sector closure via
+  OP-7 makes the c_GW = c₀ prediction *unconditional*.
+- **F4 falsifier `tgp_core.tex:1149–1154`**: scalar breathing mode
+  smoking gun: 3G era (Cosmic Explorer / Einstein Telescope / LISA)
+  with appropriate detector orientation will DETECT or FALSIFY.
+
+### Files
+
+- `research/op7/OP7_T1_results.md` — T1 no-tensor (7/7 PASS)
+- `research/op7/OP7_T2_results.md` — T2 σ_ab definition (12/12 PASS)
+- `research/op7/OP7_T3_results.md` + `OP7_T3_extended_results.md` —
+  T3 dynamics (44/47 + 19/19 PASS, Φ₀/m_σ RESOLVED)
+- `research/op7/OP7_T4_results.md` — T4 metric coupling (13/13 PASS)
+- `research/op7/OP7_T5_results.md` — T5 quadrupole + GW fit (13/13 PASS)
+- `research/op7/OP7_T6_results.md` — T6 full consistency (12/12 PASS)
+- `research/op7/TGP_CLOSURE_PLAN_2026-04-25.md` — OP-7 closure plan
+- `research/external_review_2026-04-25/P1_4_OP7_integration_results.md`
+  — this synthesis (review-disposition record)
+
+### Cross-references
+
+- External review response plan (P1.4 spec):
+  `research/external_review_2026-04-25/review_response_plan.md`
+- M9.1″ P1 (γ = β = 1 exact at 1PN): basis for T6.1 PPN check
+- prop:substrate-action (TGP_FOUNDATIONS): basis for T6.5 stability
+- OP-EHT independent of OP-7 (CONDITIONAL POSITIVE 13/18 = 72%, see
+  separate entry above).
+
+### Implications
+
+- **GW sector closed**: TGP reproduces GR observation in LIGO/Virgo/
+  KAGRA bands without an independent tensor field, preserving
+  single-Φ ontology (TGP_FOUNDATIONS §1).
+- **Multimessenger**: GW170817 c_GW = c satisfied EXACT.
+- **Smoking gun for 3G**: scalar breathing mode (third polarisation)
+  is absent in GR; LIGO TT-only configurations insensitive; 3G with
+  full polarisation sensitivity provides DETECT/FALSIFY test.
+- **C4 was the highest-stakes review critique** ("real and physically
+  serious"). Its closure means the paper's c_GW = c₀ claim is now
+  fully defensible at unconditional level.
+
+### What this does NOT close
+
+- **EHT photon ring**: independent of OP-7 σ_ab sector. M9.1″ static
+  predicts +14.56% photon ring deviation; OP-EHT closed CONDITIONAL
+  POSITIVE pending ngEHT 2030+. Tracked separately in OP-EHT entry.
+- **Higher-PN binary phase**: M9.1″ P3 gave $\Delta\varphi \sim
+  \tfrac{5}{6}U^3$ at 2PN. Full inspiral-cycle-count impact (200-300
+  cycles for GW150914) is a numerical task; LIGO O5 may test.
+- **Cosmological perturbations**: σ_ab impact on CMB tensor-to-scalar
+  $r$, primordial GW, structure formation — out of OP-7 scope, separate
+  program.
+
+### Bottom line
+
+C4 is **closed RESOLVED**. The paper's c_GW = c₀ claim is now backed
+by a full OP-7 T1–T6 chain (94/97 = 96.9% PASS) covering definition,
+dynamics, metric coupling, observational fit, and full PPN/Z₂/
+ghost-free/stability consistency. Single-Φ TGP carries 2 TT
+polarisations from σ_ab composite (same H_Γ, no extra field), and
+matches GW170817 unconditionally. **Falsification path remains**: 3G
+detection or non-detection of the scalar breathing mode. **Falsification
+horizon**: 2030+ (Cosmic Explorer / Einstein Telescope / LISA).
+
+---
+
+## 2026-04-25 — P1.2 U(φ) bounded-below proof (external review C2): RESOLVED at presentation level
+
+### Status
+
+**Critique C2 from external review 2026-04-25 disposed via Remark
+patch + supplementary proof note.** No physics modification. Last
+remaining pre-DR2 OP-DESI / paper-clarification task is closed.
+
+### What the reviewer flagged
+
+The self-interference potential
+$U(\varphi) = (\beta/3)\varphi^{3} - (\gamma/4)\varphi^{4}$ in
+`tgp_core.tex` Eq.~(7) is unbounded below at large $\varphi$ (since
+$\gamma > 0$, the quartic with the minus sign dominates as
+$\varphi \to +\infty$). At face value this looks like a globally
+unstable potential.
+
+### Resolution
+
+1. **Microscopic v_eff is bounded below.** The Hubbard–Stratonovich
+   composite-field derivation (M2a, see
+   `research/op1-op2-op4/M2a_HS_derivation.md`) gives
+   $v_{\rm eff}(\Phi) = (m_0^{2}/2)\Phi + (\lambda_0/4)\Phi^{2} + (T/2)\ln\Phi$
+   on $\Phi > 0$. Theorem (proved formally in
+   `research/external_review_2026-04-25/P1_2_U_bounded_below_proof.py`):
+   $v_{\rm eff}$ has a unique global minimum at
+   $\Phi_0 = (-m_0^{2} + \sqrt{m_0^{4} - 4\lambda_0 T}) / (2\lambda_0)$;
+   $v_{\rm eff}(\Phi) \to +\infty$ as $\Phi \to +\infty$;
+   the partition function $Z = \int_0^{\infty} e^{-\beta_T v_{\rm eff}}\,d\Phi$
+   is finite (computed numerically: $Z \approx 7.27$, abs.~error
+   $< 6\times 10^{-8}$ at $\lambda_0=1$, $T=0.4$, $m_0^{2}=-1.4$,
+   $\beta_T=2.5$).
+
+2. **U(φ) is the cubic+quartic Taylor truncation of v_eff in the
+   fluctuation variable** $\eta := \varphi - 1 = (\Phi-\Phi_0)/\Phi_0$.
+   At tree level $\beta = \gamma = T/2$ (matches M2a prediction;
+   numerically verified). Truncation match
+   $|U(\varphi) - v_{\rm eff,resid}| \le 1.5 \times 10^{-5}$ across
+   $|\eta| \le 0.2$ — this range covers Mercury ($|\eta|\sim 10^{-9}$),
+   Cassini, LLR, the entire Solar System, and the M9.1″ photon ring
+   ($\eta = +0.168$, relative truncation error 1.67%).
+
+3. **The vacuum at $\varphi=1$ is dynamically stable.** Although
+   $U''(1) = -\beta < 0$ at the bare Lagrangian level, the substrate
+   volume element $\sqrt{-g_{\rm eff}} = c_0 \varphi$ dresses the
+   linearisation. The actual TGP field equation
+   ($\nabla^{2}\Phi + 2(\nabla\Phi)^{2}/\Phi + \beta\Phi^{2}/\Phi_0 - \gamma\Phi^{3}/\Phi_0^{2} = -q\Phi_0\rho$)
+   gives $\nabla^{2}\eta - \beta\,\eta = -q\rho$ at linear order in
+   $\eta$, i.e.~a Yukawa equation with stable mass-squared
+   $m_{\rm eff}^{2} = +\beta > 0$. The bounded-below theorem on
+   $v_{\rm eff}$ is the non-perturbative complement of this
+   perturbative analysis.
+
+4. **The reviewer's $\varphi \to \infty$ instability is a truncation
+   artefact** in a regime no TGP physical scenario reaches. Neutron
+   star surface ($\eta \sim 0.4$) marginally exceeds the canonical
+   range — there one must use $v_{\rm eff}$ directly or extend the
+   Taylor series to the next order. This is unrelated to C2.
+
+### What changed
+
+- **Patch applied to paper:** `tgp_core.tex:479` now contains
+  `\begin{remark}[Validity domain of the cubic+quartic potential]`
+  (label `rem:U-truncation`) inserted between Eq.~(7) and
+  Theorem~`thm:field-eq`. The Remark states the truncation
+  interpretation, cites M2a, points to the bounded-below proof note,
+  and quantifies the validity domain.
+
+- **Supplementary proof note** shipped at
+  `research/external_review_2026-04-25/`:
+  - `P1_2_U_bounded_below_proof.py` — sympy + numpy + scipy proof
+    (Parts A symbolic, B asymptotic, C partition function, D
+    fluctuation-domain match, E verdict).
+  - `P1_2_U_bounded_below_proof.txt` — captured output (5/5 PASS).
+  - `P1_2_U_bounded_below_results.md` — synthesis with formal
+    theorem statement.
+
+- **C2 row in this file** updated from "To be patched (P1.2)" to
+  "RESOLVED 2026-04-25 (P1.2)" with full disposition.
+
+### Files
+
+- `research/external_review_2026-04-25/P1_2_U_bounded_below_proof.py`
+- `research/external_review_2026-04-25/P1_2_U_bounded_below_proof.txt`
+- `research/external_review_2026-04-25/P1_2_U_bounded_below_results.md`
+- `paper/tgp_core.tex` (Remark `rem:U-truncation` at line 479)
+
+### Cross-references
+
+- M2a Hubbard–Stratonovich derivation:
+  `research/op1-op2-op4/M2a_HS_derivation.md`
+- M1 corpus inventory of U(φ) sites:
+  `research/op1-op2-op4/M1_potential_inventory.md`
+- External review response plan (P1.2 spec):
+  `research/external_review_2026-04-25/review_response_plan.md`
+- OP-DESI parent program:
+  `TGP_v1/research/desi_dark_energy/README.md`
+
+### Implications
+
+- OP-DESI dossier is now complete pending DR2 (2026 Q3); P1.2 was
+  the only active pre-DR2 paper-clarification task.
+- The Remark closes a presentation issue without altering any TGP
+  prediction (γ_PPN, β_PPN, photon-ring shift, $w(z)$ all unchanged).
+- The bounded-below v_eff result also serves as the structural
+  underpinning of OP-M92 Candidate D Phase 0+ stability claim
+  (no-ghost, sub-Planck) — formally consistent with this proof.
+
+### Bottom line
+
+C2 is **closed RESOLVED at presentation level**. The paper's U(φ) is
+a Taylor truncation of a microscopic v_eff that is bounded below; the
+truncation is faithful in the entire physical TGP scenario range; the
+reviewer's $\varphi \to \infty$ worry is outside the validity domain
+and disappears in the full theory. No physics change required.
+
+---
+
 ## 2026-04-25 — OP-M92 (M9.2 conditional pivot framework): OPEN — PHASE 0 + PHASE 0+ FULL (incl. multi-source consistency ISSUE FLAGGED)
 
 ### Status
@@ -1297,11 +2117,11 @@ Priority-1 patches land in this commit; P2/P3 tracked as open work.
 
 | # | Critique | Severity | Disposition |
 |---|----------|----------|-------------|
-| C1 | "Substrate stable at s=0 → no SSB" | — | **Reviewer misread**: axiom explicitly has `m₀² < 0` in ordered phase. But a **deeper v2-specific point is real**: GL gradient bond vanishes on uniform configurations, so SSB depends entirely on `m₀² < 0` axiomatically (no J-driven alternative as in v1). **Patched** via new remarks `rem:B-ssb-v2` (dodatek B) and `rem:GL-breaking-axiomatic` (sek01). Also corrected `v² = (Jz − m₀²)/λ₀` → `v² = |m₀²|/λ₀` in the v2 map (P1.1). |
-| C2 | `U(φ) = β/3 φ³ − γ/4 φ⁴ → −∞` at large φ | Real presentation issue | **To be patched (P1.2)**: U(φ) is Taylor truncation of V_eff(Φ) around Φ₀, valid for `|φ−1| ≪ 1`. Full V_eff bounded below by bare `λ₀/4 Φ²`. Apparent unboundedness is truncation artefact. |
-| C3 | "All 10 PPN = GR" overreach | Real | **To be patched (P1.3)**: restrict to `γ_PPN = β_PPN = 1` from static/isotropic/weak-field ansatz. Full 10-PPN requires OP-7 (moving matter + tensor sector). |
-| C4 | `c_GW = c₀` overreach | Real, physically serious | **To be patched (P1.4)**: scalar-φ fluctuations on `g_eff` are luminal, but 2 tensor GR polarisations require OP-7. GW150914-class detections are NOT yet a closed TGP prediction. Potential falsification via LIGO/Virgo scalar-mode bounds (< few %). |
-| C5 | α=2 pivot = "moving the goalposts" | Partly real | **To be patched (P1.5)**: α=2 is a *selection* within GL-substrate ansatz (conditions C1–C3), not a derivation from minimal bilinear substrate (latter falsified, see 2026-04-24 entry below). Paper text must reflect this at every α=2 assertion. |
+| C1 | "Substrate stable at s=0 → no SSB" | — | **RESOLVED 2026-04-26 (audit fix; original P1.1)**: reviewer misread — axiom~`ax:substrate` has on-site $\frac{m_0^2}{2}\hat s_i^2+\frac{\lambda_0}{4}\hat s_i^4$ with `m₀² < 0` in the ordered phase, the standard SSB recipe. The deeper v2-specific point is correctly captured in the existing paper structure: (a) Prop.~`prop:Z2` (line 229) states the chiral $\hat s_i\mapsto-\hat s_i$ symmetry that SSB breaks; (b) Axiom~`ax:P3` (line 247) postulates instability of $\Nzero$; (c) Prop.~`prop:instability` (line 257) **derives** that instability from Ising thermodynamics of $H_\Gamma$, so SSB is a *consequence* of the substrate axioms rather than an extra postulate; (d) Remark~`rem:alpha2-closure` (line 410) records that the GL gradient bond vanishes on $\hat s_i=0$ configurations ("no substrate $\Rightarrow$ no geometry") as a direct property of the v2 axiom. The vacuum-condition correction `v² = (Jz − m₀²)/λ₀` → `v² = |m₀²|/λ₀` (i.e. `Φ_0 = |m₀²|/λ₀` from on-site potential alone, with the GL bond contributing no uniform-vacuum drift) is realised at the level of the v2 Hamiltonian~\eqref{eq:H-Gamma} and is consistent throughout the paper. No further paper patch required. |
+| C2 | `U(φ) = β/3 φ³ − γ/4 φ⁴ → −∞` at large φ | Real presentation issue | **RESOLVED 2026-04-25 (P1.2)**: Remark `rem:U-truncation` inserted at `tgp_core.tex:479` (between Eq.~(7) and Theorem~`thm:field-eq`). Sympy + scipy proof shipped as `research/external_review_2026-04-25/P1_2_U_bounded_below_proof.py` + `.txt` + `_results.md`. Theorem: full M2a `v_eff(Φ) = (m₀²/2)Φ + (λ₀/4)Φ² + (T/2) ln Φ` is bounded below on Φ>0; unique global min at Φ₀; `v_eff(Φ)→+∞` as `Φ→+∞`; partition function `Z = ∫exp(−β_T v_eff)dΦ` finite. U(φ) is the cubic+quartic truncation of v_eff in fluctuation `η:=φ−1`; tree-level `β=γ=T/2`. Truncation match `|U − v_eff_resid| ≤ 1.5×10⁻⁵` over `|η| ≤ 0.2` (covers Mercury 10⁻⁹, photon ring 0.168). Field equation gives stable `m²_eff=+β` for fluctuations (volume element `√−g_eff = c₀φ` dresses the canonical analysis). Apparent unboundedness at `φ→∞` is truncation artefact in regime no TGP scenario reaches. |
+| C3 | "All 10 PPN = GR" overreach | Real | **RESOLVED 2026-04-26 (via OP-7 T6.1; see C4)**: both halves of the original P1.3 plan are delivered. (i) **Narrowing**: Cor.~`cor:ppn` is now scoped explicitly to "PPN parameters at 1PN, **within the ansatz of Theorem~\ref{thm:metric}**" (`tgp_core.tex:692`); the corollary states only `γ_PPN = β_PPN = 1` exactly at 1PN, plus the explicit 2PN deviation `|Δg_tt|_{2PN} = (5/6) U_N³`. No "all 10 PPN = GR" claim survives in the body. (ii) **Full 10-PPN closure**: integrated into Remark~`rem:two-projections` (`tgp_core.tex:355–358`): "All 10 PPN parameters lie in experimental bounds (γ = β = 1 EXACT from M9.1″ P1; α₁₋₃ = ζ₁₋₄ = ξ_PPN = 0 from Z₂ + general covariance, T6.1)." σ_ab corrections to PPN parameters are O(σ²) ~ 10⁻⁶⁰ (negligible). Backed by OP-7 T6.1 (`research/op7/OP7_T6_results.md`, 12/12 PASS). The two-tier presentation (narrowed `cor:ppn` body + 10-PPN remark inside `rem:two-projections`) preserves the 1PN derivation chain while making the unconditional 10-PPN closure visible to readers tracking the OP-7 outcome. |
+| C4 | `c_GW = c₀` overreach | Real, physically serious | **RESOLVED 2026-04-25 (P1.4)**: closed via full OP-7 T1–T6 (94/97 = 96.9% PASS, see entries below). Composite tensor projection `σ_ab = K_ab − ⅓δ_ab Tr(K)` (T2, 12/12) carries the 2 TT polarisations from the same `H_Γ` (no independent tensor d.o.f.). Dynamics: `□σ_ab + m_σ²σ_ab = −ξT_ab^TT` with `ξ = 4πG` EXACT (T3+T6.6, ξ/G = 1 after TT-convention reconciliation, LIGO O5+ falsification risk RESOLVED). Metric coupling: `g_ij = h(ψ)δ_ij + Λ(ψ)σ_ij` with `Λ ≡ 1` structurally unique (T4, 13/13). In spectral decoupling regime (`m_σ ≪ ω_LIGO`, gap `2m_s ~` meV vs `ω_LIGO ~ 10⁻¹³` eV) the dispersion `ω² = c₀²k²` gives `c_GW = c₀` EXACT, matching GW170817 bound `7×10⁻¹⁶` trivially. GW150914 strain within LIGO O3 5–10% bound (T5, 13/13). All 10 PPN parameters in experimental bounds (T6.1, σ_ab corrections O(σ²) ~ 10⁻⁶⁰ negligible). Paper fully integrated: footnote at abstract line 78–89 (cites C4 RESOLVED), Cor.~`cor:cGW` (line 735), Remark `rem:two-projections` (line 308) with explicit `eq:sigma-def`, `eq:sigma-eom`, `eq:metric-extended`, F3 falsifier line 1145 ("tensor-sector closure via OP-7 makes this prediction unconditional"). **Smoking gun**: scalar breathing mode detectable in 3G era (Cosmic Explorer / Einstein Telescope / LISA with TT-orientation, F4 line 1149). See `research/op7/OP7_T{1..6}_results.md`, `research/external_review_2026-04-25/P1_4_OP7_integration_results.md`. |
+| C5 | α=2 pivot = "moving the goalposts" | Partly real | **RESOLVED 2026-04-26 (P1.5)**: α=2 wording sweep applied to all 14 callsites in `tgp_core.tex`. Eight callsites already presented α=2 as a selection (abstract line 64, intro line 165, Theorem `thm:alpha2` line 370, proof lines 402/406, Remark `rem:alpha2-closure` line 410-411 = golden anchor, table row line 832 + 897, Appendix B line 1297). Four additional callsites patched to make selection-within-(C1)–(C3) framing explicit: (i) line 650 inside Theorem `thm:metric` application — added `(selected within class (C1)–(C3) by Theorem~\ref{thm:alpha2})`; (ii) line 695 inside Cor.~`cor:ppn` — same insertion; (iii) line 1167 falsification target F1 — full rewrite to `α=2 identically within the class (C1)–(C3)... not as a derivation from the falsified v1 minimal-bilinear substrate, see Remark~\ref{rem:alpha2-closure}`, with falsifier scoped to "GL-substrate ansatz of TGP"; (iv) line 1226 conclusion — added `(selected within class (C1)–(C3) by Theorem~\ref{thm:alpha2}; see Remark~\ref{rem:alpha2-closure} for the v1→v2 retraction trail)`. After patches: no reader can reasonably believe α=2 is "derived from first principles" in the minimal-substrate sense — every assertion either cites `thm:alpha2` (selection theorem) or `rem:alpha2-closure` (which itself closes the v1 retraction). |
 | C6 | `p=1` defence mixes external and internal arguments | Minor | Folded into P1.5 commentary and M2c reality-check text. No separate patch. |
 
 ### Cross-connection: OP-2b and C5

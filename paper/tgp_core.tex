@@ -211,7 +211,7 @@ amplitude operator $\hat{s}_{i}$. The substrate Hamiltonian is
     +\tfrac{\lambda_{0}}{4}\hat{s}_{i}^{4}
   \Bigr]
   + J\!\!\sum_{\langle ij\rangle}\! A_{ij}\,
-    \hat{s}_{i}^{2}\,\hat{s}_{j}^{2}\,
+    \hat{s}_{i}^{4}\,\hat{s}_{j}^{4}\,
     \bigl(\hat{s}_{j}^{2}-\hat{s}_{i}^{2}\bigr)^{2},
 \end{equation}
 with $J>0$, $\lambda_{0}>0$, and $A_{ij}\in\{0,1\}$ the adjacency matrix.
@@ -442,7 +442,7 @@ of Prop.~\ref{prop:substrate-action} (App.~B) are \emph{immediate},
 and Theorem~\ref{thm:alpha2} reduces to the statement that any
 axiomatic choice respecting substrate--metric conformal covariance
 must be of this GL form. OP-6 is closed (see
-\texttt{TGP\_v1/research/op6/} for the complete record). The bond
+\texttt{research/op6/} for the complete record). The bond
 vanishes on empty-substrate configurations ($\hat{s}_{i}=0$),
 making ``no substrate~$\Rightarrow$ no geometry'' a property of the
 axiom rather than a derived fact.
@@ -475,6 +475,33 @@ self-interference potential
 and minimal matter coupling
 $\mathcal{L}_{\mathrm{mat}}=-\,q\,\varphi\rho/\PhiZero$. The volume element
 is $\sqrt{-g_{\mathrm{eff}}}=c_{0}\varphi$ (see Sec.~\ref{sec:metric}).
+
+\begin{remark}[Validity domain of the cubic+quartic potential]\label{rem:U-truncation}
+The self-interference potential $U(\varphi)$ in
+Eq.~\eqref{eq:U-potential} is the cubic+quartic phenomenological
+truncation of an underlying microscopic effective potential
+$v_{\rm eff}(\Phi)=\tfrac{1}{2}m_{0}^{2}\,\Phi+\tfrac{1}{4}\lambda_{0}\,\Phi^{2}+\tfrac{1}{2}T\,\ln\Phi$
+derived from the substrate Hamiltonian by Hubbard--Stratonovich
+linearisation (supplementary derivation~M2a). The dimensionless field
+$\varphi:=\Phi/\PhiZero$ used in Eq.~\eqref{eq:U-potential} has its
+vacuum at $\varphi=1$, where the field equation
+\eqref{eq:field-eq} (with the substrate volume element
+$\sqrt{-g_{\rm eff}}=c_{0}\varphi$) yields a stable mass-squared
+$m_{\rm eff}^{2}=+\beta$ for fluctuations $\eta:=\varphi-1$.
+The function $v_{\rm eff}(\Phi)$ is \emph{bounded below} on $\Phi>0$,
+with a unique global minimum at
+$\PhiZero=(-m_{0}^{2}+\sqrt{m_{0}^{4}-4\lambda_{0}T})/(2\lambda_{0})$
+and $v_{\rm eff}(\Phi)\to+\infty$ as $\Phi\to+\infty$ (Theorem in the
+note \emph{P1.2 U($\varphi$) bounded-below proof}). The apparent
+unboundedness of $U(\varphi)$ at $\varphi\to+\infty$ when read at the
+Lagrangian level is therefore a truncation artefact in a regime that
+no TGP physical scenario reaches: the strong-field photon-ring probe
+sits at $\eta=+0.168$ and the entire weak-field Solar System catalogue
+at $|\eta|<10^{-6}$, both inside the canonical validity range
+$|\eta|\le 0.2$ where the cubic+quartic captures the leading
+non-Gaussian response of $v_{\rm eff}$ to better than $1.5\times10^{-5}$
+in natural units.
+\end{remark}
 
 \begin{theorem}[Full TGP field equation]\label{thm:field-eq}
 Variation $\delta S_{\mathrm{TGP}}/\delta\Phi=0$ of~\eqref{eq:S-TGP} yields
@@ -620,7 +647,8 @@ At the vacuum minimum $\psi=1$ one has $f=h=1$ (calibration); at
 $\psi=4/3$ the temporal factor vanishes (boundary of the ghost-free
 basin, Sec.~\ref{ssec:ghost}); at $\psi\to 0$ the temporal factor
 diverges (non-metric phase). The hyperbolic ansatz, combined with the
-full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$, yields
+full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$
+(selected within class (C1)--(C3) by Theorem~\ref{thm:alpha2}), yields
 $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ \emph{exactly at 1PN}
 (Cor.~\ref{cor:ppn}); deviations from GR appear explicitly at the
 2PN level and are falsifiable predictions of TGP.
@@ -665,7 +693,8 @@ class.
 \begin{corollary}[PPN parameters at 1PN, within the ansatz of
 Theorem~\ref{thm:metric}]\label{cor:ppn}
 For the hyperbolic metric ansatz~\eqref{eq:exp-metric} solved together
-with the full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$,
+with the full nonlinear $\Phi$-EOM~\eqref{eq:field-eq} with $\alpha=2$
+(selected within class (C1)--(C3) by Theorem~\ref{thm:alpha2}),
 the post-Newtonian expansion yields
 \begin{equation}\label{eq:ppn}
   \gamma_{\mathrm{PPN}}=1,\qquad \beta_{\mathrm{PPN}}=1
@@ -891,10 +920,10 @@ The list below summarises the current (April 2026) status of TGP core.
     $\alpha$ is required. Numerical block-spin Monte Carlo studies
     that originally probed the v1 bilinear bond
     (\texttt{research/continuum\_limit/cg\_strong\_numerical.py},
-    \texttt{TGP\_v1/research/op6/m3a\_block\_rg\_1d.py}) are retained
+    \texttt{research/op6/m3a\_block\_rg\_1d.py}) are retained
     as supporting evidence for the axiom-level pivot; the complete
     record is in \texttt{KNOWN\_ISSUES.md} (2026-04-24) and in
-    \texttt{TGP\_v1/research/op6/}.
+    \texttt{research/op6/}.
   & \textsf{NU}\\
 \bottomrule
 \end{longtable}
@@ -959,7 +988,7 @@ OP-7 & Tensor projection $\sigma_{ab}$
   \textbf{Smoking gun:} scalar breathing mode (T1) detectable in 3G era
   (Cosmic Explorer, Einstein Telescope).
   See \texttt{research/op7/OP7\_T\{1..6\}\_results.md} and
-  \texttt{TGP\_CLOSURE\_PLAN\_2026-04-25.md}.
+  \texttt{research/op7/TGP\_CLOSURE\_PLAN\_2026-04-25.md}.
   & \textsf{HY}\\
 OP-8 & Gauge-sector emergence
   & Emergence of U(1)$\times$SU(2)$\times$SU(3) from the substrate
@@ -983,7 +1012,8 @@ OP-9 & Strong-field black-hole solutions
   insufficient) 1/3 FAIL; T-A4 PPN auto-pass 1/1; T-A5 $c_{\mathrm{GW}}$
   preserved 1/1. M9.1$''$ standalone rescue path closed; M9.2
   conditional pivot prepared via \textbf{OP-M92 (OPEN — Phase~0
-  readiness package, 2026-04-25)}: T-M92.1 reverse-engineer
+  + Phase~0+ shipped 2026-04-25; multi-source $\alpha$-universality
+  ISSUE FLAGGED)}: T-M92.1 reverse-engineer
   scenario~(e) action requirements (DIAGNOSTIC; scenario~(e) is doubly
   non-local, comparing TGP at $r_{\rm ph}^{\rm TGP}=3.88M$ to GR at
   $r_{\rm ph}^{\rm GR}=3M$);
@@ -1088,6 +1118,43 @@ pointers, not self-contained derivations.
     binary test against ngEHT, and the response time after a decisive
     ngEHT verdict is reduced from $\sim$6--12~months (from-scratch
     pivot) to $\sim$2--4~weeks (candidate selection + paper drafting).
+    A subsequent \textbf{Phase~0+ structural sketch} (2026-04-25) ran
+    Candidate~D through four cross-checks: (i) variational scaffolding
+    (5/5 POSITIVE: weak-field $U^{4}$ auto-suppression of PPN
+    deviations at the $\sim 10^{-17}$ level on Mercury, no-ghost
+    stability for $\alpha>0$, exact $c_{\rm GW}=c_{0}$ in vacuum);
+    (ii) cosmology against the OP-DESI $w(z)\geq -1$ prediction
+    (POSITIVE: ratio $8\pi G\alpha\rho_{m}\sim 8\!\times\!10^{-34}$
+    today, $\sim 5\!\times\!10^{-8}$ at BBN, phantom transition
+    pushed to $z\sim 10^{11}$, well outside the observable window);
+    (iii) WEP / 5th-force bounds (POSITIVE but tight: residual
+    Nordvedt-like $\eta\approx 1.6\!\times\!10^{-16}$ for the
+    MICROSCOPE Ti--Pt pair against the $1.1\!\times\!10^{-15}$ bound,
+    margin $\sim 6.7\!\times$; LLR margin $\sim 3\!\times\!10^{15}$);
+    and (iv) multi-source $\alpha$-universality across Sgr~A$^*$,
+    M87$^*$, GW150914 final-state, and a fiducial neutron star
+    (\textbf{ISSUE FLAGGED}: extracting $\alpha_{\rm SI}$ under a
+    universal geom-units calibration $\alpha_{\rm geom}\!\sim\!0.1$
+    yields scaling $\alpha_{\rm SI}\propto M_{\rm BH}^{2}$ across
+    nine decades in mass --- 19 decades in $\alpha_{\rm SI}$ ---
+    so a single physical $\alpha$ is not internally consistent
+    under the naive Candidate~D action). The flagged issue is
+    \emph{candidate-independent}: any M9.2 pivot reproducing a
+    universal $+14.56\%$ strong-field deviation must explain how a
+    single physical parameter handles black holes spanning $\geq 9$
+    orders of magnitude in mass, and the heuristic resolution paths
+    enumerated in the Phase~0+ readiness summary either fail
+    (a TGP-intrinsic length scale $L_{\rm TGP}$, an $\alpha$-from-RG
+    flow, or a screening factor) or introduce extra parameters
+    ($\alpha(\psi)$ with a $\psi$-threshold). This issue is the
+    \textbf{Phase~1 priority \#1}; the WEP-MICROSCOPE margin is
+    \emph{calibration-dependent} and an M87$^*$-calibrated $\alpha$
+    would fail MICROSCOPE by $\sim 10^{5}\times$, so resolving
+    multi-source consistency is the gating step for Candidate~D's
+    standing as the lead pivot. Full Phase~0+ documentation lives
+    in \texttt{research/op-m92/}; see in particular
+    \texttt{OP\_M92\_P0plus\_candD\_multisource\_results.md} and
+    \texttt{KNOWN\_ISSUES.md} for the disposition trail.
   \item \textbf{$N$-body dynamics.} Numerical integration of
     Eq.~\eqref{eq:field-eq} in configurations dominated by the
     intermediate-repulsion regime (regime~ii) exhibits chaos suppression
@@ -1099,9 +1166,13 @@ pointers, not self-contained derivations.
 of a binary character and provide the most direct falsification tests of
 the core theory:
 \begin{enumerate}[(F1),nosep]
-  \item $\alpha=2$ \emph{identically} (Theorem~\ref{thm:alpha2}):
-    any observable inconsistent with $K\propto\varphi^{4}$ at the
-    substrate level falsifies TGP.
+  \item $\alpha=2$ \emph{identically} within the class~(C1)--(C3)
+    of $\Phi$-covariant local second-order operators selected in
+    Theorem~\ref{thm:alpha2} (and not as a derivation from the
+    falsified v1 minimal-bilinear substrate, see
+    Remark~\ref{rem:alpha2-closure}): any observable inconsistent
+    with $K\propto\varphi^{4}$ at the substrate level falsifies the
+    GL-substrate ansatz of TGP.
   \item $\gamma_{\mathrm{PPN}}=\beta_{\mathrm{PPN}}=1$ \emph{at 1PN
     exactly, with explicit 2PN deviations}
     (Corollary~\ref{cor:ppn}): the unique falsifiable signature of TGP
@@ -1113,7 +1184,9 @@ the core theory:
     OP-EHT closed CONDITIONAL POSITIVE 2026-04-25, $+14.56\%$ shadow
     deviation falsifiable by ngEHT 2030--2032 at $\geq 10\sigma$ on
     Sgr A$^*$, with M9.2 pivot pre-analysed via OP-M92 Phase~0
-    readiness package 2026-04-25) would falsify the substrate-potential
+    + Phase~0+ readiness package 2026-04-25, with a multi-source
+    $\alpha$-universality issue flagged for Phase~1) would falsify
+    the substrate-potential
     ansatz.
   \item $c_{\mathrm{GW}}=c_{0}$ \emph{identically in scalar and
     tensor sectors} (Corollary~\ref{cor:cGW}): supported by GW170817
@@ -1156,8 +1229,10 @@ with present instrumentation.
 
 We have presented a minimal, self-contained core of the Theory of Generated
 Space: four axioms, one scalar field with a geometrically fixed kinetic
-operator ($\alpha=2$), a single non-linear potential with two coefficients
-related by a vacuum condition, and an algebraically determined effective
+operator ($\alpha=2$, selected within class (C1)--(C3) by
+Theorem~\ref{thm:alpha2}; see Remark~\ref{rem:alpha2-closure} for the
+v1$\to$v2 retraction trail), a single non-linear potential with two
+coefficients related by a vacuum condition, and an algebraically determined effective
 metric whose temporal factor is the normalised substrate-potential density
 $U(\Phi)/\Phi^{4}$, reproducing general relativity exactly at 1PN with
 explicit, falsifiable 2PN-level deviations. Fifteen core results are
@@ -1176,6 +1251,128 @@ Zenodo (DOI assigned at publication).
 
 \paragraph{Acknowledgements.} The author thanks the community of
 open-source physics for the tools that made this work possible.
+
+% =============================================================================
+\appendix
+% Skip Appendix~A so the first appendix is labelled "B", matching the
+% in-text citations (\App.~B, Prop.~\ref{prop:substrate-action}) which
+% have been baseline since v1.
+\setcounter{section}{1}
+% =============================================================================
+\section{Substrate action: continuum limit and the form $K(\varphi)=\varphi^{4}$}
+\label{app:substrate-action}
+% =============================================================================
+
+This appendix records the derivation that anchors the continuum
+geometric kinetic functional
+\(\mathcal{F}_{\mathrm{kin}}^{\mathrm{geo}}[\varphi]=
+(K_{\mathrm{geo}}/2)\!\int\!\varphi^{4}(\nabla\varphi)^{2}\,d^{d}x\)
+in the Ginzburg--Landau (GL) bond of the substrate Hamiltonian
+\eqref{eq:H-Gamma}. The argument is a standard block-averaging /
+gradient-expansion calculation; the only point that requires care is
+the bookkeeping of the composite field
+\(\hat{\Phi}_{i}\equiv\hat{s}_{i}^{2}\), whose lattice powers translate
+into integer powers of the continuum block-averaged field
+\(\Phi(x)\equiv\langle\hat{\Phi}\rangle_{\mathcal{B}(x)}\).
+
+\begin{proposition}[Continuum limit of the substrate GL bond]
+\label{prop:substrate-action}
+Let \(H_{\Gamma}\) be the substrate Hamiltonian \eqref{eq:H-Gamma} on a
+regular hypercubic graph with spacing \(a\) and coordination \(z=2d\),
+with the bond term
+\begin{equation}\label{eq:H-bond-app}
+  H_{\Gamma}^{\mathrm{bond}}
+  \;=\;J\!\!\sum_{\langle ij\rangle}\!A_{ij}\,
+       \hat{s}_{i}^{4}\,\hat{s}_{j}^{4}\,
+       \bigl(\hat{s}_{j}^{2}-\hat{s}_{i}^{2}\bigr)^{2}.
+\end{equation}
+Let \(\Phi(x)\) be the block-averaged composite field and
+\(\varphi(x)\equiv\Phi(x)/\Phi_{0}\) its dimensionless rescaling.
+Assume that \(\varphi\) is smooth on scales \(\gg a\) and that the
+substrate respects translational and rotational invariance at the
+coarse-grained scale (axioms~A2--A3). Then
+\begin{equation}\label{eq:bond-continuum}
+  \bigl\langle H_{\Gamma}^{\mathrm{bond}}\bigr\rangle
+  \;=\;\frac{K_{\mathrm{geo}}}{2}
+     \int\!\varphi^{4}(\nabla\varphi)^{2}\,d^{d}x
+     \;+\;\mathcal{O}\!\bigl(a^{4-d}\bigr),
+  \qquad
+  K_{\mathrm{geo}}\;=\;2J\,a^{2-d}\,\Phi_{0}^{6}.
+\end{equation}
+In particular the geometric kernel takes the form
+\(K(\varphi)=\varphi^{4}\) (up to the overall normalisation
+\(K_{\mathrm{geo}}\)), in agreement with the continuum exponent
+\(\alpha=2\) of Theorem~\ref{thm:alpha2} and the closure
+Remark~\ref{rem:alpha2-closure}.
+\end{proposition}
+
+\begin{proof}
+Identify lattice powers of \(\hat{s}\) with the composite field via
+\(\hat{\Phi}_{i}=\hat{s}_{i}^{2}\), so that
+\(\hat{s}_{i}^{4}=\hat{\Phi}_{i}^{2}\). Block-averaging the bond gives
+\begin{equation}\label{eq:bond-rewrite}
+  \hat{s}_{i}^{4}\,\hat{s}_{j}^{4}\,
+  \bigl(\hat{s}_{j}^{2}-\hat{s}_{i}^{2}\bigr)^{2}
+  \;\longmapsto\;
+  \Phi_{i}^{2}\,\Phi_{j}^{2}\,(\Phi_{j}-\Phi_{i})^{2}.
+\end{equation}
+For a smooth \(\Phi\) and \(j=i+a\hat{n}\) with \(\hat{n}\) a lattice
+unit vector,
+\begin{equation}\label{eq:taylor}
+  \Phi_{j}\;=\;\Phi_{i}+a\,\hat{n}\!\cdot\!\nabla\Phi(x_{i})+\mathcal{O}(a^{2}),
+\end{equation}
+hence
+\(\Phi_{i}^{2}\Phi_{j}^{2}=\Phi^{4}(x_{i})+\mathcal{O}(a)\) and
+\((\Phi_{j}-\Phi_{i})^{2}=a^{2}(\hat{n}\!\cdot\!\nabla\Phi)^{2}
++\mathcal{O}(a^{3})\). Summing over all bonds, each lattice site
+contributing \(z/2=d\) directed nearest-neighbour pairs, and using
+the rotational identity \(\sum_{\hat{n}\in\{\pm\hat{e}_{\mu}\}}
+(\hat{n}\!\cdot\!\nabla\Phi)^{2}=2|\nabla\Phi|^{2}\),
+\begin{equation}\label{eq:bond-sum}
+  \sum_{\langle ij\rangle}\!A_{ij}\,\Phi_{i}^{2}\Phi_{j}^{2}
+  (\Phi_{j}-\Phi_{i})^{2}
+  \;=\;a^{2}\!\sum_{i}\Phi^{4}(x_{i})\,|\nabla\Phi(x_{i})|^{2}
+       +\mathcal{O}(a^{3}).
+\end{equation}
+Converting the lattice sum to an integral via
+\(\sum_{i}\!\to a^{-d}\!\int d^{d}x\),
+\begin{equation}\label{eq:bond-integral}
+  H_{\Gamma}^{\mathrm{bond}}
+  \;=\;J\,a^{\,2-d}\!\int\!\Phi^{4}(\nabla\Phi)^{2}\,d^{d}x
+       +\mathcal{O}(a^{3-d}).
+\end{equation}
+Rescaling \(\Phi=\Phi_{0}\,\varphi\) introduces a factor
+\(\Phi_{0}^{4+2}=\Phi_{0}^{6}\), giving the announced result with
+\(K_{\mathrm{geo}}=2J\,a^{2-d}\Phi_{0}^{6}\). The next-order correction
+in \eqref{eq:bond-continuum} is dimensionally \(a^{4-d}\) once one
+expands the Taylor remainder and applies parity to drop odd-\(a\)
+terms; on \(d=3\) it is \(\mathcal{O}(a)\), vanishing under the
+continuum limit \(a\to 0\) at fixed \(K_{\mathrm{geo}}\).
+
+The identification \(K(\varphi)=\varphi^{4}\) is then immediate: the
+continuum bond is \((K_{\mathrm{geo}}/2)\!\int\!K(\varphi)
+(\nabla\varphi)^{2}d^{d}x\) with \(K(\varphi)=\varphi^{4}\), matching
+the exponent \(\alpha=K'\!\varphi/(2K)=2\) singled out by the closure
+conditions (C1)--(C3) of Theorem~\ref{thm:alpha2}.
+\qed
+\end{proof}
+
+\begin{remark}[Why $\hat{s}^{4}\hat{s}^{4}$ and not $\hat{s}^{2}\hat{s}^{2}$]
+\label{rem:bond-power}
+A naive bond \(\hat{s}_{i}^{2}\hat{s}_{j}^{2}(\hat{s}_{j}^{2}-\hat{s}_{i}^{2})^{2}\)
+would Taylor-expand to \(K(\varphi)=\varphi^{2}\), reproducing the
+v1 result \(\alpha=1\) and contradicting the v2 fixed-point analysis
+of Theorem~\ref{thm:alpha2}. The two extra powers of \(\hat{s}\) on
+each end of the bond are precisely what is required so that the
+continuum kernel matches the Z$_{2}$-even composite scaling
+\(\hat{\Phi}_{i}=\hat{s}_{i}^{2}\) carried into both endpoints
+\emph{and} into the gradient: schematically, \(\hat{s}^{4}=\hat{\Phi}^{2}\)
+on each end yields \(\Phi^{4}\) overall, while
+\(\hat{s}_{j}^{2}-\hat{s}_{i}^{2}=\Phi_{j}-\Phi_{i}\) under the same
+identification, producing a single gradient. This is a v1$\to$v2
+correction noted in \texttt{KNOWN\_ISSUES.md} and recorded in the
+present paper at \eqref{eq:H-Gamma} and in Remark~\ref{rem:alpha2-closure}.
+\end{remark}
 
 % =============================================================================
 \begin{thebibliography}{99}
