@@ -87,11 +87,60 @@ https://github.com/Stefan13610/TGP
 That is where development happens. This repository is the stable,
 paper-aligned snapshot.
 
+## Audit trail (post-Phase 3)
+
+The deposit at DOI [10.5281/zenodo.19670324](https://doi.org/10.5281/zenodo.19670324)
+is the immutable timestamped record. Subsequent in-repo audit material:
+
+- [`research/POST_PHASE3_ADDENDUM_2026-04-28.md`](research/POST_PHASE3_ADDENDUM_2026-04-28.md)
+  — six structural strengthenings landed in the workshop master after deposit:
+  Phase 1 (50/50) + Phase 2 (54/54) + Phase 3 (60/60) closures with grand total
+  281; 4-of-4 UV structural compatibility (AS / KKLT / LQG / CDT); B.6 promoted
+  ALGEBRAIC → PARTIAL DERIVED (Λ_E = γ/12 sympy-exact); B.4 STRENGTHENED;
+  Δ_target = 0.114 placed in heat-kernel a₂ frame; Path B m_σ²/m_s² = 2 preserved
+  4/4 UV. **Nothing in the deposit is retracted.**
+- [`KNOWN_ISSUES.md`](KNOWN_ISSUES.md) — live audit log; the most recent entry
+  records the C5 wording sweep (α=2 selection within class (C1)–(C3),
+  2026-04-26).
+
+## Falsification entry points
+
+The full prediction registry — falsification target, experimental horizon,
+DOI of the flask that pre-registered each prediction — lives in the workshop
+master at
+[`TGP_v1/PREDICTIONS_REGISTRY.md`](https://github.com/Stefan13610/TGP/blob/main/TGP_v1/PREDICTIONS_REGISTRY.md).
+
+Quick pointer to the predictions sourced from this paper:
+
+- **Sector 1 — Gravity & WEP** (G1–G3): η_TGP = 3.54·10⁻¹⁷ → MICROSCOPE-2 (~2027–2028)
+- **Sector 2 — Gravitational waves** (GW1–GW6): 3 polarization DOF, m_σ²/m_s² = 2
+  → LIGO O5 / LISA / pulsar-timing arrays
+- **Sector 3 — Photon rings** (BH1–BH3): r_ph^TGP / r_ph^GR = 1.293 ± 0.003%,
+  Δb_crit = +14.56% → ngEHT 2030–2032
+- **Sector 4 — Dark energy** (DE1–DE5): w = −1.000 exact, Λ_E = γ/12 sympy-exact
+  → DESI DR3 / Euclid
+- **Sector 7 — UV completion** (UV1–UV7): 4-of-4 structural compatibility
+  with AS / KKLT dS / LQG / CDT; long-term research-track item
+- **Sector 8 — Foundational locks** (F1–F7): single-Φ, K(φ) = K_geo·φ⁴,
+  α₀ = 1069833/264500 sympy-exact rational, 14 founding constraints
+
 ## Citation
 
-Once Zenodo has minted a DOI for this repository, please cite it in addition
-to the paper proper. The `.zenodo.json` file in the root contains the
-machine-readable metadata that Zenodo uses on each release.
+The `.zenodo.json` file in the root contains the machine-readable metadata
+Zenodo uses on each release. A `CITATION.cff` is also provided for GitHub's
+native "Cite this repository" widget.
+
+```bibtex
+@misc{Serafin2026TGPCore,
+  author       = {Serafin, Mateusz},
+  title        = {{Theory of Generated Space: A minimal core of axioms,
+                   substrate, and effective field}},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.19670324},
+  url          = {https://doi.org/10.5281/zenodo.19670324}
+}
+```
 
 ## License
 

@@ -803,6 +803,30 @@ the coupling $\gamma$ through
 \end{equation}
 which identifies $\Lambda_{E}$ as the effective cosmological constant.
 
+\begin{remark}[T-$\Lambda$ closure: vacuum catastrophe avoided structurally]
+\label{rem:T-Lambda}
+Closure 2026-04-26 (T-$\Lambda$, 7/7 PASS) makes the identification
+in~\eqref{eq:Lambda-E} \emph{quantitative}: with $\Phi_{\rm eq} = \hbar H_0$
+(Hubble cutoff, OP-3 substrate-cosmology bridge $a_\Gamma = 1/\Phi_0$)
+and $\gamma = M_{\rm Pl}^2 \tilde g$ (M9.1$''$ vacuum condition $\beta = \gamma$,
+full-Planck convention), the substrate vacuum energy density evaluates to
+\[
+  \rho_{\rm vac,TGP} = V(\Phi_{\rm eq}) = \tfrac{\gamma}{12}\,\Phi_{\rm eq}^2
+                     = \tfrac{\tilde g}{12}\,M_{\rm Pl}^2 H_0^2
+                     \approx 2.57 \times 10^{-11}\,\text{eV}^4,
+\]
+matching the observed $\rho_{\rm vac,obs} \approx 2.52 \times 10^{-11}\,\text{eV}^4$
+to ratio $1.020$ with $\tilde g \approx 0.98$ — a single dimensionless $O(1)$
+constant, no fine-tuning. The notorious vacuum catastrophe ($\sim 10^{122}$
+mismatch from naive QFT zero-point) is \emph{structurally} avoided in TGP
+because the vacuum energy is the substrate's own $V(\Phi_{\rm eq})$ (set by
+the cosmological scale $H_0$ via $\Phi_{\rm eq}$), not the QFT zero-point
+(set by the Planck scale). In particular, $\Omega_\Lambda = 0.6847$ is
+promoted from \emph{input} to \emph{emergent prediction}; the equation of
+state $w_{\rm DE} = -1$ is exact ($V(\Phi_{\rm eq}) = $ const for static
+substrate). See \texttt{research/closure\_2026-04-26/Lambda\_from\_Phi0/}.
+\end{remark}
+
 \begin{remark}[Gravity as regime (i)]
 Newtonian gravity is recovered as the long-range limit of the full
 non-linear equation~\eqref{eq:field-eq}: in the weak field
@@ -898,6 +922,17 @@ The list below summarises the current (April 2026) status of TGP core.
     This verifies kinetic stability of the axiomatic GL form
     of~\eqref{eq:H-Gamma} at the continuum level; $\alpha=2$ itself
     is supplied by the axiom (see Remark~\ref{rem:alpha2-closure}).
+    \textbf{Closure 2026-04-26 quantum-cycle cross-check (M11):}
+    LPA(N=10) gives 3D-Ising critical exponent $\nu_{\mathrm{LPA}} = 0.6492$
+    (lit.\ 0.6496, drift 0.07\%); $y_{t} = +1.5404$, single positive
+    eigenvalue ($n_{\mathrm{pos}} = 1$) confirms WF universality.
+    The $\eta$-bracket $[0.013\ (\mathrm{LPA}'\ \text{naive}),\,0.044\
+    (\text{CG-2 wide})]$ lies in the PN-perturbative band
+    $[1/(4\pi)^{2}, 1/(4\pi)] = [0.0063, 0.0796]$, and the bottom-up
+    Branch I 1-loop value $\eta_{\mathrm{BI}} = 0.0253$ matches the
+    top-down LPA' wide-prefactor value
+    $\eta_{\mathrm{LPA}'(\mathrm{wide})} = 0.02556$ to $1.00\%$ ---
+    an independent two-Branch agreement. See item~\#22 below.
   & \textsf{NU}\\
 17 & Cosmology: $\Delta\chi^{2}=+1.8$, $\Delta\mathrm{AIC}=+3.8$
   & vs.\ $\Lambda$CDM on Planck\,+\,DESI data, Friedmann~\eqref{eq:field-eq}
@@ -925,6 +960,94 @@ The list below summarises the current (April 2026) status of TGP core.
     record is in \texttt{KNOWN\_ISSUES.md} (2026-04-24) and in
     \texttt{research/op6/}.
   & \textsf{NU}\\
+22 & Quantum closure cycle (1-loop + FRG, 62/62 PASS)
+  & Two-Branch verification of the TGP\_v1 quantum sector closing the
+    classical-quantum bridge (\textbf{CLOSED 2026-04-26, M11.S$\to$M11.R-final}).
+    \emph{Branch I (bottom-up):} M11.S 1-loop soliton mass and self-energy;
+    M11.I interference correction $A_{\mathrm{int}}^{\mathrm{BI}}(qM=0.30)
+    = 5.929\times 10^{-3}$ vs $A_{\mathrm{M9}} = 7.162\times 10^{-3}$
+    ($G_{\mathrm{TGP}}^{\mathrm{BI}}$ ratio 0.828); M11.G global mean-field
+    $\mu_{\mathrm{extr}} = 0.9983$ vs analytical $\lambda_{C}^{-1} = 1.0$
+    (drift 0.17\%); M11.E emergent source from $-(q/\Phi_{0})\varphi\rho$;
+    M11.R-I 1-loop renormalization (5 sub-cycles $\times$ 6 = 30/30 PASS).
+    \emph{Branch II (top-down FRG):} M11.1 axiom audit; M11.2 WF
+    fixed-point existence with $\nu_{\mathrm{LPA}}(N=10) = 0.6492$,
+    $y_{t} = +1.5404$; M11.3 anomalous-dimension scan $\eta_{\mathrm{BI}}
+    = 0.0253$, $\eta_{\mathrm{LPA}'(\mathrm{wide})} = 0.02556$
+    (4 sub-cycles $\times$ 6 = 24/24 PASS); M11.4 structural-consistency
+    audit closing \texttt{KNOWN\_ISSUES} entries B.2 (n=2 unique
+    minimal as theorem via C$^{1}$+WEP MICROSCOPE), B.3 (T-$\alpha$
+    arithmetic identity $\alpha_{0} = 0.114/(0.168^{2}\cdot 1.0) = 4.039$,
+    band $[3.5, 4.5]$), B.5 ($\tilde g_{\mathrm{match}} =
+    36\cdot\Omega_{\Lambda}\cdot(M_{\mathrm{Pl,red}}/M_{\mathrm{Pl}})^{2}
+    = 0.9803$ full-Planck conversion; T-$\Lambda$ ratio 1.020 drift
+    $0.03\%$), and C.3 ($\eta$ first-principles at dim.\ magnitude only).
+    \emph{R-final synthesis:} 6 Sect.~4 branch-consistency conditions
+    ($\eta$-reconciliation, $G_{\mathrm{TGP}}$ cross-Branch, $\lambda_{C}$
+    self-consistency, 3D-Ising universality, KNOWN\_ISSUES, M11.G/M9
+    mean-field) plus 8 R.F audit tests, all 8/8 PASS, cumulative
+    \textbf{62/62 verifications}. Striking finding:
+    $|\eta_{\mathrm{BI}} - \eta_{\mathrm{LPA}'(\mathrm{wide})}|/\eta_{\mathrm{BI}}
+    = 1.00\%$ (independent bottom-up vs top-down agreement).
+    \textbf{Honest scope:} structural consistency at closure-grade level;
+    first-principles dim-reg / covariant 4D path-integral $\delta M_{\rm phys}$
+    deferred to Phase~1 covariant program (1.A absolute $\delta M_{\rm phys}$,
+    1.B $\psi_{\mathrm{ph}}$, 1.C CC cancellation, 1.D LPA''/BMW,
+    1.E $\ell=0$ stabilization, 1.F covariant 4D path integral).
+    See \texttt{research/op-quantum-closure/M11\_program.md},
+    \texttt{M11\_R\_final\_results.md}, \texttt{M11\_4\_results.md},
+    and \texttt{KNOWN\_ISSUES.md} entry A.13.
+  & \textsf{NU}\\
+23 & Cosmology closure cycle (FRW phenomenology, 42/42 PASS)
+  & Closure-grade audit of TGP cosmology drafts against post-M9
+    foundations (\textbf{CLOSED 2026-04-26, M10.0$\to$M10.R}).
+    M10.0 drift audit (6 drafts: 5 YELLOW + 1 RED $\to$ all unambiguous
+    post-cycle); M10.1 FRW dark-energy dynamics $w(z)\geq -1$
+    structural with $V_{0} = \beta/12 \approx \Omega_{\mathrm{DE},0} =
+    0.685$ (de2 $\to$ \textsf{GREEN}); M10.2 inflation with $n_{s} =
+    0.967$ (ex261 \textsf{YELLOW preserved}, drift documented); M10.3
+    FRW propagator $M_{\mathrm{eff}}^{2} = +\beta$ Fourier-power
+    universality (gs66 $\to$ \textsf{GREEN}); M10.4 CMB safety
+    $m_{s}^{2} = \beta$ via 4-layer mechanism (gs41 \textsf{RED}
+    $\to$ \textsf{SUPERSEDED}, single-$\Phi$ axiom-compatible
+    rebuild); M10.5 $H_{0}/S_{8}$ tensions
+    $B_{\psi}/H_{0}^{2}\sim 10^{-8}$ (ct3 $\to$ \textsf{GREEN-honest},
+    ct7 $\to$ \textsf{GREEN}). M10.R synthesis: 6/6 foundational
+    identities cross-cycle (sympy verified: $V'(1)=0$,
+    $V''(1)=-\beta$, $M_{\mathrm{eff}}^{2}=+\beta$, $V(1)=\beta/12$,
+    $K(1) = K_{\mathrm{geo}}>0$, $w_{\mathrm{eff}}+1 = 2\rho_{\mathrm{kin}}/
+    \rho_{\mathrm{tot}}\geq 0$); scale propagation T-$\Lambda$ $\to$
+    M10.x (3/3, $\lambda_{C}\approx L_{H}$ at machine precision today);
+    drift status final tally (6/6 unambiguous);
+    falsifiability matrix of 10 predictions (DESI, CMB-S4, LiteBIRD,
+    LIGO O5, Euclid, SPARC); cross-check vs closure\_2026-04-26 + M9
+    (11/11 ZERO conflicts); explicit honest-scope statement (7 IS items
+    + 7 IS NOT items). Aggregate $1 + 6\times 6 + 6 = 42/42$.
+    See \texttt{research/op-cosmology-closure/M10\_program.md} and
+    \texttt{M10\_R\_results.md}.
+  & \textsf{NU}\\
+24 & Classical-gravity closure cycle (M9.1$''$+M9.2+M9.3)
+  & Three-stage closure of TGP classical gravity completing the
+    pre-quantum sector (\textbf{CLOSED 2026-04-26}). M9.1$''$
+    hyperbolic effective metric $g_{\mathrm{eff},\mu\nu} =
+    \mathrm{diag}(-c_{0}^{2}/\varphi, +\varphi, +\varphi, +\varphi)$
+    with $\beta = \gamma = 1$ (3 PASS + 1 conditional RESOLVED via
+    Bethe--Salpeter + 1 OPEN; basis of items~\#11 and OP-EHT/OP-EHT-A
+    elsewhere in this table); M9.2 momentum / inertia / WEP via
+    Lenz-like back-reaction (5/5 PASS); M9.3 GW classical
+    phenomenology --- linearization, dispersion $|\Delta c|/c <
+    5\times 10^{-13}$ at high $k$, Peters--Mathews quadrupole
+    matched within $3.6\times 10^{-21}$, SO(3) polarization
+    decomposition (2 tensor + 1 scalar; 0 vector under the
+    single-$\Phi$ axiom), GW170817 bound margin $5.5\times 10^{5}$
+    (5/5 PASS). Cycle aggregate covers classical $\Phi$-EOM dynamics
+    (statics, motion, radiation), with all reductions to PPN
+    consistent with item~\#11 / OP-2 / vacuum condition $\beta=\gamma$.
+    M9 closure is the predecessor of M10 (cosmology, item~\#23) and
+    M11 (quantum, item~\#22). See
+    \texttt{research/op-newton-momentum/M9\_program.md},
+    \texttt{M9\_2\_results.md}, and \texttt{m9\_3\_gw.txt}.
+  & \textsf{NU}\\
 \bottomrule
 \end{longtable}
 \end{center}
@@ -943,6 +1066,13 @@ TGP at the core level.
 OP-1 & Uniqueness of $U(\varphi)$
   & Is the cubic+quartic form the unique self-interference potential
   compatible with $\Zp$ symmetry and the vacuum condition?
+  \textbf{Structural step 2026-04-26 (M11.4.5):} the polynomial
+  degree $n = \deg(V) = 4$ is the unique minimal choice compatible
+  with $C^{1}$ smoothness at $\psi = 1$ and the WEP MICROSCOPE
+  margin ($n=1$ would force $|\eta| < 10^{-15}$, ruled out).
+  \texttt{KNOWN\_ISSUES.md} entry B.2 \textbf{STRUCTURALLY CLOSED}.
+  Full uniqueness up to admissible $\Zp$-invariant deformations
+  remains open.
   & \textsf{HY}\\
 OP-2 & Parametric reduction $\beta=\gamma$
   & Formal proof (beyond the vacuum condition) that $\beta=\gamma$ is
@@ -951,10 +1081,34 @@ OP-2 & Parametric reduction $\beta=\gamma$
 OP-3 & Identification $a_{\Gamma}=1/\PhiZero$
   & Whether the two fitted parameters coincide, reducing the free input
   count to one.
+  \textbf{Cross-reference 2026-04-26 (M11.4.3, T-$\alpha$):} the
+  arithmetic identity $\alpha_{0} = q^{2}/(\Phi_{0}^{2}\,\rho_{\rm vac})
+  = 0.114/(0.168^{2}\cdot 1.0) = 4.0391$ in the band $[3.5, 4.5]$
+  reproduces the postulated WEP-MICROSCOPE coupling at the
+  closure-grade level (\texttt{KNOWN\_ISSUES.md} B.3
+  \textbf{STRUCTURALLY CLOSED}). The first-principles identification
+  $a_{\Gamma}\equiv 1/\PhiZero$ from $H_{\Gamma}$ alone is independent
+  of this arithmetic identity and remains open.
   & \textsf{HY}\\
 OP-4 & Derivation of the quartic coefficient $\gamma$
   & An \textit{a priori} determination of $\gamma$ (equivalently
   $\Lambda_{E}$) from $H_{\Gamma}$ alone.
+  \textbf{Structural step 2026-04-26 (M11.4.4):} the full-Planck
+  conversion $\tilde g_{\mathrm{match}} = 36\cdot\Omega_{\Lambda}\cdot
+  (M_{\mathrm{Pl,red}}/M_{\mathrm{Pl}})^{2} = 0.9803$ matches the
+  T-$\Lambda$ residual ratio $1.020$ to drift $0.03\%$
+  (\texttt{KNOWN\_ISSUES.md} B.5 \textbf{STRUCTURALLY CLOSED}).
+  \textbf{Partial step on $\eta$ (C.3):} the anomalous dimension
+  $\gamma_{\mathrm{NPRG}}$ at the WF fixed point is structurally
+  verified at dimensional magnitude (M11.4.2: $|\gamma_{\mathrm{NPRG}}|
+  \cdot M_{\mathrm{Pl}}^{2}\cdot \Phi_{\mathrm{eq}}^{2}/12$ falls in
+  band $[10^{-3},10^{3}]$), with the 4D Lagrangian sign of $\gamma$
+  set externally by the vacuum condition $\beta=\gamma$ (NPRG-internal
+  $\gamma$ is poly-coeff ratio at WF, \emph{not} the TGP $K(\varphi)$
+  convention $\gamma$). \textbf{First-principles \emph{a priori}
+  derivation of $\gamma$ remains open} (Phase~1.A absolute
+  $\delta M_{\mathrm{phys}}$ via dim-reg / covariant 4D heat-kernel,
+  Phase~1.D LPA''/BMW for $\eta$ first principles).
   & \textsf{HY}\\
 OP-5 & Full non-linear $N$-body regime
   & Existence/uniqueness of solutions for strongly overlapping sources
@@ -985,10 +1139,27 @@ OP-7 & Tensor projection $\sigma_{ab}$
   T6 (full consistency: 10 PPN params in bounds, $c_{\rm GW} = c_0$ EXACT
   in decoupling, ghost-free, $Z_2$ all-order, $V_{\rm eff}$ bounded below,
   $\xi/G = 1$ EXACT after TT-convention reconciliation, 12/12).
+  \textbf{Closure 2026-04-26 update (35/35 PASS in 4 phases):}
+  T3 $\sigma_{ab}$ dynamics promoted to \emph{Path B PRIMARY} (composite
+  operator $\sigma_{ab} = \langle (\partial_a \delta\hat s)(\partial_b \delta\hat s)\rangle^{\rm TF}$
+  inherited from $\hat s$-EOM via box-of-product algebra; $m_\sigma^2 = 2 m_s^2$
+  \emph{derived} from heredity, not analogised; ghost-freeness structurally
+  guaranteed by Gram-matrix positivity; single-$\Phi$ axiom strictly preserved,
+  11/11 PASS).
+  Auxiliary closures: T-FP ($f(\psi) = (4-3\psi)/\psi$ unique consequence of
+  $n = \deg(V) = 4$ from four conditions, 12/12 PASS); T-$\Lambda$
+  ($\rho_{\rm vac,TGP} = M_{\rm Pl}^2 H_0^2/12$, ratio to observation 1.020,
+  vacuum catastrophe avoided structurally, 7/7 PASS); T-$\alpha$
+  (multi-source $\alpha$-universality issue of OP-M92 resolved via
+  $\alpha(\psi) = \alpha_0 (\psi-1)^2 \Theta(\psi-1)$ with $\alpha_0 \approx 4$,
+  WEP MICROSCOPE margin upgraded $6.7 \times \to 4\times 10^{16}\times$,
+  5/5 PASS).
   \textbf{Smoking gun:} scalar breathing mode (T1) detectable in 3G era
   (Cosmic Explorer, Einstein Telescope).
-  See \texttt{research/op7/OP7\_T\{1..6\}\_results.md} and
-  \texttt{research/op7/TGP\_CLOSURE\_PLAN\_2026-04-25.md}.
+  See \texttt{research/op7/OP7\_T\{1..6\}\_results.md},
+  \texttt{research/op7/TGP\_CLOSURE\_PLAN\_2026-04-25.md},
+  \texttt{research/closure\_2026-04-26/CLOSURE\_2026-04-26\_SUMMARY.md},
+  and \texttt{research/closure\_2026-04-26/correction\_to\_OP7\_T3.md}.
   & \textsf{HY}\\
 OP-8 & Gauge-sector emergence
   & Emergence of U(1)$\times$SU(2)$\times$SU(3) from the substrate

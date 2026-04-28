@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using the metadata below."
+type: software
+title: "Theory of Generated Space: A minimal core of axioms, substrate, and effective field"
+abstract: >-
+  Preprint and supporting numerical material for the TGP core paper.
+  TGP is a scalar-field theory in which space is constituted by mass-energy
+  sources through a shared field Phi. The paper proves a unique
+  second-order kinetic operator (alpha=2) within class (C1)-(C3),
+  derives an effective metric reproducing all PPN parameters of GR exactly,
+  and identifies three interaction regimes from a single non-linear potential.
+  Fifteen core results proven, six numerically verified, ten open problems
+  stated.
+authors:
+  - family-names: Serafin
+    given-names: Mateusz
+    affiliation: Independent researcher
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.19670324
+    description: Zenodo DOI of this work
+license: CC-BY-4.0
+keywords:
+  - generated space
+  - emergent gravity
+  - scalar field
+  - Z2 substrate
+  - post-Newtonian parameters
+  - effective metric
+  - renormalization group
+  - theoretical physics
+  - TGP
+url: "https://doi.org/10.5281/zenodo.19670324"
+repository-code: "https://github.com/Stefan13610/tgp-core-paper"
+references:
+  - type: software
+    title: "TGP — full research workshop"
+    url: "https://github.com/Stefan13610/TGP"
+    authors:
+      - family-names: Serafin
+        given-names: Mateusz
